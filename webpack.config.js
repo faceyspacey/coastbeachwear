@@ -1,21 +1,60 @@
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: ['./client/client.js'],
 	output: {
-		path: './dist',
+		path: require("path").resolve("./dist"),
 		filename: 'bundle.js',
-		publicPath: '/'
+		publicPath: '/dist'
 	},
+	plugins: [
+		new ExtractTextPlugin('style.css'),
+		new webpack.optimize.OccurrenceOrderPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin()
+	],
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.js$/,
-				loader: 'babel-loader',
 				exclude: /node_modules/,
-				query: {
-					presets: ['react', 'es2015']
+				use: {
+					loader: 'babel-loader',
+					query: {
+						presets: ['react', 'es2015', 'react-hmre']
+					}
 				}
+			},
+			{
+				test: /\.css$/,
+				use: [{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+						}
+					}
+				]
 			}
+			// {
+			// 	test: /\.css$/,
+			// 	use: ExtractTextPlugin.extract(['css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'])
+			// }
 		]
+
+
+
+			// {
+			// 	test: /\.css$/,
+			// 	use: ExtractTextPlugin.extract({
+			// 		fallback: "style-loader",
+			// 		use: 'css-loader'
+			// 	})
+			// }
+
 	}
 }
