@@ -1,0 +1,6 @@
+.scaling-svg-container svg {
+	width: 100%; 
+	height: 1px; 
+	overflow: visible;
+	padding-bottom: 100%; /* over-ride this inline for aspect ratio other than square */
+}

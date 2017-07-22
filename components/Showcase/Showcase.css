@@ -1,0 +1,16 @@
+.main {
+	height: 600px;
+	background-color: #518A6E;
+	position: relative;
+}
+
+.logo {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	width: 326px;
+}
+
+.logo svg {
+	fill: #ffffff;
+}

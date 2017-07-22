@@ -3,11 +3,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	devtool: 'inline-source-map',
-	entry: ['./client/client.js'],
+	entry: [ 'webpack-hot-middleware/client', './client/client.js'],
 	output: {
 		path: require("path").resolve("./dist"),
 		filename: 'bundle.js',
-		publicPath: '/dist'
+		publicPath: '/'
 	},
 	plugins: [
 		new ExtractTextPlugin('style.css'),
@@ -36,6 +36,7 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							modules: true,
+							localIdentName: '[name]_[local]_[hash:base64:5]'
 						}
 					}
 				]

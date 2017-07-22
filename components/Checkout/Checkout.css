@@ -1,0 +1,23 @@
+.main {
+	background-color: #F0E7C2;
+	width: 100%;
+	height: 520px;
+	display: table;
+}
+
+.column>div {
+	margin: 0 auto;
+}
+
+.left-column {
+	composes: column;
+	display: table-cell;
+	width: 66%
+}
+
+.right-column {
+	composes: column;
+	display: table-cell;
+	width: 33%;
+}
+
