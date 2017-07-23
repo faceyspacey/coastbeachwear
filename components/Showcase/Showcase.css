@@ -1,6 +1,6 @@
 .main {
 	height: 600px;
-	background-color: #518A6E;
+	background-color: #6CA18A;
 	position: relative;
 }
 
@@ -12,5 +12,5 @@
 }
 
 .logo svg {
-	fill: #ffffff;
+	fill: #F6FFF5;
 }

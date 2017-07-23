@@ -22,3 +22,7 @@
 	display: inline-block;
 	width: 36px;
 }
+
+.social-icon svg {
+	fill: #F6FFF5;
+}

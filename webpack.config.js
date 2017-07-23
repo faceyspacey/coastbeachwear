@@ -23,7 +23,8 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					query: {
-						presets: ['react', 'es2015', 'react-hmre']
+						presets: ['react', 'es2015', 'react-hmre'],
+						plugins: ['transform-class-properties']
 					}
 				}
 			},

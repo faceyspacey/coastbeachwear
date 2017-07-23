@@ -1,8 +1,15 @@
 .main {
+	padding: 30px 30px;
 	background-color: #F0E7C2;
 	width: 100%;
-	height: 520px;
-	display: table;
+	box-sizing: border-box;
+	height: 480px;
+	display: table;	
+}
+
+.column {
+	display: table-cell;
+	vertical-align: top;
 }
 
 .column>div {
@@ -11,7 +18,6 @@
 
 .left-column {
 	composes: column;
-	display: table-cell;
 	width: 66%
 }
 
@@ -20,4 +26,3 @@
 	display: table-cell;
 	width: 33%;
 }
-
