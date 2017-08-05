@@ -1,6 +1,6 @@
 .main {
 	padding: 30px 30px;
-	background-color: #F0E7C2;
+	background-color: #F6E7C6;
 	width: 100%;
 	box-sizing: border-box;
 	height: 480px;
@@ -25,4 +25,8 @@
 	composes: column;
 	display: table-cell;
 	width: 33%;
+}
+
+.form-container {
+	width: 630px;
 }

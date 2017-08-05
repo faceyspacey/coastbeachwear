@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './Checkout.css'
-import CheckoutForm from '../CheckoutForm/CheckoutForm.js'
+import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js'
 import OrderSummary from '../OrderSummary/OrderSummary.js'
 
 
@@ -9,7 +9,9 @@ class Checkout extends Component {
 		return (
 			<div className={styles["main"]}>
 				<div className={styles["left-column"]}>
-					<CheckoutForm />
+					<div className={styles["form-container"]}>
+						<ShippingAddrForm />
+					</div>
 				</div>
 				<div className={styles["right-column"]}>
 					<OrderSummary/>
