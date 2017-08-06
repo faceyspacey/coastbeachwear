@@ -7,27 +7,32 @@ class Input extends Component {
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
-			text: ""
+			dataKey: props.dataKey
 		}
 	}
-	
-	onchange = (event) =>  {
-		this.setState({
-			text: event.target.value
-		})
-	};
+
+	onchange(event) {
+		var newData = {}
+
+		newData[this.props.dataKey] = event.target.value
+
+		this.props.onchange(newData);
+	}
 
 	render() {
+		var text = this.props.data[this.state.dataKey];
+		
 		return (
-			<div className={styles["main"]}>
-				<div className={styles["text-area"]}>
-					<label className={this.state.text? styles["placeholder"]: styles["placeholder-hidden"]}>{this.props.placeholder}</label>
+			<div className={ styles["main"] }>
+				<div className={ styles["text-area"] }>
+					<label className={ text? styles["placeholder"]: styles["placeholder-hidden"] }>{ this.props.placeholder }</label>
 					<input 
-						className={styles["input"]} 
-						placeholder={this.props.placeholder}
-						onChange={this.onchange} 
-						style={{width: this.props.inputWidth}}
-						type="text" 
+						className={ styles["input"] } 
+						placeholder={ this.props.placeholder }
+						onChange={ this.onchange.bind(this) } 
+						style={{ width: this.props.inputWidth }}
+						type="text"
+						value= { text }
 					/>
 				</div>
 			</div>

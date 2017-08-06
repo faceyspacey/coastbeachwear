@@ -3,7 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	devtool: 'inline-source-map',
-	entry: [ 'webpack-hot-middleware/client', './client/client.js'],
+	entry: [ 'webpack-hot-middleware/client', './main/BeachHut.js'],
 	output: {
 		path: require("path").resolve("./dist"),
 		filename: 'bundle.js',

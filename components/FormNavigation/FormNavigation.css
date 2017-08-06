@@ -1,0 +1,42 @@
+.navigation {
+	position: absolute;
+	height: 50px;
+	width: 100%;
+	bottom: 0px;
+}
+
+.arrow {
+	position: absolute;
+	border-radius: 6px;
+	height: 42px;
+	width: 120px;
+	background-color: #6CA18A;
+	cursor: pointer;
+}
+
+.next-arrow {
+	composes: arrow;
+	right: 10px;
+}
+
+.previous-arrow {
+	composes: arrow;
+	left: 10px;
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+.arrow > div {
+	width: 72px;
+	position: absolute;
+	top: 0px;
+	left: 27px;
+}
+
+.arrow svg {
+	fill: #F6FFF5;
+}

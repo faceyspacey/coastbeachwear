@@ -6,11 +6,18 @@ import Checkout from '../Checkout/Checkout.js'
 import Footer from '../Footer/Footer.js'
 
 class App extends Component {
+	constructor(props, context) {
+		super(props, context);
+		this.state = {
+			customer: props.customer
+		};
+	}
+
 	render() {
 		return (
 			<div>
 				<Showcase/>
-				<Checkout/>
+				<Checkout customer= { this.state.customer }/>
 				<Footer/>
 			</div>
 		)

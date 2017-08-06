@@ -29,4 +29,6 @@
 
 .form-container {
 	width: 630px;
+	height: 400px;
+	position: relative;
 }

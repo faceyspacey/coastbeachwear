@@ -8,7 +8,7 @@ const TRANSLATIONTABEL = {
 		6: "Country",
 		7: "Provice",
 		8: "Postal Code",
-
+		9: "Company"
 	},
 	fr: {
 		1: "Prenom",

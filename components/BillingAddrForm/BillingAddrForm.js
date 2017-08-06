@@ -1,31 +1,32 @@
 import React, { Component } from 'react'
-import styles from './ShippingAddrForm.css'
+import styles from './BillingAddrForm.css'
 import Input from '../input/input.js'
 import $T from '../../support/translations.js'
 import FormNavigation from '../FormNavigation/FormNavigation.js'
-import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
+import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js'
 
-class ShippingAddrForm extends Component {
+class BillingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
-		this.state = props.customer.shippingAddr;
+		this.state = props.customer.billingAddr;
 	}
 
 	navigateForward() {
+		this.props.setCurrentForm(ShippingAddrForm);
 	}
 
 	navigateBackward() {
-		this.props.setCurrentForm(BillingAddrForm);
+		this.props.setCurrentForm(this);
 	}
 
 	onchange(obj) {
-		this.props.customer.setShippingAddr(obj);
+		this.props.customer.setBillingAddr(obj);
 	}
 
 	render() {
 		return (
 			<div className={styles["main"]}>
-				<div className={styles["header"]}>Shpping Details</div>
+				<div className={ styles["header"] }>Billing Details </div>
 				<Input 
 					dataKey={"first_name"}
 					data={ this.state }
@@ -84,11 +85,11 @@ class ShippingAddrForm extends Component {
 				/>
 				<FormNavigation 
 					navigateForward={ this.navigateForward.bind(this) }
-					navigateBackward= { this.navigateBackward.bind(this) }
+					navigateBackward= { this.navigateBackward.bind(this)}
 				/>
 			</div>
 		)
 	}
 }
 
-export default ShippingAddrForm
+export default BillingAddrForm
