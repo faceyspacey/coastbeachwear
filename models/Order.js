@@ -1,7 +1,7 @@
 import Model from './Model'
 import {ui} from '../main/BeachHut.js'
 
-class Customer extends Model {
+class Order extends Model {
 	
 	static billingAddrFields = ["first_name", "last_name", "company", "address", "country", "apt", "province", "postal_code"];
 	static shippingAddrFields = ["first_name", "last_name", "company", "address", "country", "apt", "province", "postal_code"];
@@ -34,9 +34,9 @@ class Customer extends Model {
 	}
 
 	updateUIState() {
-		ui.setState({customer: this})
+		ui.setState({order: this})
 	}
 
 }
 
-export default Customer
+export default Order

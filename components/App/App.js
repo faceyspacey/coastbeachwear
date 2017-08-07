@@ -9,7 +9,7 @@ class App extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			customer: props.customer
+			order: props.order
 		};
 	}
 
@@ -17,7 +17,7 @@ class App extends Component {
 		return (
 			<div>
 				<Showcase/>
-				<Checkout customer= { this.state.customer }/>
+				<Checkout order= { this.state.order }/>
 				<Footer/>
 			</div>
 		)

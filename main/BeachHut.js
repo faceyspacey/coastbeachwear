@@ -1,14 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
 import App from '../components/App/App.js'
-import Customer from '../models/Customer.js'
+import Order from '../models/Order.js'
 
 window.Require = __webpack_require__;
 
-let customer = new Customer;
+let order = new Order;
 
 let ui = render(
-	<App customer={ customer }/>,
+	<App order={ order }/>,
 	document.getElementById('beachhut')
 )
-export { ui, customer };
+export { ui, order };

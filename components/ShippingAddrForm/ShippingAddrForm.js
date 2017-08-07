@@ -9,7 +9,7 @@ import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
 class ShippingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
-		this.state = props.customer.shippingAddr;
+		this.state = props.order.shippingAddr;
 	}
 
 	navigateForward() {
@@ -21,7 +21,7 @@ class ShippingAddrForm extends Component {
 	}
 
 	onchange(obj) {
-		this.props.customer.setShippingAddr(obj);
+		this.props.order.setShippingAddr(obj);
 	}
 
 	render() {

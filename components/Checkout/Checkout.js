@@ -49,7 +49,7 @@ class Checkout extends Component {
 			<div className={ styles["main"] }>
 				<div className={ styles["left-column"] }>
 					<div className={ styles["form-container"] }>
-						{ <this.state.currentForm customer={ this.props.customer } setCurrentForm = { this.setCurrentForm.bind(this) }/> }
+						{ <this.state.currentForm order={ this.props.order } setCurrentForm = { this.setCurrentForm.bind(this) }/> }
 					</div>
 				</div>
 				<div className={styles["right-column"]}>
