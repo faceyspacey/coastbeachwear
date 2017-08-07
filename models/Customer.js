@@ -3,8 +3,8 @@ import {ui} from '../main/BeachHut.js'
 
 class Customer extends Model {
 	
-	static billingAddrFields = ["first_name", "last_name", "company", "address", "country", "province", "postal_code"];
-	static shippingAddrFields = ["first_name", "last_name", "company", "address", "country", "province", "postal_code"];
+	static billingAddrFields = ["first_name", "last_name", "company", "address", "country", "apt", "province", "postal_code"];
+	static shippingAddrFields = ["first_name", "last_name", "company", "address", "country", "apt", "province", "postal_code"];
 
 	constructor() {
 		super();

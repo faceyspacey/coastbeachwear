@@ -5,8 +5,12 @@ import Icons from '../../support/Icons.js'
 class Showcase extends Component {
 	render() {
 		return (
-			<div className={styles["main"]}>
+			<div className={ styles["main"] }>
 					{ Icons.insert('logo', styles.logo) }
+					<div className={ styles["main"] }>
+						<div className={ styles["main"] }>
+						</div>
+					</div>
 			</div>
 		)
 	}

@@ -36,7 +36,7 @@
 }
 
 .input {
-	border-radius: 6px;
+	border-radius: 2px;
 	box-sizing: border-box;
 	height: 40px;
 	padding: 9px 35px 9px 9px;
@@ -48,8 +48,8 @@
 }
 
 .input:focus {
-	border-bottom-width: 2px;
-	padding-bottom: 8px;
+	border-bottom: 2px solid #6CA18A;
+	padding-bottom: 7px;
 	outline: none;
 }
 

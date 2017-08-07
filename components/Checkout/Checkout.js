@@ -9,7 +9,7 @@ class Checkout extends Component {
 	constructor(props, context) {
 		super(props, context)
 
-		this.state = { currentForm: BillingAddrForm }
+		this.state = { currentForm: ShippingAddrForm }
 	}
 
 	setCurrentForm(form) {

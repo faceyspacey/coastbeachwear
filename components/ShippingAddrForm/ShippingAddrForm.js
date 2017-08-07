@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import formStyles from '../CheckoutForm/CheckoutForm.css'
 import styles from './ShippingAddrForm.css'
 import Input from '../input/input.js'
 import $T from '../../support/translations.js'
@@ -12,10 +13,11 @@ class ShippingAddrForm extends Component {
 	}
 
 	navigateForward() {
+		this.props.setCurrentForm(BillingAddrForm);
 	}
 
 	navigateBackward() {
-		this.props.setCurrentForm(BillingAddrForm);
+		
 	}
 
 	onchange(obj) {
@@ -25,7 +27,7 @@ class ShippingAddrForm extends Component {
 	render() {
 		return (
 			<div className={styles["main"]}>
-				<div className={styles["header"]}>Shpping Details</div>
+				<div className={formStyles["header"]}>{ $T(10) /* Shipping Details*/ }</div>
 				<Input 
 					dataKey={"first_name"}
 					data={ this.state }
@@ -69,7 +71,7 @@ class ShippingAddrForm extends Component {
 					placeholder={$T("6") /* Country */}
 				/>
 				<Input 
-					dataKey={"provice"}
+					dataKey={"province"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="196.6px"
