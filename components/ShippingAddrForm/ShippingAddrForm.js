@@ -12,6 +12,10 @@ class ShippingAddrForm extends Component {
 		this.state = props.order.shippingAddr;
 	}
 
+	static getTitle() {
+		return $T(10) // Shipping Details
+	}
+
 	navigateForward() {
 		this.props.setCurrentForm(BillingAddrForm);
 	}

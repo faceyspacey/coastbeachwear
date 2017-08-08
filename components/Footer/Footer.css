@@ -1,5 +1,5 @@
 .footer-main {
-	background-color: #776255;
+	background-color: #6CA18A;
 	height: 50px;
 	position: relative;
 }
@@ -9,20 +9,30 @@
 	display: table;
 	float: right;
 	height: 100%;
+	margin-right: 31px;
 }
 
 .social-link {
 	cursor: pointer;
 	display: table-cell;
 	vertical-align: middle;
-	width: 68px;
+	width: 82px;
+}
+
+.social-link:active {
+	background-color: #F6FFF5;
 }
 
 .social-icon {
-	display: inline-block;
+	display: block;
 	width: 36px;
+	margin: 0 auto;
 }
 
 .social-icon svg {
 	fill: #F6FFF5;
+}
+
+.social-icon:active svg {
+	fill: #776255;
 }

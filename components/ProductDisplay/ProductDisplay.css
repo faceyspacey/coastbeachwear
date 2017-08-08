@@ -1,0 +1,28 @@
+.main {
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.49);
+	height: 132px;
+	width: 680px;
+	border-top: 30px solid #6CA18A;
+}
+
+.main0 {
+	composes: main;
+	width: 620px;
+}
+
+.main1 {
+	composes: main;
+	width: 686px;
+}
+
+.tip {
+	position: absolute;
+	top: -28px;
+	right: -18px;
+	width: 0; 
+	height: 0; 
+	border-left: 18px solid transparent;
+	border-right: 18px solid transparent;
+	border-bottom: 28px solid #6CA18A;
+}

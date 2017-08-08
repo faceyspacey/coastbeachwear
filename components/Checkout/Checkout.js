@@ -4,6 +4,7 @@ import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js'
 import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
 import OrderSummary from '../OrderSummary/OrderSummary.js'
 import Icons from '../../support/Icons.js'
+import $T from '../../support/translations.js'
 
 class Checkout extends Component {
 	constructor(props, context) {
@@ -47,13 +48,26 @@ class Checkout extends Component {
 	render() {
 		return (
 			<div className={ styles["main"] }>
-				<div className={ styles["left-column"] }>
-					<div className={ styles["form-container"] }>
-						{ <this.state.currentForm order={ this.props.order } setCurrentForm = { this.setCurrentForm.bind(this) }/> }
+				<div className={ styles["split"] }>
+					<div className={ styles["left-column"] }>
+						<div className={ styles["left-header"] } >
+						</div>
+						<div className={ styles["form-container"] }>
+							{ <this.state.currentForm order={ this.props.order } setCurrentForm = { this.setCurrentForm.bind(this) }/> }
+						</div>
 					</div>
-				</div>
-				<div className={styles["right-column"]}>
-					<OrderSummary/>
+					<div className={ styles["right-column"] }>
+						<div className={ styles["right-header"] }>
+							<div className={ styles["right-title"] }>
+								{ $T(16)}
+							</div>
+							<div className={ styles["corner"] }>
+							</div>
+						</div>
+						<div className={ styles["summary-container"] }>
+							<OrderSummary/>
+						</div>
+					</div>
 				</div>
 			</div>
 		)

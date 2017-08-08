@@ -1,9 +1,10 @@
 .header {
-	padding-left: 8px;
+	position: absolute;
+	top: -59px;
     padding-bottom: 28px;
     padding-top: 8px;
     font-family: sans-serif;
-    font-size: 34px;
-    color: #6CA18A;
+    font-size: 33px;
+    color: #F6FFF5;
     letter-spacing: 2.5px;
 }

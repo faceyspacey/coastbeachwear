@@ -12,6 +12,10 @@ class BillingAddrForm extends Component {
 		this.state = props.order.billingAddr;
 	}
 
+	static getTitle() {
+		return $T(15) // Billing Details
+	}
+
 	navigateForward() {
 		
 	}

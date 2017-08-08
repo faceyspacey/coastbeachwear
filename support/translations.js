@@ -11,7 +11,11 @@ const TRANSLATIONTABEL = {
 		9: "Company",
 		10: "Shipping Details",
 		11: "continue",
-		12: "Payment Details"
+		12: "Payment Details",
+		13: "View",
+		14: "Add",
+		15: "Billing Details",
+		16: "Order Summary"
 	},
 	fr: {
 		1: "Prenom",

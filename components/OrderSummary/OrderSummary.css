@@ -1,5 +1,9 @@
 .main {
+	position: absolute;
 	width: 400px;
-	height: 400px;
-	background-color: #776255;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	margin: -178px 0 0 -200px;
+	background-color: #F6FFF5;
 }
