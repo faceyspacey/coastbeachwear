@@ -1,0 +1,91 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	position: relative;
+	box-sizing: border-box;
+	height: 96px;
+	border-bottom: 1px solid #deddde;
+	cursor: pointer;
+}
+
+.thumbnail {
+	height: 72px;
+	width: 72px;
+	margin: 12px 8px;
+	object-fit: contain;
+}
+
+.title {
+	position: absolute;
+	top: 12px;
+	left: 108px;
+	font-size: 18px;
+	font-family: sans-serif;
+	color: quinary;
+	
+}
+
+.name {
+	font-size: 20px;
+	letter-spacing: 1px;
+}
+
+.style {
+	font-size: 15px;
+	letter-spacing: 0.5px;
+	line-height: 20px
+}
+
+.addition {
+	position: absolute;
+	top: 12px;
+	right: 8px;
+	color: quinary;
+	font-family: sans-serif;
+	text-align: right;
+
+}
+
+.price {
+	font-size: 19px;
+	letter-spacing: 1.3px;
+}
+
+.quantity {
+	font-size: 15px;
+	letter-spacing: 1px;
+	line-height: 18px;
+}
+
+.remove {
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+}
+
+.remove:active {
+	background-color: quinary;
+}
+
+.remove > div {
+	position: absolute;
+	bottom: 4px;
+	right: 8px;
+	width: 13px;
+}
+
+.remove svg {
+	stroke: quinary;
+}
+
+.remove:active svg {
+	stroke: quaternary;
+}
+
+
+

@@ -1,0 +1,96 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	position: relative;
+	width: 480px;
+	height: 480px;
+	user-select: none;
+}
+
+.main-display {
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 360px;
+	height: 480px;
+	object-fit: cover;
+	border: 4px solid primary;
+
+}
+
+.controls {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.control {
+	height: 50px;
+	cursor: pointer;
+}
+
+.control:active svg {
+	fill: tertiary;
+}
+
+.control > div{
+	width: 40px;
+	margin: 0 auto;
+}
+
+.control svg {
+	fill: primary;
+}
+
+.next {
+	composes: control;
+}
+
+.next svg {
+	padding-top: 10px;
+	transform: rotate(90deg);
+}
+
+.previous {
+	composes: control;
+}
+
+.previous svg {
+	transform: rotate(270deg);
+}
+
+.scroll-area {
+	position: relative;
+	box-sizing: border-box;
+	width: 104px;
+	height: 380px;
+	overflow: hidden;
+}
+
+.scroll-content {
+	position: absolute;
+	
+}
+
+.thumbnail-container {
+	width: 104px;
+	padding: 3px 0;
+	cursor: pointer;
+}
+
+.thumbnail-container img {
+	margin: 0 auto;
+	display: block;
+	height: 104px;
+	width: 78px;
+	object-fit: cover;
+}
+
+.selected {
+	padding: 1px 0;
+}
+
+.thumbnail-container.selected img {
+	border: 2px solid primary;
+}

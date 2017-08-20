@@ -1,9 +1,12 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
 .main {
 	position: relative;
 	background-color: rgba(0, 0, 0, 0.49);
 	height: 132px;
 	width: 680px;
-	border-top: 30px solid #6CA18A;
+	border-top: 30px solid primary;
 }
 
 .main0 {
@@ -16,6 +19,32 @@
 	width: 686px;
 }
 
+
+.button {
+	display: inline-block;
+	font-weight: 200;
+	letter-spacing: 1px;
+	border: 2px solid quaternary;
+	border-radius: 2px;
+	padding: 5.5px 18px;
+	cursor: pointer;
+	font-family: sans-serif;
+	font-size: 20px;
+	color: quaternary;
+}
+
+.button:active {
+	color: primary;
+	background-color: rgba(255,255,255,0.58);
+}
+
+.button-view {
+	composes: button;
+	position: absolute;
+	top: 47px;
+	left: 460px;
+}
+
 .tip {
 	position: absolute;
 	top: -28px;
@@ -24,5 +53,5 @@
 	height: 0; 
 	border-left: 18px solid transparent;
 	border-right: 18px solid transparent;
-	border-bottom: 28px solid #6CA18A;
+	border-bottom: 28px solid primary;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../components/App/App.css'
+import styles from '../components/UI/UI.css'
 
 const Icons = {
 	facebook: function () { return ( 
@@ -44,17 +44,21 @@ const Icons = {
 		        <path d="M0,117L0,200L500,200L307,35L307,117L0,117Z" />
 		    </g>
 		</svg>
+	)},
+	next_arrow_outline: function() { return (
+		<svg viewBox="0 0 1360 1360" preserveAspectRatio="xMidYMin slice" version="1.1" style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 1.41421 }}>
+		    <path id="layer1" d="M274,1281C236,1258 216,1211 224,1166C229,1138 253,1111 338,1032C424,952 720.063,723.086 754.063,693.086C759.063,689.086 225,240 225,181C225,139 230,126 253,103C292,63 359,64 417,105C439,122 779,366 799,380C819,394 899,451 977,508C1103,599 1121,616 1131,651C1149,711 1128,746 1028,819C718,1048 400,1275 373,1286C330,1305 311,1304 274,1281Z" style={{ fillRule: "nonzero" }}/>
+		</svg>
+	)},
+	clear: function() { return (
+		<svg viewBox="0 0 500 500" version="1.1" preserveAspectRatio="xMidYMin slice" style= {{ fillRule: "evenodd", clipRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round", strokeMiterlimit: 1.5 }}>
+		    <path d="M478,478L22,22" style={{ fill: "none", strokeWidth:"64px" }}/>
+		    <path d="M22,478L478.034,22.025L22,478Z" style={{ fill: "none", strokeWidth:"64px" }}/>
+		</svg>
+
 	)}
 
-}
-
-
-
-
-
-
-
-
+};
 
 Icons.insert = function(name, style) {
 	style = style || "";

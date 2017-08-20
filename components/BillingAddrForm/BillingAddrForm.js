@@ -88,6 +88,20 @@ class BillingAddrForm extends Component {
 					inputWidth="196.6px"
 					placeholder={$T("8") /* Postal Code */} 
 				/>
+				<Input 
+					dataKey={"email"} 
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="360px"
+					placeholder={$T(18) /* Email */} 
+				/>
+				<Input 
+					dataKey={"phone"} 
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="240px"
+					placeholder={$T(17) /* Phone (optional) */} 
+				/>
 				<FormNavigation 
 					navigateForward={ this.navigateForward.bind(this) }
 					navigateBackward= { this.navigateBackward.bind(this)}

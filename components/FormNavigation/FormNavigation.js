@@ -3,6 +3,7 @@ import styles from './FormNavigation.css'
 import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js'
 import OrderSummary from '../OrderSummary/OrderSummary.js'
 import Icons from '../../support/Icons.js'
+import $T from '../../support/translations.js'
 
 
 class FormNavigation extends Component {
@@ -17,7 +18,10 @@ class FormNavigation extends Component {
 					{ Icons.insert("next_arrow_long", styles["deleteme"]) }
 				</div>
 				<div className={ styles["next-arrow"]} onClick={ this.props.navigateForward }>
-					{ Icons.insert("next_arrow_long") }
+					<div className={ styles["caption"]}>
+						{ $T(11) }
+					</div>
+					{ Icons.insert("next_arrow_outline") }
 				</div>
 			</div>
 		)

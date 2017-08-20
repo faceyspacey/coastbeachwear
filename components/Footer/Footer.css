@@ -1,5 +1,8 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
 .footer-main {
-	background-color: #6CA18A;
+	background-color: primary;
 	height: 50px;
 	position: relative;
 }
@@ -20,7 +23,7 @@
 }
 
 .social-link:active {
-	background-color: #F6FFF5;
+	background-color: quaternary;
 }
 
 .social-icon {
@@ -30,9 +33,9 @@
 }
 
 .social-icon svg {
-	fill: #F6FFF5;
+	fill: quaternary;
 }
 
 .social-icon:active svg {
-	fill: #776255;
+	fill: secondary;
 }

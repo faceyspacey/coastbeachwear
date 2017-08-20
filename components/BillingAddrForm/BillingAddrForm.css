@@ -1,0 +1,2 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary from colors;

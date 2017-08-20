@@ -1,9 +1,11 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var postcssModulesValues = require('postcss-modules-values');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
 	devtool: 'inline-source-map',
-	entry: [ 'webpack-hot-middleware/client', './main/BeachHut.js'],
+	entry: [ 'webpack-hot-middleware/client', './support/polyfill.js','./main/BeachHut.js'],
 	output: {
 		path: require("path").resolve("./dist"),
 		filename: 'bundle.js',
@@ -39,6 +41,12 @@ module.exports = {
 							modules: true,
 							localIdentName: '[name]_[local]_[hash:base64:5]'
 						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: [postcssModulesValues, autoprefixer]
+						}
 					}
 				]
 			}
@@ -58,5 +66,5 @@ module.exports = {
 			// 	})
 			// }
 
-	}
+	},
 }

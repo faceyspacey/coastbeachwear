@@ -8,7 +8,7 @@ import $T from '../../support/translations.js'
 
 class Checkout extends Component {
 	constructor(props, context) {
-		super(props, context)
+		super(props, context);
 
 		this.state = { currentForm: ShippingAddrForm }
 	}
@@ -65,7 +65,7 @@ class Checkout extends Component {
 							</div>
 						</div>
 						<div className={ styles["summary-container"] }>
-							<OrderSummary/>
+							<OrderSummary order={ this.props.order }/>
 						</div>
 					</div>
 				</div>

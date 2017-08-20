@@ -1,3 +1,6 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
 .main {
 	min-height: 56px;
 	display: inline-block;
@@ -13,9 +16,6 @@
 	width: 100%;
 	margin-top: 3px;
 	padding: 0 0.93333em;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
 	pointer-events: none;
 	overflow: hidden;
@@ -43,12 +43,12 @@
 	border: none;
     font-size: 17px;
     line-height: 18px;
-    background-color: #f6fff5;
+    background-color: quaternary;
     color: #404040;
 }
 
 .input:focus {
-	border-bottom: 2px solid #6CA18A;
+	border-bottom: 2px solid primary;
 	padding-bottom: 7px;
 	outline: none;
 }

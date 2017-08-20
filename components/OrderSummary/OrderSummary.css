@@ -1,9 +1,41 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
 .main {
 	position: absolute;
 	width: 400px;
-	height: 300px;
+	min-height: 300px;
 	top: 50%;
 	left: 50%;
-	margin: -178px 0 0 -200px;
-	background-color: #F6FFF5;
+	margin: -156px 0 0 -200px;
+	background-color: quaternary;
+}
+
+.empty {
+	position: absolute;
+	top: 50%;
+	margin-top: -22px;
+	width: 100%;
+	color: quinary;
+	font-size: 26px;
+	font-family: sans-serif;
+	font-weight: 200;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 40px;
+}
+
+.subtotal {
+	font-size: 20px;
+	font-family: sans-serif;
+	letter-spacing: 1.2px;
+	line-height: 40px;
+	text-align: right;
+	padding-right: 10px;
 }

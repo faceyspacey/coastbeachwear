@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styles from './ProductDisplay.css'
 import Icons from '../../support/Icons.js'
 import $T from '../../support/translations.js'
+import Purchase from '../../models/Purchase.js'
+import { order } from '../../main/BeachHut.js'
 
 class ProductDisplay extends Component {
 	constructor(props, context) {
@@ -11,11 +13,28 @@ class ProductDisplay extends Component {
 		}
 	}
 
+	onViewClick() {
+		var data = {};
+		var purchase;
+		var matchedPurchase;
+
+		order.purchases.forEach((function(purchase) {
+			if (purchase.variant.color == this.props.variant.color) {
+				matchedPurchase = purchase;
+			}
+		}).bind(this))
+
+		data.variant = this.props.variant;
+		purchase = matchedPurchase || new Purchase(data);
+
+		purchase.displayInOverlay();
+	}
+
 	render() {
 		return (
 			<div className={ styles["main" + this.state.index] }>
-				<div>{$T(13)}</div>
-				<div>{$T(14)}</div>
+				<div className={ styles["button-view"] } onClick={ this.onViewClick.bind(this) }>{ $T(13) /* View */}
+				</div>
 				<div className={ styles["tip"] }>
 				</div>
 			</div>
