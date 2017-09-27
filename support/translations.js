@@ -9,12 +9,12 @@ const TRANSLATIONTABEL = {
 		7: "Province",
 		8: "Postal Code",
 		9: "Company",
-		10: "Shipping Details",
+		10: "Shipping Address",
 		11: "Continue",
 		12: "Payment Details",
 		13: "Preview",
 		14: "Add",
-		15: "Billing Details",
+		15: "Billing Address",
 		16: "Order Summary",
 		17: "Phone (optional)",
 		18: "Email",
@@ -25,9 +25,6 @@ const TRANSLATIONTABEL = {
 		23: "Order is Empty",
 		24: "Add to Order",
 		25: "Quantity: ",
-		Small: "Small",
-		Medium: "Medium",
-		Large: "Large",
 		26: "Qty: ",
 		27: "$$0",
 		28: "Subtotal: ",
@@ -44,11 +41,18 @@ const TRANSLATIONTABEL = {
 		m_full: "Medium",
 		l_full: "Large",
 		xl_full: "Extra Large",
-		30: "Update Order"
-
+		30: "Update Order",
+		31: "How Many do you want?",
+		32: "Payment",
+		33: "Card Number",
+		34: "Name On Card",
+		35: "MM/YY",
+		36: "CVV",
+		37: "Billing address same as shipping address?"
 	},
 	fr: {
 		1: "Prenom",
+		15: "Formulaire de facturation"
 	}
 }
 

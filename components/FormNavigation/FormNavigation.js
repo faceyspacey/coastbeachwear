@@ -11,18 +11,30 @@ class FormNavigation extends Component {
 		super(props, context)
 	}
 
+	renderPrevArrow() {
+		return (
+			<div className={ styles["previous-arrow"]} onClick={ this.props.navigateBackward }>
+				{ Icons.insert("next_arrow_long") }
+			</div>
+		) 
+	}
+
+	renderNextArrow() {
+		return (
+			<div className={ styles["next-arrow"]} onClick={ this.props.navigateForward }>
+				<div className={ styles["caption"]}>
+					{ $T(11) }
+				</div>
+				{ Icons.insert("next_arrow_outline") }
+			</div>
+		)
+	}
+
 	render() {
 		return (
 			<div className={ styles["navigation"] }>
-				<div className={ styles["previous-arrow"]} onClick={ this.props.navigateBackward }>
-					{ Icons.insert("next_arrow_long", styles["deleteme"]) }
-				</div>
-				<div className={ styles["next-arrow"]} onClick={ this.props.navigateForward }>
-					<div className={ styles["caption"]}>
-						{ $T(11) }
-					</div>
-					{ Icons.insert("next_arrow_outline") }
-				</div>
+				{ this.props.navigateBackward && this.renderPrevArrow() }
+				{ this.props.navigateForward && this.renderNextArrow() }
 			</div>
 		)
 	}

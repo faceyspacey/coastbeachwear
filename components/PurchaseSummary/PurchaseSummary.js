@@ -35,7 +35,7 @@ class PurchaseSummary extends Component {
 				</div>
 				<div className={ styles["addition"] }>
 					<div className={ styles["price"] }>
-						{ $TInject(27, [product.price.toFixed(2)]) }
+						{ $TInject(27, [purchase.calcPrice().toFixed(2)]) }
 					</div>
 					<div className={ styles["quantity"] }>
 						{ $T(26) /* Qty */ + purchase.quantity }

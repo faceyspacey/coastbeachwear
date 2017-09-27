@@ -7,11 +7,16 @@ class Purchase extends Model {
 
 	constructor(data) {
 		super();
+		
 		this.setData(data);
 	}
 
 	displayInOverlay() {
 		ui.displayPurchaseOverlay(this);
+	}
+
+	calcPrice() {
+		return parseInt(this.variant.product.price) * this.quantity;
 	}
 
 	add() {

@@ -5,11 +5,13 @@ class Order extends Model {
 	
 	static billingAddrFields = ["first_name", "last_name", "company", "address", "country", "apt", "province", "postal_code", "email", "phone"];
 	static shippingAddrFields = ["first_name", "last_name", "company", "address", "country", "apt", "province", "postal_code", "email", "phone"];
+	static paymentInfoFields = ["card_number", "card_holder", "card_type", "expiry", "cvv"];
 
 	constructor() {
 		super();
 		this.billingAddr = {};
 		this.shippingAddr = {};
+		this.paymentInfo = {}
 		this.purchases = [];
 	}
 
@@ -33,13 +35,23 @@ class Order extends Model {
 		this.updateUIState();
 	}
 
+	setPaymentInfo(obj) {
+		var fields = this.constructor.paymentInfoFields;
+
+		for (var key in obj) {
+			if (fields.includes(key)) this.paymentInfo[key] = obj[key];
+		}
+
+		this.updateUIState();
+	}
+
 	addPurchase(purchase) {
 		var existingVariantPurchase;
 
 		if (this.purchases.includes(purchase)) return;
 
 		existingVariantPurchase = this.purchases.filter(function(p) {
-			return p.variant == purchase.variant;
+			return p.variant.id == purchase.variant.id;
 		})[0]
 
 		if (existingVariantPurchase) {
@@ -70,6 +82,41 @@ class Order extends Model {
 		})
 
 		return total
+	}
+
+	isSameAddress() {
+		var i = 0;
+		var isSame = true;
+		var field = "";
+
+		for (i=0; i < this.constructor.billingAddrFields.length; i++ ) {
+			field = this.constructor.billingAddrFields[i];
+
+			if (this.billingAddr[field] !== this.shippingAddr[field]) {
+				isSame = false;
+				break;
+			}
+		}
+
+		return isSame;
+	}
+
+	isShippingAddrEmpty() {
+		var i = 0;
+		var isEmpty = true;
+		var field = "";
+
+		for (i=0; i < this.constructor.shippingAddrFields.length; i++ ) {
+
+			field = this.constructor.shippingAddrFields[i];
+
+			if (this.shippingAddr[field] !== undefined) {
+				isEmpty = false;
+				break;
+			}
+		}
+
+		return isEmpty;
 	}
 }
 

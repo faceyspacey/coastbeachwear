@@ -33,6 +33,7 @@ class ProductDisplay extends Component {
 	render() {
 		return (
 			<div className={ styles["main" + this.state.index] }>
+				<img src={ '/product_imgs/swimsuit.png' } />
 				<div className={ styles["button-view"] } onClick={ this.onViewClick.bind(this) }>{ $T(13) /* View */}
 				</div>
 				<div className={ styles["tip"] }>

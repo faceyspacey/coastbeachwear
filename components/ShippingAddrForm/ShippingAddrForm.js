@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import formStyles from '../CheckoutForm/CheckoutForm.css'
 import styles from './ShippingAddrForm.css'
-import Input from '../input/input.js'
+import Input from '../Inputs/Input.js'
 import $T from '../../support/translations.js'
 import FormNavigation from '../FormNavigation/FormNavigation.js'
 import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
+import PaymentForm from '../PaymentForm/PaymentForm.js'
+import Checkbox from '../Checkbox/Checkbox.js'
 
 class ShippingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
+		
 		this.state = props.order.shippingAddr;
+		this.state.sameAsBilling = !this.props.order.isShippingAddrEmpty() && this.props.order.isSameAddress();
 	}
 
 	static getTitle() {
@@ -17,21 +21,35 @@ class ShippingAddrForm extends Component {
 	}
 
 	navigateForward() {
-		this.props.setCurrentForm(BillingAddrForm);
-	}
+		var nextForm;
 
-	navigateBackward() {
+		if (this.state.sameAsBilling) {
+			nextForm = PaymentForm;
+			this.props.order.setBillingAddr(this.state);
+		} else {
+			nextForm = BillingAddrForm;
+		}
 		
+		this.props.setCurrentForm(nextForm);
 	}
 
 	onchange(obj) {
+		this.setState(obj);
 		this.props.order.setShippingAddr(obj);
+
+	}
+
+	setSameAsBilling () {
+		this.setState({
+			sameAsBilling: !this.state.sameAsBilling
+		})
 	}
 
 	render() {
+		
 		return (
 			<div className={styles["main"]}>
-				<div className={formStyles["header"]}>{ $T(10) /* Shipping Details*/ }</div>
+				<div className={formStyles["header"]}>{ $T(10) /* Shipping Address*/ }</div>
 				<Input 
 					dataKey={"first_name"}
 					data={ this.state }
@@ -102,9 +120,13 @@ class ShippingAddrForm extends Component {
 					inputWidth="240px"
 					placeholder={$T(17) /* Phone (optional) */} 
 				/>
+				<Checkbox 
+					caption={ $T(37) /* Billing address same as shipping address? */ }
+					checked={ this.state.sameAsBilling }
+					onclick = { this.setSameAsBilling.bind(this) }
+				/>
 				<FormNavigation 
 					navigateForward={ this.navigateForward.bind(this) }
-					navigateBackward= { this.navigateBackward.bind(this) }
 				/>
 			</div>
 		)

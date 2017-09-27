@@ -5,6 +5,7 @@ import {$T, $TInject} from '../../support/translations.js'
 import Overlay from '../Overlay/Overlay.js'
 import ImageCarousel from '../ImageCarousel/ImageCarousel.js'
 import SizePicker from '../SizePicker/SizePicker.js'
+import QuantityPicker from '../QuantityPicker/QuantityPicker.js'
 
 
 class OverlayPurchase extends Overlay {
@@ -12,7 +13,8 @@ class OverlayPurchase extends Overlay {
 		super();
 
 		this.state = {
-			currentVariant: props.purchase.variant
+			currentVariant: props.purchase.variant,
+			quantity: props.purchase.quantity || 1
 		}
 	}
 
@@ -22,10 +24,19 @@ class OverlayPurchase extends Overlay {
 		})
 	}
 
+	setQuantity(value) {
+		if (Number.isNaN(value) || !Number.isInteger(value) || value < 1)	return;	
+		
+		this.setState({
+			quantity: value
+		})
+
+	}
+
 	addPurchase() {
 		var data = {};
 
-		data.quantity = 1;
+		data.quantity = this.state.quantity;
 		data.variant = this.state.currentVariant;
 
 		this.props.closeOverlay();
@@ -65,7 +76,15 @@ class OverlayPurchase extends Overlay {
 							setCurrentVariant={ this.setCurrentVariant.bind(this) }
 						/>
 						<div className={ styles["detail"] }>
-							{ $T(22) /* Description: */ }{ product.description }
+							<div className={ styles["description"] }>
+								{ $T(22) /* Description: */ }{ product.description }
+							</div>
+						</div>
+						<div className={ styles["quantity-picker-container"] }>
+							<div className={ styles["quantity-caption"] }>
+								{ $T(31) /*How Many do you want? */}
+							</div>
+							<QuantityPicker quantity={ this.state.quantity } setQuantity={ this.setQuantity.bind(this) } /> 
 						</div>
 					</div>
 					<div className={ styles["description"] }>

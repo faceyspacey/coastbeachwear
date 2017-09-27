@@ -1,0 +1,22 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	display: table-cell;
+	padding: 5px 5px;
+	cursor: pointer;
+}
+
+.main > div {
+	width: 60px;
+	height: 40px;
+}
+
+.highlight {
+	padding: 8px 12px;
+}
+
+.highlight-selected {
+	composes: highlight;
+	background-color: primary;
+}

@@ -4,6 +4,8 @@ import Icons from '../../support/Icons.js'
 
 class Input extends Component {
 
+	static type = "text";
+
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
@@ -19,20 +21,22 @@ class Input extends Component {
 		this.props.onchange(newData);
 	}
 
+	formatedValue() {
+		return this.props.data[this.state.dataKey];
+	}
+
 	render() {
-		var text = this.props.data[this.state.dataKey];
-		
 		return (
 			<div className={ styles["main"] }>
 				<div className={ styles["text-area"] }>
-					<label className={ text? styles["placeholder"]: styles["placeholder-hidden"] }>{ this.props.placeholder }</label>
+					<label className={ this.props.data[this.state.dataKey]? styles["placeholder"]: styles["placeholder-hidden"] }>{ this.props.placeholder }</label>
 					<input 
 						className={ styles["input"] } 
 						placeholder={ this.props.placeholder }
 						onChange={ this.onchange.bind(this) } 
 						style={{ width: this.props.inputWidth }}
-						type="text"
-						value= { text }
+						type= { this.constructor.type }
+						value= { this.formatedValue() }
 					/>
 				</div>
 			</div>

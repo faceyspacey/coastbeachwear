@@ -45,6 +45,11 @@
     line-height: 18px;
     background-color: quaternary;
     color: #404040;
+    font-family: sans-serif;
+}
+
+input::placeholder {
+	color: #757575;
 }
 
 .input:focus {

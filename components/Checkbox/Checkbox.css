@@ -1,0 +1,51 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	min-height: 56px;
+	display: inline-block;
+	padding-left: 10px;
+}
+
+.inner {
+	height: 40px;
+	background-color: quaternary;
+	display: table;
+}
+
+.box-container { 
+ 	display: table-cell;
+ 	padding: 8px 15px;
+ 	box-sizing: border-box;
+ }
+
+.box {
+	position: relative;
+	box-sizing: border-box;
+	border: 2px solid #757575;
+	width: 28px;
+	height: 28px;
+}
+
+.caption {
+	display: table-cell;
+	vertical-align: middle;
+	font-family: sans-serif;
+	font-size: 18px;
+	color: #757575;
+	padding-right: 15px;
+}
+
+.box-checked {
+	composes: box;
+	background-color: #dfdfdf;
+}
+
+.box svg {
+	height: 106%;
+	width:106%;
+	position: absolute;
+	top: -5px;
+	right: -6px;
+	fill: #404040;
+}

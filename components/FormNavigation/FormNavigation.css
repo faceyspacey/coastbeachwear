@@ -2,10 +2,9 @@
 @value primary, secondary, tertiary, quaternary, quinary from colors;
 
 .navigation {
-	position: absolute;
 	height: 50px;
 	width: 630px;
-	bottom: 0px;
+	padding-top: 40px;
 }
 
 .arrow {
@@ -14,6 +13,7 @@
 	height: 42px;
 	background-color: primary;
 	cursor: pointer;
+	user-select: none;
 }
 
 .arrow:active {
