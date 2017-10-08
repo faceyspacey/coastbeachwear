@@ -51,14 +51,14 @@ class Checkout extends Component {
 				<div className={ styles["split"] }>
 					<div className={ styles["left-column"] }>
 						<div className={ styles["left-header"] } >
-							<div className={ styles["left-header-tip"] } >
-							</div>
 						</div>
 						<div className={ styles["form-container"] }>
 							{ <this.state.currentForm order={ this.props.order } setCurrentForm = { this.setCurrentForm.bind(this) }/> }
 						</div>
 					</div>
 					<div className={ styles["right-column"] }>
+						<div className={ styles["left-header-tip"] } >
+						</div>
 						<div className={ styles["right-header"] }>
 							<div className={ styles["right-title"] }>
 								{ $T(16)}

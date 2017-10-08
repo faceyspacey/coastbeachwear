@@ -62,9 +62,8 @@
 
 .left-header-tip {
 	position: absolute;
-	z-index: 2;
 	top: 0;
-	right: -53px;
+	left: -53px;
 	width: 0; 
 	height: 0; 
 	border-left: 53px solid transparent;
