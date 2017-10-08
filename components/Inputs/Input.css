@@ -42,9 +42,11 @@
 	padding: 9px 35px 9px 9px;
 	border: none;
     font-size: 17px;
+    font-weight: 400;
     line-height: 18px;
+    letter-spacing: 0.35px;
     background-color: quaternary;
-    color: #404040;
+    color: #383838;
     font-family: sans-serif;
 }
 

@@ -14,6 +14,8 @@ class PaymentForm extends Component {
 		super(props, context)
 
 		this.cardConfirmed = false;
+
+		gtag('config', ENV.gaid, {'page_path': '/paymentform'});
 	}
 
 	static getTitle() {

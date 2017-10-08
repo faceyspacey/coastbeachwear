@@ -12,9 +12,9 @@
 
 .logo {
 	position: absolute;
-	top: 76px;
-	right: 76px;
-	width: 440px;
+	top: 62px;
+	right: 74px;
+	width: 390px;
 }
 
 .logo svg {
@@ -37,5 +37,6 @@
 .torso {
 	position: absolute;
 	top: -300px;
+	margin-left: 100px;
 }
 

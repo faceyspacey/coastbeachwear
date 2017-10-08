@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title>Coast Store</title>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107752778-1"></script>
+	<script id="ENV" type="text/javascript">
+		ENV = {
+			gaid: "UA-107752778-1"
+		}
+	</script>
+	<script id="Google Analytics" type="text/javascript">
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', ENV.gaid);
+	</script>
+	<meta charset="UTF-8">
 	<script type="text/javascript">
 	  	var initialData = {
 			products: [

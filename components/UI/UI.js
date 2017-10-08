@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './UI.css'
-import Showcase from '../ShowCase/ShowCase.js'
+import Showcase from '../Showcase/Showcase.js'
 import Checkout from '../Checkout/Checkout.js'
 import Footer from '../Footer/Footer.js'
 import OverlayPurchase from '../OverlayPurchase/OverlayPurchase.js'

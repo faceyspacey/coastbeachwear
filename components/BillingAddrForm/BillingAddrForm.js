@@ -11,6 +11,8 @@ class BillingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
 		this.state = props.order.billingAddr;
+		
+		gtag('config', ENV.gaid, {'page_path': '/billingaddrform'});
 	}
 
 	static getTitle() {

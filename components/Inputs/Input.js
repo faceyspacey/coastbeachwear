@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './input.css'
+import styles from './Input.css'
 import Icons from '../../support/Icons.js'
 
 class Input extends Component {

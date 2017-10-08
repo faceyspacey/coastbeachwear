@@ -15,7 +15,14 @@ class OverlayPurchase extends Overlay {
 		this.state = {
 			currentVariant: props.purchase.variant,
 			quantity: props.purchase.quantity || 1
-		}
+		};
+
+		gtag('config', ENV.gaid, {'page_path': '/purchase'});
+	}
+
+	onCloseClick() {
+		super.onCloseClick();
+		gtag('config', ENV.gaid, {'page_path': '/'});
 	}
 
 	setCurrentVariant(variant) {

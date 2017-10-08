@@ -61,6 +61,12 @@ class Order extends Model {
 
 		this.purchases.push(purchase);
 		this.updateUIState();
+
+		gtag('event', 'add_to_cart', { items: [{
+			id: purchase.variant.id,
+			name: purchase.variant.product.name,
+			variant: purchase.variant.color + " " + purchase.variant.size
+		}] });
 	}
 
 	removePurchase(purchase) {
