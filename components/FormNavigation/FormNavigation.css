@@ -27,24 +27,24 @@
 .next-arrow {
 	composes: arrow;
 	right: 10px;
-	width: 166px;
+	width: 186px;
 }
 
 .next-arrow > div {
 	width: 32px;
 	position: absolute;
-	top: 6px;
+	top: 4px;
 	right: 8px;
 }
 
 .next-arrow .caption {
 	position: absolute;
-	top: 8px;
-	left: 14px;
-	font-family: sans-serif;
-    font-size: 22px;
+	top: 12.5px;
+	left: 19px;
+	font-family: quantumrounded, sans-serif;
+    font-size: 15px;
     color: quaternary;
-    letter-spacing: 2.5px;
+    letter-spacing: 1.7px;
 }
 
 .next-arrow:active .caption {
@@ -59,7 +59,7 @@
 	filter: FlipH;
 }
 
-.previous-arrow  > div {
+.previous-arrow > div {
 	width: 72px;
 	position: absolute;
 	top: 0px;

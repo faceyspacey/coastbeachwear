@@ -14,6 +14,9 @@ class OrderSummary extends Component {
 
 		return (
 			<div className={styles["main"]}>
+				<div className={styles["title"]}>
+					{ $T(16) /* Order Summary */}
+				</div>
 				{ order.purchases.length == 0 &&
 					<div className={styles["empty"]}>
 						{ $T(23) /* Order Empty */ }

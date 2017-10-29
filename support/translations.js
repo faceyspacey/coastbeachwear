@@ -1,67 +1,13 @@
-const TRANSLATIONTABEL = {
-	en: {
-		1: "First Name",
-		2: "Last Name",
-		3: "Company (optional)",
-		4: "Address",
-		5: "Apt, Suite (opt)",
-		6: "Country",
-		7: "Province",
-		8: "Postal Code",
-		9: "Company",
-		10: "Shipping Address",
-		11: "Continue",
-		12: "Payment Details",
-		13: "Preview",
-		14: "Add",
-		15: "Billing Address",
-		16: "Order Summary",
-		17: "Phone (optional)",
-		18: "Email",
-		19: "Version: ",
-		20: "Color: ",
-		21: "Size: ",
-		22: "Description: ",
-		23: "Order is Empty",
-		24: "Add to Order",
-		25: "Quantity: ",
-		26: "Qty: ",
-		27: "$$0",
-		28: "Subtotal: ",
-		29: "v$0",
-		6005: "Blue(6005)",
-		9240: "Black(9240)",
-		xs: "XS",
-		s: "S",
-		m: "M",
-		l: "L",
-		xl: "XL",
-		xs_full: "Extra Small",
-		s_full: "Small",
-		m_full: "Medium",
-		l_full: "Large",
-		xl_full: "Extra Large",
-		30: "Update Order",
-		31: "How Many do you want?",
-		32: "Payment",
-		33: "Card Number",
-		34: "Name On Card",
-		35: "MM/YY",
-		36: "CVV",
-		37: "Billing address same as shipping address?"
-	},
-	fr: {
-		1: "Prenom",
-		15: "Formulaire de facturation"
-	}
-}
+import TRANSLATIONTABEL from './translation_table.js'
+import locale from './locale.js'
+
 
 function $T(id) {
-	return TRANSLATIONTABEL["en"][id]
+	return TRANSLATIONTABEL[locale.language][id]
 }
 
 function $TInject(id, injections) {
-	var text = TRANSLATIONTABEL["en"][id];
+	var text = TRANSLATIONTABEL[locale.language][id];
 
 	injections.forEach(function(injection, index) {
 		var replace = "\\$" + index;

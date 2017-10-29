@@ -30,10 +30,11 @@
 .caption {
 	display: table-cell;
 	vertical-align: middle;
-	font-family: sans-serif;
-	font-size: 18px;
+	font-family: quantumrounded, sans-serif;
+	font-size: 14px;
+	letter-spacing: 1px;
 	color: #757575;
-	padding-right: 15px;
+	padding-right: 11px;
 }
 
 .box-checked {

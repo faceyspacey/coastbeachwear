@@ -19,42 +19,42 @@
 .title {
 	position: absolute;
 	top: 12px;
-	left: 108px;
+	left: 97px;
 	font-size: 18px;
-	font-family: sans-serif;
+	font-family: quantumrounded, sans-serif;
 	color: quinary;
 	
 }
 
 .name {
-	font-size: 20px;
-	letter-spacing: 1px;
+	font-size: 18px;
+	letter-spacing: 0.9px;
 }
 
 .style {
-	font-size: 15px;
+	font-size: 12px;
 	letter-spacing: 0.5px;
 	line-height: 20px
 }
 
 .addition {
 	position: absolute;
-	top: 12px;
+	top: 15px;
 	right: 8px;
 	color: quinary;
-	font-family: sans-serif;
+	font-family: quantumrounded, sans-serif;
 	text-align: right;
 
 }
 
 .price {
-	font-size: 19px;
-	letter-spacing: 1.3px;
+	font-size: 12px;
+	letter-spacing: 0.9px;
 }
 
 .quantity {
-	font-size: 15px;
-	letter-spacing: 1px;
+	font-size: 11px;
+	letter-spacing: 0.9px;
 	line-height: 18px;
 }
 

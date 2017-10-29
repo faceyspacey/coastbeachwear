@@ -34,7 +34,7 @@ class ProductDisplay extends Component {
 		return (
 			<div className={ styles["main" + this.state.index] }>
 				<img 
-					src={ '/product_imgs/swimsuit.png' }
+					src={ IMGS.swimsuit }
 					className={ styles["image"] }
 				/>
 				<div className={ styles["button-view"] } onClick={ this.onViewClick.bind(this) }>{ $T(13) /* View */}

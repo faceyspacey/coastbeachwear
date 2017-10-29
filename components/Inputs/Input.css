@@ -2,6 +2,7 @@
 @value primary, secondary, tertiary, quaternary, quinary from colors;
 
 .main {
+	vertical-align: top;
 	min-height: 56px;
 	display: inline-block;
 	padding-left: 10px;
@@ -39,24 +40,29 @@
 	border-radius: 2px;
 	box-sizing: border-box;
 	height: 40px;
-	padding: 9px 35px 9px 9px;
 	border: none;
-    font-size: 17px;
+	padding: 10px 35px 8px 12px;
+    font-size: 14px;
+    line-height: 14px;
     font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0.35px;
+    letter-spacing: 0.2px;
     background-color: quaternary;
     color: #383838;
-    font-family: sans-serif;
+    font-family: quantumrounded, sans-serif;
 }
 
-input::placeholder {
-	color: #757575;
+.input-filled {
+	composes: input;
+	padding: 13px 35px 5px 9px;
 }
 
 .input:focus {
 	border-bottom: 2px solid primary;
 	padding-bottom: 7px;
 	outline: none;
+}
+
+.input-filled:focus {
+	padding-bottom: 3px;
 }
 

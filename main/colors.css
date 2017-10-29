@@ -1,5 +1,5 @@
-@value primary: #3C6869;
-@value secondary: #6a3e3d;
-@value tertiary: #e5dabd;
+@value primary: hsl(185.5, 20%, 34.8%);
+@value secondary: hsl(14, 6.8%, 34.4%);
+@value tertiary: hsl(42.5, 29.5%, 75.9%);
 @value quaternary: #F9F9F7;
 @value quinary: #404040;

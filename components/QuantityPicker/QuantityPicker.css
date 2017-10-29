@@ -12,7 +12,7 @@
 	border: 3px solid primary;
 	width: 47px;
 	background-color: primary;
-	line-height: 34px;
+	line-height: 41px;
 	color: quaternary;
 	font-size: 31px;
 	text-align: center;
@@ -50,10 +50,10 @@
 	height: 40px;
 	width: 46px;
 	text-align: center;
-	font-size: 22px;
+	font-size: 18px;
 	font-weight: 300;
 	color: quinary;
-	font-family: sans-serif;
+	font-family: quantumrounded, sans-serif;
 	background-color: quaternary;
 	border-style: none;
 }

@@ -10,13 +10,14 @@
 }
 
 .left-header {
-	height: 50px;
+	height: 124px;
 	background-color: primary;
 	position: relative;
 }
 
 .right-header {
-	height:50px;
+	position: relative;
+	height:124px;
 }
 
 .column {
@@ -30,7 +31,18 @@
 
 .left-column {
 	composes: column;
-	width: 66%
+	width: 60%
+}
+
+.left-column-title {
+	position: absolute;
+	color: #F9F9F7;
+	font-family: quantumrounded, sans-serif;
+	font-size: 46px;
+    letter-spacing: 2.5px;
+    top: 18px;
+    left: 132px;
+	margin: 0px;
 }
 
 .right-column {
@@ -41,17 +53,6 @@
 	width: 33%;
 }
 
-.right-title {
-	font-weight: 200;
-	margin-left: 75px;
-	padding-top: 9px;
-	font-family: sans-serif;
-    font-size: 29px;
-    color: quaternary;
-    letter-spacing: 2.5px;
-
-}
-
 .form-container {
 	padding: 38px 30px;
 	width: 690px;
@@ -60,20 +61,27 @@
 	position: relative;
 }
 
+.made-in-canada {
+	position: absolute;
+	top: 16px;
+	left: 18px;
+	width: 92px;
+	fill: #F9F9F7;
+}
+
 .left-header-tip {
 	position: absolute;
 	top: 0;
-	left: -53px;
+	left: -154px;
 	width: 0; 
 	height: 0; 
-	border-left: 53px solid transparent;
-	border-right: 53px solid transparent;
-	border-top: 50px solid primary;
+	border-left: 154px solid transparent;
+	border-right: 154px solid transparent;
+	border-top: 124px solid primary;
 }
 
 .summary-container {
 	position: relative;
 	height: 400px;
 	width: 100%;
-	overflow: hidden;
 }

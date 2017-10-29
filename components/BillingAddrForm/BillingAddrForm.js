@@ -40,14 +40,14 @@ class BillingAddrForm extends Component {
 					dataKey={"first_name"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="300px" 
+					inputWidth="260px" 
 					placeholder={$T("1") /* First Name */ } 
 				/> 
 				<Input 
 					dataKey={"last_name"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="300px"
+					inputWidth="340px"
 					placeholder={$T("2") /* Last Name */}
 				/> 
 				<Input

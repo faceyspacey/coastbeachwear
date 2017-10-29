@@ -6,13 +6,13 @@
 	bottom: 16px;
 	right: 15px;
 	font-weight: 200;
-	letter-spacing: 1px;
+	letter-spacing: 0.9px;
 	border: 2px solid primary;
 	border-radius: 2px;
 	padding: 5.5px 18px;
 	cursor: pointer;
-	font-family: sans-serif;
-	font-size: 20px;
+	font-family: quantumrounded, sans-serif;
+	font-size: 17px;
 	color: primary;
 }
 
@@ -36,7 +36,7 @@
 	right: 20px;
 	width: 400px;
 	height: 380px;
-	font-family: sans-serif;
+	font-family: quantumrounded, sans-serif;
 }
 
 .title-container {
@@ -44,9 +44,9 @@
 }
 
 .title {
-	font-family: sans-serif;
+	font-family: quantumrounded, sans-serif;
 	color: primary;
-	font-size: 67px;
+	font-size: 52px;
 	line-height: 100%;
 	letter-spacing: 2.5px;
 }
@@ -54,9 +54,9 @@
 .subtitle {
     padding-top: 2px;
     padding-left: 23px;
-	font-size: 19px;
+	font-size: 16px;
 	font-weight: 400;
-	letter-spacing: 0.8px;
+	letter-spacing: 0.9px;
 	color: quinary;
 }
 
@@ -67,9 +67,11 @@
 }
 
 .detail {
+	padding-top: 12px;
 	color: quinary;
-	line-height: 38px;
-	letter-spacing: 2px;
+	line-height: 24px;
+	letter-spacing: 0.9px;
+	font-size: 15px;
 }
 
 .quantity-picker-container {
@@ -89,10 +91,10 @@
 
 .quantity-caption {
 	width: 300px;
-    font-family: sans-serif;
-	font-size: 20px;
+    font-family: quantumrounded, sans-serif;
+	font-size: 16px;
 	font-weight: 400;
 	letter-spacing: 0.8px;
-	padding: 10px 0 0 0;
+	padding: 20px 0 2px 0;
 	color: quinary;
 }

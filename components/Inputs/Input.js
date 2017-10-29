@@ -26,12 +26,13 @@ class Input extends Component {
 	}
 
 	render() {
+		var hasContent = !!this.props.data[this.state.dataKey];
 		return (
 			<div className={ styles["main"] }>
 				<div className={ styles["text-area"] }>
-					<label className={ this.props.data[this.state.dataKey]? styles["placeholder"]: styles["placeholder-hidden"] }>{ this.props.placeholder }</label>
+					<label className={ hasContent? styles["placeholder"]: styles["placeholder-hidden"] }>{ this.props.placeholder }</label>
 					<input 
-						className={ styles["input"] } 
+						className={ hasContent? styles["input-filled"] : styles["input"] } 
 						placeholder={ this.props.placeholder }
 						onChange={ this.onchange.bind(this) } 
 						style={{ width: this.props.inputWidth }}
