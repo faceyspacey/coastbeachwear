@@ -1,0 +1,77 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	position: relative;
+	height: 100%;
+	width: 83px;
+}
+
+.main-open {
+	composes: main;
+	background-color: quaternary;
+}
+
+.anchor {
+	display: table;
+	position: relative;
+	border-spacing: 0;
+	cursor: pointer;
+	height: 100%;
+	width: 100%;
+	color: quaternary;
+	font-family: quantumrounded, sans-serif;
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.main-open .anchor {
+	color: secondary;
+}
+
+.caption-area {
+	text-align: center;
+	width: 100%;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.caption {
+	display: inline-block;
+	padding-top: 3px; 
+}
+
+.caption-triangle {
+	display: inline-block;
+	width: 0; 
+	height: 0;
+	margin-right: 6px; 
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 7px solid quaternary;
+}
+
+.pop-up {
+	position: absolute;
+	left: 50%;
+    transform: translate(-50%, 0);
+	bottom: 69px;
+	padding: 8px 0;
+	background-color: primary;
+	border-radius: 2px;
+}
+
+.pop-up-triangle-container {
+	position: absolute;
+	bottom: -9px;
+	width: 100%
+}
+
+.pop-up-triangle {
+	margin: 0 auto;
+	width: 0; 
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 9px solid primary;
+}

@@ -1,0 +1,34 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	position: fixed;
+    bottom: 48px;
+    right: 34px;
+	width: 70px;
+	height: 70px;
+	background-color: primary;
+	border: 3px solid quaternary;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.help-icon {
+	position: absolute;
+	top: 19px;
+    left: 17.3px;
+    width: 38px;
+}
+
+.main:active { 
+	background-color: quaternary;
+	border: 3px solid primary;
+}
+
+.main:active .help-icon svg {
+	stroke: primary;
+}
+
+.help-icon svg {
+	stroke: quaternary;
+}

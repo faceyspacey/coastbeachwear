@@ -49,7 +49,23 @@ const TRANSLATIONTABEL = {
 		35: "MM/YY",
 		36: "CVV",
 		37: "Billing address same as shipping address?",
-		38: "Order Now"
+		38: "Order Now",
+		39: "About",
+		en: "English",
+		fr: "Français",
+		cad: "CAD",
+		usd: "USD",
+		40: "About Us",
+		41: "Coast’s aim is to change a trend and bring back the fitted swimsuit styles of the pre 80s. Men have been swimming in boardshorts for the last 35 years and to us that style of swimwear is not appealing or, practical. Our product is designed and MADE IN CANADA.",
+		42: "601-420 Lewis Street",
+		43: "Ottawa, Ontario",
+		44: "Canada",
+		45: "K2P 0S9",
+		46: "Coast Beachwear Inc.",
+		47: "Policies",
+		48: "Place Order",
+		49: "Returns"
+
 	},
 	fr: {
 		1: "Prénom",
@@ -78,9 +94,9 @@ const TRANSLATIONTABEL = {
 		24: "Ajouter à la commande",
 		25: "Quantité:",
 		26: "Qté:",
-		27: "$$ 0",
+		27: "$$0",
 		28: "Sous-total:",
-		29: "v $ 0",
+		29: "v$0",
 		6005: "Bleu (6005)",
 		9240: "Noir (9240)",
 		xs: "XS",
@@ -100,9 +116,14 @@ const TRANSLATIONTABEL = {
 		34: "Nom sur carte",
 		35: "MM / AA",
 		36: "CVV",
-		37: "adresse de facturation même que l'adresse de livraison?",
-		38: "Commandez maintenant"
-	}
+		37: "Adresse de facturation même que l'adresse de livraison?",
+		38: "Commande",
+		39: "À Propos",
+		en: "English",
+		fr: "Français",
+		cad: "CAD",
+		usd: "USD"
+	},
 }
 
 export default TRANSLATIONTABEL

@@ -41,7 +41,7 @@
 	font-size: 46px;
     letter-spacing: 2.5px;
     top: 18px;
-    left: 132px;
+    left: 72px;
 	margin: 0px;
 }
 
@@ -63,10 +63,11 @@
 
 .made-in-canada {
 	position: absolute;
-	top: 16px;
-	left: 18px;
-	width: 92px;
+	top: 18px;
+	right: 22px;
+	width: 80px;
 	fill: #F9F9F7;
+	transform: rotate(8deg);
 }
 
 .left-header-tip {

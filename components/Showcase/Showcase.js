@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './Showcase.css'
 import Icons from '../../support/Icons.js'
+import ParallaxImage from '../ParallaxImage/ParallaxImage.js'
 import ProductDisplay from '../ProductDisplay/ProductDisplay.js'
 
 class Showcase extends Component {
@@ -11,6 +12,7 @@ class Showcase extends Component {
 	render() {
 		return (
 			<div className={ styles["main"] }>
+				<ParallaxImage />
 				{ Icons.insert('logo', styles.logo) }
 				<div className={ styles["product-showcase"] }>
 					<img src={ IMGS.torso } className={ styles["torso"] } />

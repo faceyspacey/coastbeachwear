@@ -19,7 +19,7 @@
 .title {
 	position: absolute;
 	top: 12px;
-	left: 97px;
+	left: 87px;
 	font-size: 18px;
 	font-family: quantumrounded, sans-serif;
 	color: quinary;
@@ -48,14 +48,14 @@
 }
 
 .price {
-	font-size: 12px;
+	font-size: 11px;
 	letter-spacing: 0.9px;
 }
 
 .quantity {
-	font-size: 11px;
+	font-size: 9.5px;
 	letter-spacing: 0.9px;
-	line-height: 18px;
+	line-height: 25px;
 }
 
 .remove {

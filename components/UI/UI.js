@@ -4,6 +4,9 @@ import Showcase from '../Showcase/Showcase.js'
 import Checkout from '../Checkout/Checkout.js'
 import Footer from '../Footer/Footer.js'
 import OverlayPurchase from '../OverlayPurchase/OverlayPurchase.js'
+import OverlayAbout from '../OverlayAbout/OverlayAbout.js'
+import OverlayPolicies from '../OverlayPolicies/OverlayPolicies.js'
+import HelpButton from '../HelpButton/HelpButton.js'
 
 class UI extends Component {
 	constructor(props, context) {
@@ -30,13 +33,30 @@ class UI extends Component {
 		});
 	}
 
+	displayAboutOverlay() {
+		this.setState({
+			currentOverlay: (
+				<OverlayAbout closeOverlay={ this.closeOverlay.bind(this) } />
+			)
+		});
+	}
+
+	displayPolicyOverlay() {
+		this.setState({
+			currentOverlay: (
+				<OverlayPolicies closeOverlay={ this.closeOverlay.bind(this) } />
+			)
+		});
+	}
+
 	render() {
 		return (
 			<div>
 				<Showcase product={ this.props.products[0] }/>
 				<Checkout order= { this.state.order }/>
-				<Footer/>
+				<Footer />
 				{ this.state.currentOverlay }
+				<HelpButton />
 			</div>
 		)
 	}

@@ -51,9 +51,6 @@ class Checkout extends Component {
 				<div className={ styles["split"] }>
 					<div className={ styles["left-column"] }>
 						<div className={ styles["left-header"] } >
-							<div className={ styles["made-in-canada"] }>
-								{ Icons.insert('made_in_canada') }
-							</div>
 							<h2 className={ styles["left-column-title"] }>{ $T(38) /* Order Now */ }</h2>
 						</div>
 						<div className={ styles["form-container"] }>
@@ -61,6 +58,9 @@ class Checkout extends Component {
 						</div>
 					</div>
 					<div className={ styles["right-column"] }>
+						<div className={ styles["made-in-canada"] }>
+								{ Icons.insert('made_in_canada') }
+						</div>
 						<div className={ styles["left-header-tip"] } >
 						</div>
 						<div className={ styles["right-header"] }>

@@ -1,0 +1,17 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	color: quaternary;
+	font-family: sans-serif;
+	font-size: 15px;
+	padding: 5px 14px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.main-selected {
+	composes: main;
+	color: primary;
+	background-color: quaternary; 
+}

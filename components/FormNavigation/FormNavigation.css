@@ -9,7 +9,7 @@
 
 .arrow {
 	position: absolute;
-	border-radius: 6px;
+	border-radius: 3px;
 	height: 42px;
 	background-color: primary;
 	cursor: pointer;

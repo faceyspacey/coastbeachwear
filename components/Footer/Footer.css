@@ -3,8 +3,56 @@
 
 .footer-main {
 	background-color: primary;
-	height: 50px;
+	height: 48px;
 	position: relative;
+}
+
+.logo {
+	position: absolute;
+	left: 32px;
+	top: 10px;
+	width: 69px;
+}
+
+.logo svg {
+	fill: quaternary;
+}
+
+.menus {
+	position: absolute;
+	left: 114px;
+	height: 100%;
+}
+
+.menu-button {
+	display: inline-table;
+	padding: 0 10px;
+	margin-left: 12px;
+	height: 100%;
+	vertical-align: top;
+}
+
+.menu-button:active {
+	background-color: quaternary;
+}
+
+.menu-button:active .menu-button-caption {
+	color: secondary;
+}
+
+.menu-button-capiton {
+	vertical-align: middle
+}
+
+.menu-button-caption {
+	display: table-cell;
+	vertical-align: middle;
+	height: 100%;
+	padding-top: 3px;
+	color: quaternary;
+	font-family: quantumrounded, sans-serif;
+	font-size: 14px;
+	cursor: pointer;
 }
 
 .social-hub {

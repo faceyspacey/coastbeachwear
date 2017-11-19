@@ -1,0 +1,48 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.content {
+	height: 540px;
+	width: 960px;
+	background-color: quaternary;
+}
+
+.description {
+	width: 726px;
+	color: #383838;
+	line-height: 184%;
+	font-family: quantumrounded, sans-serif;
+	white-space: pre-line;
+}
+
+.inner-content {
+	position: absolute;
+	top: 60px;
+	left: 70px;
+}
+
+.logo {
+	position: absolute;
+	top: 30px;
+	right: 41px;
+	width: 272px;
+}
+
+.logo svg {
+	fill: primary;
+}
+
+.title {
+	font-family: quantumrounded, sans-serif;
+	color: primary;
+}
+
+.section {
+	padding: 3px 0 10px 24px;
+}
+
+.section-title {
+	font-family: quantumrounded, sans-serif;
+	color: #383838;
+	margin-top: 0px;
+}
