@@ -40,6 +40,8 @@ class ProductDisplay extends Component {
 				<div className={ styles["button-view"] } onClick={ this.onViewClick.bind(this) }>{ $T(13) /* View */}
 				</div>
 				<div className={ styles["tip"] }>
+					<div className={ styles["triangle"] }>
+					</div>
 				</div>
 			</div>
 		)
