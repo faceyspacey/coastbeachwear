@@ -18,7 +18,8 @@
 }
 
 .image {
-	margin-left: 100px;
+	position: absolute;
+	right: 100px;
 }
 
 .button {
@@ -34,6 +35,18 @@
 	color: quaternary;
 }
 
+.title {
+	position: absolute;
+    top: -31.5px;
+    right: 35px;
+    font-weight: 200;
+    font-family: quantumrounded, sans-serif;
+    font-size: 16px;
+    color: quaternary;
+    letter-spacing: 2.1px;
+    text-align: center;
+}
+
 .button:active {
 	color: primary;
 	background-color: rgba(255,255,255,0.58);
@@ -43,22 +56,21 @@
 	composes: button;
 	position: absolute;
 	top: 47px;
-	left: 500px;
+	right: 500px;
 }
 
 .tip {
 	position: absolute;
 	top: -47px;
-	right: -59px;
-	border-top-right-radius: 15px;
+	left: -59px;
+	border-top-left-radius: 15px;
 	overflow: hidden;
-
 }
 
 .triangle {
 	width: 0; 
 	height: 0; 
-	border-left: 59px solid transparent;
 	border-right: 59px solid transparent;
+	border-left: 59px solid transparent;
 	border-top: 47px solid primary;
 }

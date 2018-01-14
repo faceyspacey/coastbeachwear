@@ -1,0 +1,54 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.apply-button {
+	position: relative;
+	display: inline-block;
+	margin-left: 10px;
+	border-radius: 3px;
+	height: 40px;
+	width: 150px;
+	background-color: primary;
+	cursor: pointer;
+	user-select: none;
+}
+
+.apply-button .caption {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 12px;
+	font-family: quantumrounded, sans-serif;
+    font-size: 15px;
+    color: quaternary;
+    letter-spacing: 1.7px;
+}
+
+.thank-you {
+	position: relative;
+	height: 72px;
+	width: 500px;
+	margin-left: 10px;
+	margin-bottom: 16px;
+	background-color: quaternary;
+}
+
+.thank-you-caption {
+	position: absolute;
+	left: 108px;
+	top: 4px;
+	font-family: quantumrounded, sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    color: rgb(118, 118, 118);
+    letter-spacing: 1px;
+    padding: 12px 0px;
+}
+
+.made-in-canada-icon {
+	position: absolute;
+	top: 7px;
+	left: 25px;
+	width: 58px;
+	fill: rgb(230, 15, 45);
+}

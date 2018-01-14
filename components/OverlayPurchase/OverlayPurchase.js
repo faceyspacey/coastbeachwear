@@ -43,12 +43,23 @@ class OverlayPurchase extends Overlay {
 	addPurchase() {
 		var data = {};
 
+		function onaddsuccess() {
+			this.props.closeOverlay();
+		};
+		onaddsuccess = onaddsuccess.bind(this);
+
+		function onaddfail(error) {
+			// Function is a placeholder.
+			// No async calls in this flow fail not needed.
+		};
+		onaddfail = onaddfail.bind(this);
+
 		data.quantity = this.state.quantity;
 		data.variant = this.state.currentVariant;
 
-		this.props.closeOverlay();
+		
 		this.props.purchase.setData(data);
-		this.props.purchase.add();
+		this.props.purchase.add(onaddsuccess, onaddfail);
 	}
 
 	getSizeVariants() {
@@ -73,7 +84,7 @@ class OverlayPurchase extends Overlay {
 							{ product.name }
 						</div>
 						<div className={ styles["subtitle"] }>
-							{ $TInject(29, [product.version])}&nbsp;{$T(variant.color ) }
+							{ $TInject(29, [product.version])}&nbsp;{$T("code" + variant.color) }
 						</div>
 					</div>
 					<div className={ styles["details"] }>

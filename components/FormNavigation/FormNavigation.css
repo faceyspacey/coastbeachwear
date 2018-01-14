@@ -2,9 +2,9 @@
 @value primary, secondary, tertiary, quaternary, quinary from colors;
 
 .navigation {
-	height: 50px;
-	width: 630px;
-	padding-top: 40px;
+    height: 82px;
+    width: 630px;
+    padding-top: 32px;
 }
 
 .arrow {
@@ -30,6 +30,47 @@
 	width: 186px;
 }
 
+.processing-label {
+	composes: arrow;
+	right: 10px;
+	width: 186px;
+	background-color: quaternary;
+	color: primary;
+}
+
+.complete-button {
+	composes: arrow;
+	right: 120px;
+	width: 250px;
+}
+
+.arrow.complete-button .caption {
+	width: 100%;
+	text-align: center;
+	left: 0px;
+}
+
+.complete-button:active .caption {
+	color: primary;
+}
+
+.arrow.processing-label .caption {
+	top: 12px;
+	left: 16px;
+	color: primary;
+}
+
+.processing-label .caption:after {
+  overflow: hidden;
+  font-family: quantumrounded, sans-serif;
+  font-size: 17px;
+  display: inline-block;
+  vertical-align: bottom;  
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
 .next-arrow > div {
 	width: 32px;
 	position: absolute;
@@ -37,7 +78,7 @@
 	right: 8px;
 }
 
-.next-arrow .caption {
+.arrow .caption {
 	position: absolute;
 	top: 12.5px;
 	left: 19px;
@@ -48,7 +89,7 @@
 }
 
 .next-arrow:active .caption {
-	color: primary;;
+	color: primary;
 }
 
 .previous-arrow {
@@ -68,4 +109,10 @@
 
 .arrow svg {
 	fill: quaternary;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
 }

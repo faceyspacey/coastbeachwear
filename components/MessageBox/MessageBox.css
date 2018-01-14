@@ -1,0 +1,31 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	padding: 29px 24px 35px 24px;
+	text-align: center;
+	background-color: tertiary;
+	border: 3px solid secondary;
+	border-radius: 2px;
+	font-family: quantumrounded, sans-serif;
+	font-size: 14px;
+	color: rgb(118, 118, 118);
+	letter-spacing: 1.2px;
+}
+
+.title {
+	font-size: 22px;
+	letter-spacing: 1.6px;
+}
+
+.message {
+	margin-top: 17px;
+	font-size: 15px;
+    letter-spacing: 0.9px;
+    white-space: pre-wrap;
+}

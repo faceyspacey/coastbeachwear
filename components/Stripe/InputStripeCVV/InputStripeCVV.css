@@ -1,0 +1,9 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.cvv-icon {
+	position: absolute;
+	right: 19px;
+	top: 6.5px;
+	width: 39px;
+}

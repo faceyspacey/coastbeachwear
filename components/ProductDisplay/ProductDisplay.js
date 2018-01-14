@@ -30,9 +30,19 @@ class ProductDisplay extends Component {
 		purchase.displayInOverlay();
 	}
 
+	title_text() {
+		var productName = this.props.variant.product.name;
+		var colorText = $T(this.props.variant.color);
+
+		return `${productName} - ${colorText}`
+	}
+
 	render() {
 		return (
 			<div className={ styles["main" + this.state.index] }>
+				<div className={ styles["title"] }>
+					{ this.title_text() }
+				</div>
 				<img 
 					src={ IMGS.swimsuit }
 					className={ styles["image"] }

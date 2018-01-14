@@ -5,7 +5,7 @@
 	vertical-align: top;
 	min-height: 56px;
 	display: inline-block;
-	padding-left: 10px;
+	text-align: left;
 }
 
 .placeholder {     
@@ -55,14 +55,3 @@
 	composes: input;
 	padding: 13px 35px 5px 9px;
 }
-
-.input:focus {
-	border-bottom: 2px solid primary;
-	padding-bottom: 7px;
-	outline: none;
-}
-
-.input-filled:focus {
-	padding-bottom: 3px;
-}
-

@@ -1,0 +1,26 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	composes: main from "../Input.css";
+	padding-left: 10px;
+}
+
+.input {
+	composes: input from "../Input.css";
+}
+
+.input:focus {
+	border-bottom: 2px solid primary;
+	padding-bottom: 7px;
+	outline: none;
+}
+
+.input-filled {
+	composes: input-filled from "../Input.css";
+	composes: input;
+}
+
+.input-filled:focus {
+	padding-bottom: 3px;
+}

@@ -5,19 +5,18 @@
 	background-color: tertiary;
 	width: 100%;
 	box-sizing: border-box;
-	height: 480px;
 	display: table;	
 }
 
 .left-header {
-	height: 124px;
+	height: 137px;
 	background-color: primary;
 	position: relative;
 }
 
 .right-header {
 	position: relative;
-	height:124px;
+	height: 133px;
 }
 
 .column {
@@ -31,18 +30,31 @@
 
 .left-column {
 	composes: column;
-	width: 60%
+	width: 64%
 }
 
 .left-column-title {
-	position: absolute;
-	color: #F9F9F7;
-	font-family: quantumrounded, sans-serif;
-	font-size: 46px;
-    letter-spacing: 2.5px;
-    top: 18px;
-    left: 72px;
-	margin: 0px;
+    position: absolute;
+    font-weight: 200;
+    top: 21.8px;
+    left: 68.5px;
+    font-family: quantumrounded, sans-serif;
+    font-size: 40px;
+    color: quaternary;
+    letter-spacing: 4.5px;
+    margin: 0px;
+}
+
+.left-column-sub-title {
+    position: absolute;
+    font-weight: 200;
+	bottom: 27.5px;
+    left: 106px;
+    font-family: inkburrow, sans-serif;
+    font-size: 25px;
+    color: quaternary;
+    letter-spacing: 2.7px;
+    margin: 0px;
 }
 
 .right-column {
@@ -50,13 +62,13 @@
 	composes: column;
 	background-color: secondary;
 	display: table-cell;
-	width: 33%;
+	width: 36%;
+	overflow: hidden;
 }
 
 .form-container {
-	padding: 38px 30px;
+	padding: 100px 30px 0px 30px;
 	width: 690px;
-	height: 500px;
 	box-sizing: border-box;
 	position: relative;
 }
@@ -70,19 +82,31 @@
 	transform: rotate(8deg);
 }
 
+.logo {
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    width: 120px;
+}
+
+.logo svg {
+	fill: quaternary;
+}
+
 .left-header-tip {
 	position: absolute;
 	top: 0;
-	left: -154px;
+	left: -186px;
 	width: 0; 
 	height: 0; 
-	border-left: 154px solid transparent;
-	border-right: 154px solid transparent;
-	border-top: 124px solid primary;
+	border-left: 186px solid transparent;
+	border-right: 186px solid transparent;
+	border-top: 137px solid primary;
 }
 
 .summary-container {
 	position: relative;
+	margin-top: 40px;
 	height: 400px;
 	width: 100%;
 }

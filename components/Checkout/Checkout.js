@@ -51,7 +51,8 @@ class Checkout extends Component {
 				<div className={ styles["split"] }>
 					<div className={ styles["left-column"] }>
 						<div className={ styles["left-header"] } >
-							<h2 className={ styles["left-column-title"] }>{ $T(38) /* Order Now */ }</h2>
+							<h1 className={ styles["left-column-title"] }>{ $T(50) /* Coast Beachwear */ }</h1>
+							<h2 className={ styles["left-column-sub-title"] }>{ $T(56) /* Coastal Lifestyle Inspired Apparel */ }</h2>
 						</div>
 						<div className={ styles["form-container"] }>
 							{ <this.state.currentForm order={ this.props.order } setCurrentForm = { this.setCurrentForm.bind(this) }/> }
@@ -59,7 +60,7 @@ class Checkout extends Component {
 					</div>
 					<div className={ styles["right-column"] }>
 						<div className={ styles["made-in-canada"] }>
-								{ Icons.insert('made_in_canada') }
+							{ Icons.insert('made_in_canada') }
 						</div>
 						<div className={ styles["left-header-tip"] } >
 						</div>

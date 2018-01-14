@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
 import formStyles from '../CheckoutForm/CheckoutForm.css'
 import styles from './PaymentForm.css'
+import { ui } from '../../main/BeachHut.js'
 import $T from '../../support/translations.js'
-import Input from '../Inputs/Input.js'
-import InputExpiry from '../Inputs/InputExpiry.js'
+import Icons from '../../support/Icons.js'
+import {StripeProvider, Elements} from 'react-stripe-elements';
+import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js'
+import TotalDetails from '../TotalDetails/TotalDetails.js'
+import StripeCheckoutForm from '../Stripe/StripeCheckoutForm/StripeCheckoutForm.js'
 import FormNavigation from '../FormNavigation/FormNavigation.js'
 import CardTypeSelector from '../CardTypeSelector/CardTypeSelector.js'
-import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
-import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js'
+import FulfilmentForm from '../FulfilmentForm/FulfilmentForm.js'
 
 class PaymentForm extends Component {
 	constructor(props, context) {
 		super(props, context)
 
-		this.cardConfirmed = false;
+		this.state = {
+			promoCode: "",
+			cardHolder: ""
+		}
 
 		gtag('config', ENV.gaid, {'page_path': '/paymentform'});
 	}
@@ -22,37 +28,19 @@ class PaymentForm extends Component {
 		return $T(32) // Payment
 	}
 
-	navigateForward() {
-		
-	}
-
 	navigateBackward() {
-		var prevForm = this.props.order.isSameAddress()? ShippingAddrForm : BillingAddrForm;
-
-		this.props.setCurrentForm(prevForm);
-	}
-
-	paymentInfo() {
-		return this.props.order.paymentInfo;
+		if (this.props.order.countUnits() > 0) {
+			this.props.setCurrentForm(FulfilmentForm);
+		} else {
+			ui.displayMessage(
+				$T(78), /* Order Empty */
+				$T(77) /* Add item to order to proceed. */
+			);
+		}
 	}
 
 	onchange(obj) {
-		if (obj.card_number != undefined && !this.cardConfirmed) {
-			obj.card_type = this.detectCardType(obj.card_number);
-		}
-
-		this.props.order.setPaymentInfo(obj);
-	}
-
-	confirmCardType(type) {
-		this.cardConfirmed = true;
-		this.setCardType(type);
-	}
-
-	setCardType(type) {
-		this.props.order.setPaymentInfo({
-			card_type: type
-		})
+		this.setState(obj)
 	}
 
 	detectCardType(number) {
@@ -78,49 +66,57 @@ class PaymentForm extends Component {
 	}
 
 	render() {
-		var data = {};
-
-		Object.assign(data, this.props.order.paymentInfo);
-		
 		return (
 			<div className={ styles["main"] }>
 				<div className={ formStyles["header"] }>{ $T(32) /* Payment*/ }</div>
-				<Input 
-					dataKey={ "card_number" }
-					data={ data }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="480px" 
-					placeholder={$T("33") /* Card Number */ } 
+				<TotalDetails
+					addition={ this.props.order.compileAddition() }
 				/>
-				<CardTypeSelector 
-					selected={ this.props.order.paymentInfo.card_type }
-					confirmCardType={ this.confirmCardType.bind(this) }
+				<div className={ styles["thank-you"] }>
+					<div className={ styles["made-in-canada-icon"] } >
+						{ Icons.insert('made_in_canada') }
+					</div>
+					<div className={ styles["thank-you-caption"] }>
+						{ $T("73") /* "Thank you!" */ }
+					</div>
+				</div>
+				<InputUnderline 
+					dataKey={ "promoCode" }
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="340px"
+					placeholder={$T("68") /* Promo Code */}
 				/>
-				<InputExpiry
-					dataKey={ "expiry" }
-					data={ data }
+				<div className={ styles["apply-button"] }>
+					<div className={ styles["caption"] }>
+						{ $T("69") /* Apply */ }
+					</div>
+				</div>
+				<InputUnderline 
+					dataKey={ "cardHolder" } 
+					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="130px"
-					placeholder={$T("35") /* MM/YY */} 
-				/> 
-				<Input 
-					dataKey={ "cvv" }
-					data={ data }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="130px"
-					placeholder={$T("36") /* CVV */} 
-				/>
-				<Input 
-					dataKey={ "card_holder" } 
-					data={ data }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="480px" 
+					inputWidth="500px" 
 					placeholder={$T("34") /* Name On Card */}
-				/> 
-				<FormNavigation 
-					navigateForward={ this.navigateForward.bind(this) }
-					navigateBackward= { this.navigateBackward.bind(this) }
 				/>
+				<StripeProvider apiKey="pk_test_RqVvmoPTp9c6r8OZlt1KOGUQ">
+					<Elements
+						fonts={ 
+							[
+							    {
+									family: 'quantumrounded',
+									src: 'url("https://cdn.shopify.com/s/files/1/1777/1415/t/1/assets/quantumrounded.otf?6009573855513922617")',
+							    }
+						  	] 
+						}
+					>
+						<StripeCheckoutForm
+							order={ this.props.order }
+							card_holder={ this.state.cardHolder }
+							navigateBackward={ this.navigateBackward.bind(this) }
+						/>
+					</Elements>
+				</StripeProvider>
 			</div>
 		)
 	}

@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import styles from './BillingAddrForm.css'
 import formStyles from '../CheckoutForm/CheckoutForm.css'
-import Input from '../Inputs/Input.js'
+import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js'
 import $T from '../../support/translations.js'
 import FormNavigation from '../FormNavigation/FormNavigation.js'
 import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js'
-import PaymentForm from '../PaymentForm/PaymentForm.js'
+import FulfilmentForm from '../FulfilmentForm/FulfilmentForm.js'
 
 class BillingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
-		this.state = props.order.billingAddr;
 		
+		this.state = props.order.getBillingAddr();
+		this.styles = styles;
 		gtag('config', ENV.gaid, {'page_path': '/billingaddrform'});
 	}
 
@@ -20,7 +21,7 @@ class BillingAddrForm extends Component {
 	}
 
 	navigateForward() {
-		this.props.setCurrentForm(PaymentForm);
+		this.props.setCurrentForm(FulfilmentForm);
 	}
 
 	navigateBackward() {
@@ -36,70 +37,77 @@ class BillingAddrForm extends Component {
 		return (
 			<div className={styles["main"]}>
 				<div className={ formStyles["header"] }>{ $T(15) /* Shipping Address*/}</div>
-				<Input 
+								<InputUnderline 
 					dataKey={"first_name"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="260px" 
 					placeholder={$T("1") /* First Name */ } 
 				/> 
-				<Input 
+				<InputUnderline 
 					dataKey={"last_name"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="340px"
 					placeholder={$T("2") /* Last Name */}
 				/> 
-				<Input
+				<InputUnderline
 					dataKey={"company"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="610px"
 					placeholder={$T("9") /* Company */} 
 				/> 
-				<Input 
+				<InputUnderline 
 					dataKey={"address"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="440px"
 					placeholder={$T("4") /* Address */} 
 				/>
-				<Input
+				<InputUnderline
 					dataKey={"apt"} 
 					data={ this.state } 
 					onchange={ this.onchange.bind(this) }
 					inputWidth="160px"
 					placeholder={$T("5") /* Apt, Suite (opt) */} 
 				/>
-				<Input
+				<InputUnderline
+					dataKey={"city"}
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="300px"
+					placeholder={$T(58) /* City */}
+				/>
+				<InputUnderline 
+					dataKey={"territory"}
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="300px"
+					placeholder={$T("7") /* Provice */} 
+				/>
+				<InputUnderline
 					dataKey={"country"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="196.6px"
+					inputWidth="420px"
 					placeholder={$T("6") /* Country */}
 				/>
-				<Input 
-					dataKey={"province"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="196.6px"
-					placeholder={$T("7") /* Provice */} 
-				/>
-				<Input 
+				<InputUnderline 
 					dataKey={"postal_code"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="196.6px"
+					inputWidth="180px"
 					placeholder={$T("8") /* Postal Code */} 
 				/>
-				<Input 
+				<InputUnderline 
 					dataKey={"email"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="360px"
 					placeholder={$T(18) /* Email */} 
 				/>
-				<Input 
+				<InputUnderline 
 					dataKey={"phone"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }

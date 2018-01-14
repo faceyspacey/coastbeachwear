@@ -1,0 +1,29 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.input {
+	composes: input from "../../Inputs/InputUnderline/InputUnderline.css";
+}
+
+.input-filled {
+	composes: input-filled from "../../Inputs/InputUnderline/InputUnderline.css";
+}
+
+.input.focus {
+	border-bottom: 2px solid primary;
+	padding-bottom: 7px;
+	outline: none;
+}
+
+.input-filled.focus {
+	border-bottom: 2px solid primary;
+	padding-bottom: 3px;
+}
+
+.input-filled .stripe-element-container {
+	padding: 4px 0 3px 0;
+}
+
+.input .stripe-element-container {
+	padding: 4px 0 3px 0;
+}

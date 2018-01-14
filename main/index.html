@@ -7,11 +7,17 @@
 		    font-family: "quantumrounded";
 		    src: url("/quantumrounded.otf") format("truetype");
 		}
+		@font-face {
+		    font-family: "inkburrow";
+		    src: url("/inkburrow.ttf") format("truetype");
+		}
 	</style>
+	<script src="https://js.stripe.com/v3/"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107752778-1"></script>
 	<script id="ENV" type="text/javascript">
 		var ENV = {
-			gaid: "UA-107752778-1"
+			gaid: "UA-107752778-1",
+			shippoAPIKey: "shippo_live_88d0e17fa4d069d3e5e24db475d3f2535ea4871e"
 		}
 		var IMGS = {
 			torso: "/product_imgs/torso.png",

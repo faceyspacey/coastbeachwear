@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Input from './Input.js'
+import InputUnderline from '../InputUnderline/InputUnderline.js'
 
-class InputExpiry extends Input {
+class InputExpiry extends InputUnderline {
 
 	static type = "numeric";
 

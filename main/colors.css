@@ -1,6 +1,5 @@
-@value primary: hsl(185.5, 20%, 36%);
-@value secondary: hsl(358, 5.8%, 38.2%);
+@value primary: hsl(185.5, 20%, 35%);
+@value secondary: hsl(358, 5.8%, 38.1%);
 @value tertiary: hsl(42.5, 28.3%, 78%);
-@value quaternary: #F9F9F7;
+@value quaternary: hsl(68, 21%, 91%);
 @value quinary: #404040;
-@value trybiege: #f5f5dc

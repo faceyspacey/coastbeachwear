@@ -1,0 +1,7 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.input {
+	composes: input from "../Input.css";
+	resize: none;
+}

@@ -22,12 +22,20 @@ class Overlay extends Component {
 		this.props.closeOverlay();
 	}
 
+	colorClass() {
+		var backgroundColor = this.constructor.backgroundColor;
+		
+		if (!backgroundColor) return styles["main"]
+		return `${styles["main"]} ${styles[backgroundColor]}`
+	}
+
 	render() {
 		return (
 			<div className={ styles["overlay"] } onClick={ this.onOverlayClick.bind(this) }>
-				<div className={ styles["main"] } onClick={ this.onMainClick }>
+				<div className={ this.colorClass() } onClick={ this.onMainClick }>
 					<div className={ styles["title-bar"] }>
 						<div className={ styles["title-bar-inner"] }>
+							{ this.titleBarContent && this.titleBarContent() }
 						</div>
 						<div className={ styles["cut-out-container"] }>
 							<div className={ styles["cut-out"] } >

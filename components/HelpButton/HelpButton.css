@@ -4,7 +4,7 @@
 .main {
 	position: fixed;
     bottom: 48px;
-    right: 34px;
+    left: 19px;
 	width: 70px;
 	height: 70px;
 	background-color: primary;
@@ -20,12 +20,17 @@
     width: 38px;
 }
 
+.active {
+	background-color: quaternary;
+	border: 3px solid primary;
+}
+
 .main:active { 
 	background-color: quaternary;
 	border: 3px solid primary;
 }
 
-.main:active .help-icon svg {
+.main:active .help-icon svg, .main.active .help-icon svg {
 	stroke: primary;
 }
 

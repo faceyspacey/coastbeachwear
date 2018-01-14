@@ -1,0 +1,9 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.cc-icon {
+	position: absolute;
+	right: 28px;
+	top: 7px;
+	width: 39px;
+}

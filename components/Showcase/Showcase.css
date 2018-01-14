@@ -11,8 +11,8 @@
 
 .logo {
 	position: absolute;
-	top: 62px;
-	right: 74px;
+    top: 56px;
+    left: 82px;
 	width: 390px;
 }
 
@@ -22,19 +22,13 @@
 
 .product-showcase {
 	position: absolute;
-	left: 0px;
-	
-}
-
-.product-showcase {
-	position: absolute;
 	bottom: 0px;
-	left: 0px;
-	width: 700px;
+	right: 0px;
+	width: 692px;
 }
 
 .torso {
 	position: absolute;
 	top: -300px;
-	margin-left: 100px;
+	right: 100px;
 }

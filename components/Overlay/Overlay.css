@@ -25,6 +25,7 @@
 .title-bar-inner {
 	background-color: quaternary;
 	color: primary;
+	padding-right: 50px;
 	padding-top: 10px;
 	font-family: quantumrounded, sans-serif;
 	font-size: 30px;
@@ -32,6 +33,10 @@
 	letter-spacing: 2px;
 	margin-left: 50px;
 	height: 100%;
+}
+
+.primary .title-bar-inner {
+	background-color: primary;
 }
 
 .body {
@@ -60,7 +65,7 @@
 }
 
 .close:active {
-	background-color: secondary;
+	background-color: primary;
 }
 
 .cut-out {
@@ -72,6 +77,10 @@
 	width: 142px;
 	border: 30px solid quaternary;
 	border-radius: 100%;
+}
+
+.primary .cut-out {
+	border: 30px solid primary;
 }
 
 .cut-out-container {
@@ -95,4 +104,8 @@
     height: 2px;
     overflow: hidden;
     background-color: quaternary;
+}
+
+.primary .cut-out-container:after {
+	background-color: primary;
 }

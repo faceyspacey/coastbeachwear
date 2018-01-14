@@ -1,0 +1,27 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.complete-button-container {
+	padding: 17px 0px 20px 10px;
+}
+
+.complete-button {
+	position: relative;
+	border-radius: 3px;
+	height: 42px;
+	width: 260px;
+	background-color: primary;
+	cursor: pointer;
+	user-select: none;
+}
+
+.complete-button .caption {
+	position: absolute;
+	top: 12.5px;
+	width: 100%;
+	text-align: center;
+	font-family: quantumrounded, sans-serif;
+    font-size: 15px;
+    color: quaternary;
+    letter-spacing: 1.7px;
+}

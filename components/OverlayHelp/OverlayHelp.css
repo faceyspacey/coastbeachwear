@@ -1,0 +1,52 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.content {
+	height: 540px;
+	width: 600px;
+	background-color: primary;
+	text-align: center;
+}
+
+.fields {
+	padding-top: 32px;
+	display: inline-block;
+}
+
+.title {
+    width: 100%;
+    padding-top: 24px;
+    padding-left: 29px;
+    font-weight: 200;
+    font-family: quantumrounded, sans-serif;
+    font-size: 20.5px;
+    color: quaternary;
+    letter-spacing: 2.1px;
+    text-align: left;
+}
+
+.button-area {
+    text-align: right;
+    width: 440px;
+    margin: 0 auto;
+    padding: 21px 0;
+}
+
+.send-button {
+    display: inline-block;
+    height: 36px;
+    padding: 0 15px;
+    border: 2px solid quaternary;
+    font-family: quantumrounded, sans-serif;
+    font-size: 15px;
+    line-height: 36px;
+    color: quaternary;
+    letter-spacing: 1.7px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.send-button:active {
+    background-color: quaternary;
+    color: primary;
+}

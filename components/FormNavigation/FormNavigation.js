@@ -30,11 +30,32 @@ class FormNavigation extends Component {
 		)
 	}
 
+	renderProcessingLabel() {
+		return (
+			<div className={ styles["processing-label"]} onClick={ this.props.navigateForward }>
+				<div className={ styles["caption"]}>
+					{ $T(66) /* Processing */ }
+				</div>
+			</div>
+		)
+	}
+
+	renderCompleteButton() {
+		return (
+			<div className={ styles["complete-button"]} onClick={ this.props.oncomplete }>
+				<div className={ styles["caption"]}>
+					{ $T(57) /* Complete Order */ }
+				</div>
+			</div>
+		)
+	}
+
 	render() {
 		return (
 			<div className={ styles["navigation"] }>
 				{ this.props.navigateBackward && this.renderPrevArrow() }
-				{ this.props.navigateForward && this.renderNextArrow() }
+				{ this.props.navigateForward && ( this.props.isProcessing ? this.renderProcessingLabel() : this.renderNextArrow() ) }
+				{ this.props.oncomplete && this.renderCompleteButton() }
 			</div>
 		)
 	}

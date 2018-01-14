@@ -1,0 +1,25 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.order-empty {
+	margin-bottom: 40px;
+	padding-top: 16px;
+	padding-left: 24px;
+	padding-right: 24px;
+	font-family: quantumrounded, sans-serif;
+	color: rgb(118, 118, 118);
+	background-color: quaternary;
+	padding-bottom: 26px;
+}
+
+.order-empty-title {
+    font-size: 22px;
+    letter-spacing: 1.6px;
+}
+
+.order-empty-sub-title {
+	margin-top: 17px;
+	font-size: 15px;
+    letter-spacing: 0.9px;
+    white-space: pre-wrap;
+}

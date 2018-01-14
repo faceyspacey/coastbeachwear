@@ -8,6 +8,18 @@ if (!Array.prototype.remove) {
   	};
 }
 
+if (!Array.prototype.min) {
+    Array.prototype.min = function (item) {
+        return Math.min.apply(Math, this);
+    };
+}
+
+if (!Array.prototype.max) {
+    Array.prototype.max = function (item) {
+        return Math.max.apply(Math, this);
+    };
+}
+
 // String
 
 if (!String.prototype.splice) {

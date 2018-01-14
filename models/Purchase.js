@@ -19,8 +19,8 @@ class Purchase extends Model {
 		return parseInt(this.variant.product.price) * this.quantity;
 	}
 
-	add() {
-		order.addPurchase(this);
+	add(success, fail) {
+		order.addPurchase(this, success, fail);
 	}
 
 	destroy() {

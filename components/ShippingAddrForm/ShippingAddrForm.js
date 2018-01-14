@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import formStyles from '../CheckoutForm/CheckoutForm.css'
 import styles from './ShippingAddrForm.css'
-import Input from '../Inputs/Input.js'
+import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js'
 import $T from '../../support/translations.js'
 import FormNavigation from '../FormNavigation/FormNavigation.js'
 import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
-import PaymentForm from '../PaymentForm/PaymentForm.js'
+import FulfilmentForm from '../FulfilmentForm/FulfilmentForm.js'
 import Checkbox from '../Checkbox/Checkbox.js'
+import { ui } from '../../main/BeachHut.js'
 
 class ShippingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
 		
-		this.state = props.order.shippingAddr;
+		this.state = props.order.getShippingAddr();
 		this.state.sameAsBilling = !this.props.order.isShippingAddrEmpty() && this.props.order.isSameAddress();
+		this.state.isProcessing = false;
 	}
 
 	static getTitle() {
@@ -23,20 +25,39 @@ class ShippingAddrForm extends Component {
 	navigateForward() {
 		var nextForm;
 
-		if (this.state.sameAsBilling) {
-			nextForm = PaymentForm;
-			this.props.order.setBillingAddr(this.state);
-		} else {
-			nextForm = BillingAddrForm;
+		if (!this.props.order.countUnits()) {
+			ui.displayMessage(
+				$T(78), /* Order Empty */
+				$T(77) /* Add item to order to proceed. */
+			);
+			return;
 		}
-		
-		this.props.setCurrentForm(nextForm);
+
+		function createShipmentSuccess() {
+			if (this.state.sameAsBilling) {
+				nextForm = FulfilmentForm;
+				this.props.order.setBillingAddr(this.props.order.shippingAddr);
+			} else {
+				nextForm = BillingAddrForm;
+			}
+
+			this.props.setCurrentForm(nextForm);
+		}
+		createShipmentSuccess = createShipmentSuccess.bind(this);
+
+		function createShipmentFail() {
+			this.setState({ isProcessing: false });
+		}
+		createShipmentFail = createShipmentFail.bind(this);
+
+		this.setState({ isProcessing: true });
+
+		this.props.order.setShippingAddr(this.state);
+		this.props.order.fulfilment.createShipment(createShipmentSuccess, createShipmentFail);
 	}
 
 	onchange(obj) {
 		this.setState(obj);
-		this.props.order.setShippingAddr(obj);
-
 	}
 
 	setSameAsBilling () {
@@ -50,70 +71,77 @@ class ShippingAddrForm extends Component {
 		return (
 			<div className={styles["main"]}>
 				<div className={formStyles["header"]}>{ $T(10) /* Shipping Address*/ }</div>
-				<Input 
+				<InputUnderline 
 					dataKey={"first_name"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="260px" 
 					placeholder={$T("1") /* First Name */ } 
 				/> 
-				<Input 
+				<InputUnderline 
 					dataKey={"last_name"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="340px"
 					placeholder={$T("2") /* Last Name */}
 				/> 
-				<Input
+				<InputUnderline
 					dataKey={"company"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="610px"
 					placeholder={$T("9") /* Company */} 
 				/> 
-				<Input 
+				<InputUnderline 
 					dataKey={"address"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="440px"
 					placeholder={$T("4") /* Address */} 
 				/>
-				<Input
+				<InputUnderline
 					dataKey={"apt"} 
 					data={ this.state } 
 					onchange={ this.onchange.bind(this) }
 					inputWidth="160px"
 					placeholder={$T("5") /* Apt, Suite (opt) */} 
 				/>
-				<Input
+				<InputUnderline
+					dataKey={"city"}
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="300px"
+					placeholder={$T(58) /* City */}
+				/>
+				<InputUnderline 
+					dataKey={"territory"}
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="300px"
+					placeholder={$T("7") /* Provice */} 
+				/>
+				<InputUnderline
 					dataKey={"country"}
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="196.6px"
+					inputWidth="420px"
 					placeholder={$T("6") /* Country */}
 				/>
-				<Input 
-					dataKey={"province"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="196.6px"
-					placeholder={$T("7") /* Provice */} 
-				/>
-				<Input 
+				<InputUnderline 
 					dataKey={"postal_code"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="196.6px"
+					inputWidth="180px"
 					placeholder={$T("8") /* Postal Code */} 
 				/>
-				<Input 
+				<InputUnderline 
 					dataKey={"email"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="360px"
 					placeholder={$T(18) /* Email */} 
 				/>
-				<Input 
+				<InputUnderline 
 					dataKey={"phone"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
@@ -127,6 +155,7 @@ class ShippingAddrForm extends Component {
 				/>
 				<FormNavigation 
 					navigateForward={ this.navigateForward.bind(this) }
+					isProcessing={ this.state.isProcessing }
 				/>
 			</div>
 		)
