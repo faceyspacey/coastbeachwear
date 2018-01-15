@@ -2,7 +2,7 @@
 @value primary, secondary, tertiary, quaternary, quinary from colors;
 
 .main {
-	height: 680px;
+	height: 720px;
 	background-color: primary;
 	position: relative;
 	background-repeat: no-repeat;
@@ -29,6 +29,7 @@
 
 .torso {
 	position: absolute;
-	top: -300px;
-	right: 100px;
+	top: -327px;
+	right: 94px;
+	height: 327px;
 }

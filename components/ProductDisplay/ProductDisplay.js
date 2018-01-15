@@ -40,17 +40,21 @@ class ProductDisplay extends Component {
 	render() {
 		return (
 			<div className={ styles["main" + this.state.index] }>
-				<div className={ styles["title"] }>
-					{ this.title_text() }
+				<div className={ styles["header"] }>
+					<div className={ styles["title"] }>
+						{ this.title_text() }
+					</div>
+					<div className={ styles["tip"] }>
+						<div className={ styles["triangle"] }>
+						</div>
+					</div>
 				</div>
-				<img 
-					src={ IMGS.swimsuit }
-					className={ styles["image"] }
-				/>
-				<div className={ styles["button-view"] } onClick={ this.onViewClick.bind(this) }>{ $T(13) /* View */}
-				</div>
-				<div className={ styles["tip"] }>
-					<div className={ styles["triangle"] }>
+				<div className={ styles["film"] }>
+					<img 
+						src={ IMGS.swimsuit }
+						className={ styles["image"] }
+					/>
+					<div className={ styles["button-view"] } onClick={ this.onViewClick.bind(this) }>{ $T(13) /* View */}
 					</div>
 				</div>
 			</div>

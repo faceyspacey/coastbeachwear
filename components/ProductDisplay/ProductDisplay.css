@@ -3,9 +3,6 @@
 
 .main {
 	position: relative;
-	background-color: rgba(0, 0, 0, 0.49);
-	height: 132px;
-	border-top: 47px solid primary;
 	width: 692px;
 }
 
@@ -17,9 +14,22 @@
 	composes: main;
 }
 
+.header {
+	position: relative;
+	height: 47px;
+	background-color: primary;
+}
+
+.film {
+	height: 144px;
+	background-color: rgba(0, 0, 0, 0.49);
+	position: relative;
+}
+
 .image {
 	position: absolute;
-	right: 100px;
+	height: 100%;
+	right: 94px;
 }
 
 .button {
@@ -37,8 +47,8 @@
 
 .title {
 	position: absolute;
-    top: -31.5px;
-    right: 35px;
+	top: 16px;
+    left: 81px;
     font-weight: 200;
     font-family: quantumrounded, sans-serif;
     font-size: 16px;
@@ -61,16 +71,19 @@
 
 .tip {
 	position: absolute;
-	top: -47px;
-	left: -59px;
-	border-top-left-radius: 15px;
 	overflow: hidden;
+	left: -35px;
+	height: 100%;
+	width: 60px;
 }
 
 .triangle {
-	width: 0; 
-	height: 0; 
-	border-right: 59px solid transparent;
-	border-left: 59px solid transparent;
-	border-top: 47px solid primary;
+	position: absolute;
+	top: -52px;
+    left: 8px;
+    width: 106px;
+    height: 106px;
+	border-radius: 50%;
+	background-color: primary;
+
 }
