@@ -14,13 +14,20 @@ class OverlayPurchase extends Overlay {
 
 		this.state = {
 			currentVariant: props.purchase.variant,
-			quantity: props.purchase.quantity || 1
+			quantity: props.purchase.quantity || 1,
+			isProcessing: false
 		};
 
 		gtag('config', ENV.gaid, {'page_path': '/purchase'});
 	}
 
-	onCloseClick() {
+	onOverlayClick(event) {
+		if (this.state.isProcessing) return;
+		super.onOverlayClick(event);
+	}
+
+	onCloseClick(event) {
+		if (this.state.isProcessing) return;
 		super.onCloseClick();
 		gtag('config', ENV.gaid, {'page_path': '/'});
 	}
@@ -43,23 +50,22 @@ class OverlayPurchase extends Overlay {
 	addPurchase() {
 		var data = {};
 
+		this.setState({ isProcessing: true });
+
 		function onaddsuccess() {
 			this.props.closeOverlay();
 		};
 		onaddsuccess = onaddsuccess.bind(this);
 
 		function onaddfail(error) {
-			// Function is a placeholder.
-			// No async calls in this flow fail not needed.
+			this.setState({ isProcessing: false });
 		};
 		onaddfail = onaddfail.bind(this);
 
 		data.quantity = this.state.quantity;
 		data.variant = this.state.currentVariant;
 
-		
-		this.props.purchase.setData(data);
-		this.props.purchase.add(onaddsuccess, onaddfail);
+		this.props.purchase.save(data, onaddsuccess, onaddfail);
 	}
 
 	getSizeVariants() {
@@ -111,9 +117,21 @@ class OverlayPurchase extends Overlay {
 				<div className={ styles["carousel-container"] }>
 					<ImageCarousel images={ variant.images }/>
 				</div>
-				<div className={ styles["add-button"] } onClick={ this.addPurchase.bind(this) } >
-					{ this.props.purchase.quantity ? $T(30) /* Update Order */ :$T(24) /* Add To Order */ }
-				</div>
+				{
+					!this.state.isProcessing && <div className={ styles["add-button"] } onClick={ this.addPurchase.bind(this) } >
+						<div className={ styles["add-button-caption"] }>
+							{ this.props.purchase.quantity ? $T(30) /* Update Order */ :$T(24) /* Add To Order */ }
+						</div>
+					</div>
+				}
+				{
+					this.state.isProcessing && <div className={ styles["add-button-processing"] } onClick={ this.addPurchase.bind(this) } >
+						<div className={ styles["add-button-caption"] }>
+							{ $T(66) /* Processing */ }
+						</div>
+
+					</div>
+				}
 			</div>
 		)
 	}

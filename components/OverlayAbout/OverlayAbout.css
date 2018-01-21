@@ -37,7 +37,10 @@
 }
 
 .contact {
-	margin-top: 36px;
+	position: absolute;
+	top: 188px;
+	right: 54px;
+	font-size: 11px;
 	font-family: quantumrounded, sans-serif;
 	color: primary;
 }

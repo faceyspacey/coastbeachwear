@@ -34,11 +34,11 @@ class PurchaseSummary extends Component {
 					</div>
 				</div>
 				<div className={ styles["addition"] }>
-					<div className={ styles["price"] }>
-						{ $TInject(27, [purchase.calcPrice().toFixed(2)]) }
-					</div>
 					<div className={ styles["quantity"] }>
 						{ $T(26) /* Qty */ + purchase.quantity }
+					</div>
+					<div className={ styles["price"] }>
+						{ $TInject(27, [purchase.calcPrice().toFixed(2)]) }
 					</div>
 				</div>
 				<div className={ styles["remove"] } onClick={ this.onremoveclick.bind(this) }>

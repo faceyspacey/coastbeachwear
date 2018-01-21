@@ -25,14 +25,14 @@ class OverlayAbout extends Overlay {
 					<div className={ styles["description"] }>
 						{ $T(41) }
 					</div>
-					<div className={ styles["contact"] }>
-						<div className={ styles["support-email"] }>{ supportEmail } </div>
-						<div>{ $T(46) }</div>
-						<div>{ $T(42) }</div>
-						<div>{ $T(43) }</div>
-						<div>{ $T(44) }</div>
-						<div>{ $T(45) }</div>
-					</div>
+				</div>
+				<div className={ styles["contact"] }>
+					<div className={ styles["support-email"] }>{ supportEmail } </div>
+					<div>{ $T(46) }</div>
+					<div>{ $T(42) }</div>
+					<div>{ $T(43) }</div>
+					<div>{ $T(44) }</div>
+					<div>{ $T(45) }</div>
 				</div>
 			</div>
 		) 
