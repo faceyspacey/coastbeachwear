@@ -1,13 +1,15 @@
 var webpack = require('webpack');
+var { resolve } = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var postcssModulesValues = require('postcss-modules-values');
 var autoprefixer = require('autoprefixer');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	devtool: 'inline-source-map',
+	devtool: 'cheap-eval-source-map',
 	entry: [ 'webpack-hot-middleware/client', './support/polyfill.js','./main/BeachHut.js'],
 	output: {
-		path: require("path").resolve("./dist"),
+		path: resolve("./dist"),
 		filename: 'bundle.js',
 		publicPath: '/'
 	},
@@ -15,7 +17,8 @@ module.exports = {
 		new ExtractTextPlugin('style.css'),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin(),
+		new HtmlWebpackPlugin({ template: 'main/index.ejs'})
 	],
 	module: {
 		rules: [

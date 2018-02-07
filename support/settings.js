@@ -1,3 +1,4 @@
+let googleAPIkey = "AIzaSyDcwWg8y8deUHBf00-Fvh9e7rSRAqaXkeA"
 let supportEmail = "help@coastbeachwear.com";
 let taxRates = {
 	ca: {

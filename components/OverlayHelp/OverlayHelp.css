@@ -46,7 +46,8 @@
     user-select: none;
 }
 
-.send-button:active {
+.send-button-sending {
+    composes: send-button;
     background-color: quaternary;
     color: primary;
 }

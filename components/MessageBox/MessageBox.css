@@ -28,4 +28,5 @@
 	font-size: 15px;
     letter-spacing: 0.9px;
     white-space: pre-wrap;
+    word-break: break-word;
 }
