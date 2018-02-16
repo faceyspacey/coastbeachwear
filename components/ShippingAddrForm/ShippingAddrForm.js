@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-import formStyles from '../CheckoutForm/CheckoutForm.css'
-import styles from './ShippingAddrForm.css'
-import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js'
-import $T from '../../support/translations.js'
-import FormNavigation from '../FormNavigation/FormNavigation.js'
-import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
-import FulfilmentForm from '../FulfilmentForm/FulfilmentForm.js'
-import Checkbox from '../Checkbox/Checkbox.js'
-import { ui } from '../../main/BeachHut.js'
+import React, { Component } from 'react';
+import formStyles from '../CheckoutForm/CheckoutForm.css';
+import styles from './ShippingAddrForm.css';
+import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js';
+import InputTypeAhead from '../Inputs/InputTypeAhead/InputTypeAhead.js';
+import $T from '../../support/translations.js';
+import FormNavigation from '../FormNavigation/FormNavigation.js';
+import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js';
+import FulfilmentForm from '../FulfilmentForm/FulfilmentForm.js';
+import Checkbox from '../Checkbox/Checkbox.js';
+import { ui } from '../../main/BeachHut.js';
 
 class ShippingAddrForm extends Component {
 	constructor(props, context) {
@@ -16,6 +17,8 @@ class ShippingAddrForm extends Component {
 		this.state = props.order.getShippingAddr();
 		this.state.sameAsBilling = !this.props.order.isShippingAddrEmpty() && this.props.order.isSameAddress();
 		this.state.isProcessing = false;
+		this.autoCompleteService = new google.maps.places.AutocompleteService();
+		this.geoCodeService = new google.maps.Geocoder();
 	}
 
 	static getTitle() {
@@ -42,12 +45,12 @@ class ShippingAddrForm extends Component {
 			}
 
 			this.props.setCurrentForm(nextForm);
-		}
+		};
 		createShipmentSuccess = createShipmentSuccess.bind(this);
 
 		function createShipmentFail() {
 			this.setState({ isProcessing: false });
-		}
+		};
 		createShipmentFail = createShipmentFail.bind(this);
 
 		this.setState({ isProcessing: true });
@@ -56,7 +59,62 @@ class ShippingAddrForm extends Component {
 		this.props.order.fulfilment.createShipment(createShipmentSuccess, createShipmentFail);
 	}
 
+	onaddresschange(obj) {
+		this.setState(obj);
+	}
+
+	geoCodePostalCode(postalCode) {
+		function geoCodeSuccess(results, status) {
+			if (!results || status !== "OK") return;
+			
+			this.postalCodeLocation = results[0].geometry.location;
+		};
+		geoCodeSuccess = geoCodeSuccess.bind(this);
+
+		this.geoCodeService.geocode({ 'address': postalCode}, geoCodeSuccess.bind(this));
+	}
+
+	refreshAddrPredictions(search, success) {
+		var request = {
+    		input: search || "",
+    		location: undefined,
+    		radius: undefined
+    	};
+
+    	if (this.postalCodeLocation) {
+    		request.location = this.postalCodeLocation;
+    		request.radius = 10000;
+    	}
+
+    	function predictionGetSuccess(predictions, status) {
+    		var items = [];
+
+    		predictions = predictions || [];
+
+    		items = predictions.map(function(prediction) {
+    			return {
+    				id: prediction.place_id,
+    				caption: prediction.description
+    			}
+    		});
+
+    		success(items || []);
+    	}
+
+		this.autoCompleteService.getPlacePredictions(request, predictionGetSuccess);
+	}
+
 	onchange(obj) {
+		if (obj.postal_code && obj.postal_code.length > 3) {
+			this.postalCodeLocation = undefined;
+			
+			clearTimeout(this.geoCodeRequest);
+			
+			this.geoCodeRequest = setTimeout((function() {
+				this.geoCodePostalCode(obj.postal_code);
+			}).bind(this), 700);
+		}
+
 		this.setState(obj);
 	}
 
@@ -66,8 +124,7 @@ class ShippingAddrForm extends Component {
 		})
 	}
 
-	render() {
-		
+	render() {	
 		return (
 			<div className={styles["main"]}>
 				<div className={formStyles["header"]}>{ $T(10) /* Shipping Address*/ }</div>
@@ -84,70 +141,52 @@ class ShippingAddrForm extends Component {
 					onchange={ this.onchange.bind(this) }
 					inputWidth="340px"
 					placeholder={$T("2") /* Last Name */}
-				/> 
-				<InputUnderline
-					dataKey={"company"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="610px"
-					placeholder={$T("9") /* Company */} 
-				/> 
-				<InputUnderline 
-					dataKey={"address"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="440px"
-					placeholder={$T("4") /* Address */} 
-				/>
-				<InputUnderline
-					dataKey={"apt"} 
-					data={ this.state } 
-					onchange={ this.onchange.bind(this) }
-					inputWidth="160px"
-					placeholder={$T("5") /* Apt, Suite (opt) */} 
-				/>
-				<InputUnderline
-					dataKey={"city"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="300px"
-					placeholder={$T(58) /* City */}
-				/>
-				<InputUnderline 
-					dataKey={"territory"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="300px"
-					placeholder={$T("7") /* Provice */} 
-				/>
-				<InputUnderline
-					dataKey={"country"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="420px"
-					placeholder={$T("6") /* Country */}
-				/>
-				<InputUnderline 
-					dataKey={"postal_code"} 
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="180px"
-					placeholder={$T("8") /* Postal Code */} 
 				/>
 				<InputUnderline 
 					dataKey={"email"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="360px"
+					inputWidth="610px"
 					placeholder={$T(18) /* Email */} 
 				/>
 				<InputUnderline 
 					dataKey={"phone"} 
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
-					inputWidth="240px"
+					inputWidth="380px"
 					placeholder={$T(17) /* Phone (optional) */} 
 				/>
+				<InputUnderline 
+					dataKey={"postal_code"} 
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="220px"
+					placeholder={$T("8") /* Postal Code */} 
+				/>
+				<InputTypeAhead 
+					dataKey={"address"}
+					data={ this.state }
+					onchange={ this.onaddresschange.bind(this) }
+					refreshItems={ this.refreshAddrPredictions.bind(this) }
+					inputWidth="610px"
+					placeholder={ $T("4") /* Address */ } 
+					notice={ $T("86") /* Enter postal/zip code to narrow results. */ }
+					emptyMessage={ $T("88") }
+				/>
+				<InputUnderline
+					dataKey={"apt"} 
+					data={ this.state } 
+					onchange={ this.onchange.bind(this) }
+					inputWidth="150px"
+					placeholder={$T("5") /* Apt, Suite (opt) */} 
+				/>
+				<InputUnderline
+					dataKey={"company"}
+					data={ this.state }
+					onchange={ this.onchange.bind(this) }
+					inputWidth="450px"
+					placeholder={$T("9") /* Company */} 
+				/> 
 				<Checkbox 
 					caption={ $T(37) /* Billing address same as shipping address? */ }
 					checked={ this.state.sameAsBilling }

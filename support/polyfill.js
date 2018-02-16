@@ -1,11 +1,20 @@
 // Array
+if (!Array.prototype.first){
+    Array.prototype.first = function(){
+        return this[0];
+    };
+};
 
-if (!Array.prototype.remove) {
-	Array.prototype.remove = function (item) {
-    	var index = this.indexOf(item);
+if (!Array.prototype.last){
+    Array.prototype.last = function(){
+        return this[this.length - 1];
+    };
+};
 
-    	return this.splice(index, 1);
-  	};
+if (!Array.prototype.max) {
+    Array.prototype.max = function (item) {
+        return Math.max.apply(Math, this);
+    };
 }
 
 if (!Array.prototype.min) {
@@ -14,11 +23,14 @@ if (!Array.prototype.min) {
     };
 }
 
-if (!Array.prototype.max) {
-    Array.prototype.max = function (item) {
-        return Math.max.apply(Math, this);
+if (!Array.prototype.remove) {
+    Array.prototype.remove = function (item) {
+        var index = this.indexOf(item);
+
+        return this.splice(index, 1);
     };
 }
+
 
 // String
 

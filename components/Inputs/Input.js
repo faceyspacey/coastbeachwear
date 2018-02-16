@@ -50,6 +50,8 @@ class Input extends Component {
 					<label className={ this.hasContent()? this.styles["placeholder"]: this.styles["placeholder-hidden"] }>{ this.props.placeholder }</label>
 					{ this.inputElement() }
 				</div>
+				<div className={ this.styles["error-message"] }>
+				</div>
 			</div>
 		)
 	}

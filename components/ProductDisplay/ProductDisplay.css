@@ -79,11 +79,10 @@
 
 .triangle {
 	position: absolute;
-	top: -52px;
-    left: 8px;
-    width: 106px;
+    top: -52px;
+    left: 10px;
+    width: 105px;
     height: 106px;
-	border-radius: 50%;
+    border-radius: 50%;
 	background-color: primary;
-
 }

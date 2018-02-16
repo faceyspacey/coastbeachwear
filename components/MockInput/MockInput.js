@@ -21,6 +21,8 @@ class MockInput extends Component {
 						disabled={"disabled"}
 					/>
 				</div>
+				<div className={ this.styles["error-message"] }>
+				</div>
 			</div>
 		)
 	}

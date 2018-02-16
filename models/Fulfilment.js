@@ -121,11 +121,11 @@ class Fulfilment extends Model {
 		var purchaseCount = this.order.countUnits();
 
 		return {
-			length: "10",
-			width: "10",
-			height: (3 * purchaseCount).toString(),
-			distance_unit: "cm",
-			weight: (300 * purchaseCount).toString(),
+			length: "8.5",
+			width: "7",
+			height: (2 * purchaseCount).toString(),
+			distance_unit: "in",
+			weight: (200 * purchaseCount).toString(),
 			mass_unit: "g"
 		};
 

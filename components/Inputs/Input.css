@@ -3,9 +3,13 @@
 
 .main {
 	vertical-align: top;
-	min-height: 56px;
 	display: inline-block;
 	text-align: left;
+	position: relative;
+}
+
+.error-message {
+	height: 16px;
 }
 
 .placeholder {     
@@ -41,8 +45,8 @@
 	box-sizing: border-box;
 	height: 40px;
 	border: none;
-	padding: 10px 35px 8px 12px;
-    font-size: 14px;
+	padding: 10px 25px 8px 12px;
+    font-size: 13px;
     line-height: 14px;
     font-weight: 400;
     letter-spacing: 0.2px;
@@ -53,5 +57,5 @@
 
 .input-filled {
 	composes: input;
-	padding: 13px 35px 5px 9px;
+	padding: 13px 35px 5px 13px;
 }
