@@ -53,6 +53,7 @@
     background-color: quaternary;
     color: #383838;
     font-family: quantumrounded, sans-serif;
+    overflow: hidden;
 }
 
 .input-filled {
