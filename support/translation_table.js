@@ -106,6 +106,7 @@ const TRANSLATIONTABEL = {
 		88: "Please ensure a valid address has been entered.\nIf results are still not appearing,\nPlease report issue to:\nhelp@coastbeachwear.com ",
 		89: "Address Error",
 		90: "Could not resolve address\nPlease report to:\nhelp@coastbeachwear.com",
+		91: "Address not found.",
 
 		6005: "Blue",
 		9240: "Black",

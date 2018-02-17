@@ -45,7 +45,8 @@
 }
 
 .subtotal {
-	font-size: 13px;
+	font-size: 14px;
+	color: #363636;
 	font-family: quantumrounded, sans-serif;
 	letter-spacing: 1.1px;
 	line-height: 40px;

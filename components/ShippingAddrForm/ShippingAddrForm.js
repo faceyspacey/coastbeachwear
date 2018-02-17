@@ -13,12 +13,17 @@ import { ui } from '../../main/BeachHut.js';
 class ShippingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
+
+		this.autoCompleteService = new google.maps.places.AutocompleteService();
+		this.geoCodeService = new google.maps.Geocoder();	
 		
 		this.state = props.order.getShippingAddr();
 		this.state.sameAsBilling = !this.props.order.isShippingAddrEmpty() && this.props.order.isSameAddress();
+		this.state.addrPredictions = this.initiateAddrPredictions();
 		this.state.isProcessing = false;
-		this.autoCompleteService = new google.maps.places.AutocompleteService();
-		this.geoCodeService = new google.maps.Geocoder();
+
+		// Geocoding of postal code needed if returning to page.
+		if (props.order.shippingAddr.postal_code) this.geoCodePostalCode(props.order.shippingAddr.postal_code);
 	}
 
 	static getTitle() {
@@ -101,7 +106,7 @@ class ShippingAddrForm extends Component {
 		};
 
 		function geoCodeSuccess(results, status) {
-			var valueFromState = ["last_name", "company", "apt", "postal_code", "email", "phone"];
+			var valueFromState = ["last_name", "company", "apt", "postal_code", "email", "phone", "placeId"];
 			var data = {};
 
 			if (!results || status !== "OK") return geoCodeFail();
@@ -156,11 +161,39 @@ class ShippingAddrForm extends Component {
     			}
     		});
 
-    		success(items || []);
-    	}
+    		this.setState({ addrPredictions: items });
+    		success();
+    	};
+    	predictionGetSuccess = predictionGetSuccess.bind(this);
 
 		this.autoCompleteService.getPlacePredictions(request, predictionGetSuccess);
 	}
+
+	initiateAddrPredictions() {
+		if (!this.state.placeId) return [];
+
+		function geoCodeSuccess(results, status) {
+			var formattedAddress = "";
+
+			if (status !== "OK" || !results || results.length < 1) formattedAddress = $T(91) // Address not found.
+			else formattedAddress = results.first().formatted_address
+
+			this.setState({
+				addrPredictions: [{
+					id: this.state.placeId,
+					caption: formattedAddress
+				}]
+			});
+		};
+		geoCodeSuccess = geoCodeSuccess.bind(this);
+
+		this.geoCodeService.geocode({ 'placeId': this.state.placeId }, geoCodeSuccess);
+
+		return [{
+			id: this.state.placeId,
+			caption: ""
+		}]
+	};
 
 	onchange(obj) {
 		if (obj.postal_code && obj.postal_code.length > 3) {
@@ -226,6 +259,7 @@ class ShippingAddrForm extends Component {
 					data={ this.state }
 					selectedID={ this.state.placeId || "" }
 					onchange={ this.onchange.bind(this) }
+					items={ this.state.addrPredictions }
 					refreshItems={ this.refreshAddrPredictions.bind(this) }
 					inputWidth="610px"
 					placeholder={ $T("4") /* Address */ } 
