@@ -104,6 +104,8 @@ const TRANSLATIONTABEL = {
 		86: "Enter postal/zip code to narrow results.",
 		87: "No Results",
 		88: "Please ensure a valid address has been entered.\nIf results are still not appearing,\nPlease report issue to:\nhelp@coastbeachwear.com ",
+		89: "Address Error",
+		90: "Could not resolve address\nPlease report to:\nhelp@coastbeachwear.com",
 
 		6005: "Blue",
 		9240: "Black",

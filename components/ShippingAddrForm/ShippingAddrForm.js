@@ -53,14 +53,72 @@ class ShippingAddrForm extends Component {
 		};
 		createShipmentFail = createShipmentFail.bind(this);
 
-		this.setState({ isProcessing: true });
+		function dataCollectionSuccess(data) {
+			this.props.order.setShippingAddr(data);
+			this.props.order.fulfilment.createShipment(createShipmentSuccess, createShipmentFail);
+		};
+		dataCollectionSuccess = dataCollectionSuccess.bind(this);
 
-		this.props.order.setShippingAddr(this.state);
-		this.props.order.fulfilment.createShipment(createShipmentSuccess, createShipmentFail);
+		this.setState({ isProcessing: true });
+		this.collectShippingAddrData(dataCollectionSuccess)
 	}
 
-	onaddresschange(obj) {
-		this.setState(obj);
+	collectShippingAddrData(success, fail) {
+		success = success || function() {};
+		fail = fail || function() {};
+
+		function parseAddressComponents(obj) {
+			var rawData = {};
+			var data = {};
+			
+			obj.address_components.forEach(function(component) {
+				var types = component.types;
+
+				types.forEach(function(type) {
+					if (["street_number", "route", "locality", "administrative_area_level_1", "country"].includes(type)) rawData[type] = component.short_name;
+				});
+			});
+
+			data = {
+				address: `${rawData.street_number} ${rawData.route}`,
+				city: rawData.locality,
+				country: rawData.country,
+				territory: rawData.administrative_area_level_1
+			};
+
+			//Validation
+			if (Object.values(data).includes(undefined)) return false;
+			else return data;
+		}
+		parseAddressComponents = parseAddressComponents.bind(this);
+
+		function geoCodeFail() {
+			ui.displayMessage(
+				$T(89), /* Address Error */
+				$T(90)
+			);
+			return fail();
+		};
+
+		function geoCodeSuccess(results, status) {
+			var valueFromState = ["last_name", "company", "apt", "postal_code", "email", "phone"];
+			var data = {};
+
+			if (!results || status !== "OK") return geoCodeFail();
+
+			data = parseAddressComponents(results.first());
+
+			if (data === false) return geoCodeFail();
+
+			valueFromState.forEach((function(key) {
+				data[key] = this.state[key];
+			}).bind(this));
+			
+			success(data);
+		};
+		geoCodeSuccess = geoCodeSuccess.bind(this);
+
+		this.geoCodeService.geocode({ 'placeId': this.state.placeId }, geoCodeSuccess);
 	}
 
 	geoCodePostalCode(postalCode) {
@@ -164,9 +222,10 @@ class ShippingAddrForm extends Component {
 					placeholder={$T("8") /* Postal Code */} 
 				/>
 				<InputTypeAhead 
-					dataKey={"address"}
+					dataKey={"placeId"}
 					data={ this.state }
-					onchange={ this.onaddresschange.bind(this) }
+					selectedID={ this.state.placeId || "" }
+					onchange={ this.onchange.bind(this) }
 					refreshItems={ this.refreshAddrPredictions.bind(this) }
 					inputWidth="610px"
 					placeholder={ $T("4") /* Address */ } 

@@ -48,8 +48,8 @@ class Fulfilment extends Model {
 					{
 						"description": "Coast Swimsuits",
 						"quantity": this.order.countUnits(),
-						"net_weight": "0.3",
-						"mass_unit": "kg",
+						"net_weight": "200",
+						"mass_unit": "g",
 						"value_amount": 72.00,
 						"value_currency": "CAD",
 						"origin_country": "CA"

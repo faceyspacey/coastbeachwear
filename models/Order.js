@@ -8,7 +8,7 @@ import Fulfilment from './Fulfilment.js'
 class Order extends Model {
 	
 	static billingAddrFields = ["first_name", "last_name", "company", "address", "city", "country", "apt", "territory", "postal_code", "email", "phone"];
-	static shippingAddrFields = ["first_name", "last_name", "company", "address", "city", "country", "apt", "territory", "postal_code", "email", "phone"];
+	static shippingAddrFields = ["first_name", "last_name", "company", "address", "city", "country", "apt", "territory", "postal_code", "email", "phone", "placeId"];
 	static paymentInfoFields = ["card_number", "card_holder", "card_type", "expiry", "cvv"];
 
 	billingAddr = {};

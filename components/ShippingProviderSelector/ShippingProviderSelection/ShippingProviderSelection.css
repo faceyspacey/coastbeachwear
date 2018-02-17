@@ -2,12 +2,13 @@
 @value primary, secondary, tertiary, quaternary, quinary from colors;
 
 .main {
-	padding-bottom: 20px;
+	padding-bottom: 23px;
 }
 
 .title {
     font-family: quantumrounded, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
+    padding-bottom: 5px;
     color: rgb(118, 118, 118);
     letter-spacing: 2.2px;
 }
@@ -23,7 +24,7 @@
 .details {
 	position: absolute;
 	top: 17px;
-	left: 74px;
+	left: 76px;
 }
 
 .checkbox-container { 
@@ -59,7 +60,7 @@
 	font-family: quantumrounded, sans-serif;
     font-size: 15px;
     color: rgb(118, 118, 118);
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     width: 430px;
   	white-space: nowrap;
   	overflow: hidden;
@@ -68,7 +69,7 @@
 
 .eta {
 	font-family: quantumrounded, sans-serif;
-	padding-top: 8px;
+	padding-top: 9px;
     font-size: 12px;
     color: rgb(118, 118, 118);
     letter-spacing: 1px;

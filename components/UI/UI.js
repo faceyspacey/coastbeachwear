@@ -21,7 +21,7 @@ class UI extends Component {
 	}
 
 	displayMessage(title, message, time) {
-		time = time || 2000;
+		time = time || 3200;
 
 		this.setState({
 			message: {

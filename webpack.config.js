@@ -6,7 +6,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	devtool: 'cheap-eval-source-map',
+	devtool: 'eval-source-map',
 	entry: [ 'webpack-hot-middleware/client', './support/polyfill.js','./main/BeachHut.js'],
 	output: {
 		path: resolve("./dist"),
