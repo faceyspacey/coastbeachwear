@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Coast Store</title>
+	<script src="https://js.stripe.com/v3/"></script>
+	<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107752778-1"></script>
+
+	<style type="text/css">
+		@font-face {
+		    font-family: "quantumrounded";
+		    src: url("fonts/quantumrounded.otf") format("truetype");
+		}
+		@font-face {
+		    font-family: "inkburrow";
+		    src: url("fonts/inkburrow.ttf") format("truetype");
+		}
+	</style>
+	<script id="ENV" type="text/javascript">
+		var ENV = {
+			gaid: "UA-107752778-1",
+			shippoAPIKey: "shippo_live_88d0e17fa4d069d3e5e24db475d3f2535ea4871e"
+		}
+		var IMGS = {
+			torso: "/media/product/torso.png",
+         	swimsuit: "/media/product/swimsuit.png"
+		}
+	</script>
+	<script id="Google Analytics" type="text/javascript">
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', ENV.gaid);
+	</script>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	  	var initialData = {
+			products: [
+				{
+					id: "p1",
+					name: "Genesis",
+					version: "1.0.0",
+					price: 73.00,
+					description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+					variants: [
+						{
+							id: "NS",
+							color: "9240",
+							size: "s",
+							images: ['/media/product/1.jpg', '/media/product/2.jpg', '/media/product/3.jpg', '/media/product/4.jpg', '/media/product/5.jpg']
+						},
+						{
+							id: "NM",
+							color: "9240",
+							size: "m",
+							images: ['/media/product/1.jpg', '/media/product/2.jpg', '/media/product/3.jpg', '/media/product/4.jpg', '/media/product/5.jpg']
+						},
+						{
+							id: "NL",
+							color: "9240",
+							size: "l",
+							images: ['/media/product/1.jpg', '/media/product/2.jpg', '/media/product/3.jpg', '/media/product/4.jpg', '/media/product/5.jpg']
+						},
+						{
+							id: "TS",
+							color: "6005",
+							size: "s",
+							images: ['/media/product/1.jpg', '/media/product/2.jpg', '/media/product/3.jpg', '/media/product/4.jpg', '/media/product/5.jpg']
+						},
+						{
+							id: "TM",
+							color: "6005",
+							size: "m",
+							images: ['/media/product/1.jpg', '/media/product/2.jpg', '/media/product/3.jpg', '/media/product/4.jpg', '/media/product/5.jpg'],
+						},
+						{
+							id: "TL",
+							color: "6005",
+							size: "l",
+							images: ['/media/product/1.jpg', '/media/product/2.jpg', '/media/product/3.jpg', '/media/product/4.jpg', '/media/product/5.jpg']
+						}
+					]
+				}
+			]
+		}
+	</script>
+</head>
+<body>
+	<div id="beachhut"></div>
+</body>
+</html>

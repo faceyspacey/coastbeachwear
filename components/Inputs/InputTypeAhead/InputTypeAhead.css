@@ -1,0 +1,170 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.dropdown {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 112%;
+	z-index: 1;
+}
+
+.content {
+	border-radius: 5px;
+	background-color: quaternary;
+	padding: 10px;
+}
+
+.input {
+	composes: input from "../InputUnderline/InputUnderline.css";
+	height: 54px;
+	padding-bottom: 5px;
+	padding-right: 54px
+}
+
+.input-filled {
+	composes: input-filled from "../Input.css";
+	composes: input;
+	padding-right: 54px
+}
+
+.input:focus {
+	border-bottom: 2px solid primary;
+	padding-bottom: 3px;
+	outline: none;
+}
+
+.input-filled:focus {
+	padding-bottom: 3px;
+}
+
+.selected-container {
+	composes: input;
+	height: 54px;
+	background-color: quaternary;
+}
+
+.selected-content {
+	height: 30px;
+	background-color: primary;
+	position: absolute;
+    top: 17px;
+    left: 27px;
+    width: 92%;
+}
+
+.selected-caption {
+	font-size: 10px;
+	color: quaternary;
+	padding-top: 9px;
+	padding-left: 14px;
+	padding-right: 50px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+}
+
+.clear-icon-container {
+	position: absolute;
+	top: 6px;
+    right: 11px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.clear-icon-container:hover {
+	background-color: #888888;
+}
+
+.clear-icon-container:active {
+	background-color: quaternary;
+}
+
+.clear-icon-container:active svg {
+	stroke: primary;
+}
+
+.clear-icon {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+    right: 14px;
+    width: 10px;
+}
+
+.clear-icon svg {
+	stroke: quaternary;
+}
+
+.search-icon-container {
+	box-sizing: border-box;
+	position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 54px;
+    background-color: #959797;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.search-icon {
+	position: absolute;
+    top: 17px;
+    right: 14px;
+    width: 21px;
+}
+
+.search-icon svg {
+	fill: quaternary;
+}
+
+.item {
+	height: 24px;
+}
+
+.dropdown-triangle {
+	width: 0; 
+	height: 0;
+	margin: 0 auto;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	border-bottom: 9px solid quaternary;
+}
+
+.triangle-container {
+	width: 100%;
+	margin-top: 3px;
+	height: 8px;
+}
+
+.notice {
+	color: primary;
+	padding: 0px 12px;
+	font-family: sans-serif;
+	font-size: 9px;
+}
+
+.error-content {
+	text-align: center;
+    letter-spacing: 1px;
+    color: #757575;
+	font-family: quantumrounded, sans-serif;
+}
+
+.error-title {
+	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 12px;
+}
+
+.empty-message {
+	font-size: 11px;
+	white-space: pre-line;
+	line-height: 1.8;
+}
