@@ -3,7 +3,7 @@ import styles from './FulfilmentForm.css'
 import formStyles from '../CheckoutForm/CheckoutForm.css'
 import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js'
 import $T from '../../support/translations.js'
-import { ui } from '../../main/BeachHut.js'
+import beachHut from '../../main/BeachHut.js'
 import FormNavigation from '../FormNavigation/FormNavigation.js'
 import ShippingProviderSelector from '../ShippingProviderSelector/ShippingProviderSelector.js'
 import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
@@ -30,7 +30,7 @@ class FulfilmentForm extends Component {
 
 	navigateForward() {
 		if (this.props.order.countUnits() < 1) {
-			ui.displayMessage(
+			beachHut.ui.displayMessage(
 				$T(78), /* Order Empty */
 				$T(77) /* Add item to order to proceed. */
 			);
@@ -45,7 +45,7 @@ class FulfilmentForm extends Component {
 		var prevForm = this.props.order.isSameAddress()? ShippingAddrForm : BillingAddrForm;
 
 		if (this.props.order.countUnits() < 1) {
-			ui.displayMessage(
+			beachHut.ui.displayMessage(
 				$T(78), /* Order Empty */
 				$T(77) /* Add item to order to proceed. */
 			);

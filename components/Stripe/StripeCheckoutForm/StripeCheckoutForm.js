@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {injectStripe} from 'react-stripe-elements';
-import { ui } from '../../../main/BeachHut.js'
+import beachHut from '../../../main/BeachHut.js'
 import CardSection from '../StripeCardSection/StripeCardSection.js';
 import InputStripeCardNumber from "../InputStripeCardNumber/InputStripeCardNumber.js"
 import InputStripeExpiry from "../InputStripeExpiry/InputStripeExpiry.js"
@@ -15,7 +15,7 @@ class StripeCheckoutForm extends Component {
 		ev.preventDefault();
 		
 		if (this.props.order.countUnits() < 1) {
-			ui.displayMessage(
+			beachHut.ui.displayMessage(
 				$T(78), /* Order Empty */
 				$T(77) /* Add item to order to proceed. */
 			);

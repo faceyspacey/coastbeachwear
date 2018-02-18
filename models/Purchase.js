@@ -1,5 +1,5 @@
 import Model from './Model'
-import { ui, order } from '../main/BeachHut.js'
+import beachHut from '../main/BeachHut.js'
 
 class Purchase extends Model {
 
@@ -8,11 +8,12 @@ class Purchase extends Model {
 	constructor(data) {
 		super();
 		
+		this.order = beachHut.order;
 		this.setData(data);
 	}
 
 	displayInOverlay() {
-		ui.displayPurchaseOverlay(this);
+		beachHut.ui.displayPurchaseOverlay(this);
 	}
 
 	calcPrice() {
@@ -20,7 +21,7 @@ class Purchase extends Model {
 	}
 
 	add(success, fail) {
-		order.addPurchase(this, success, fail);
+		this.order.addPurchase(this, success, fail);
 	}
 
 	save(data, success, fail) {
@@ -30,7 +31,7 @@ class Purchase extends Model {
 
 	_create(data, success, fail) {
 		this.setData(data);
-		order.addPurchase(this, success, fail);
+		this.order.addPurchase(this, success, fail);
 	}
 
 	_update(data, success, fail) {
@@ -45,14 +46,14 @@ class Purchase extends Model {
 		createShipmentFail = createShipmentFail.bind(this);
 
 		if (this.quantity !== wasData.quantity && Object.keys(order.shippingAddr).length > 0) {
-			order.fulfilment.createShipment(success, createShipmentFail);
+			this.order.fulfilment.createShipment(success, createShipmentFail);
 		} else {
 			success();
 		}
 	}
 
 	destroy() {
-		order.removePurchase(this);
+		this.order.removePurchase(this);
 	}
 }
 

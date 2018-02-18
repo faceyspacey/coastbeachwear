@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import formStyles from '../CheckoutForm/CheckoutForm.css'
 import styles from './PaymentForm.css'
-import { ui } from '../../main/BeachHut.js'
+import beachHut from '../../main/BeachHut.js'
 import $T from '../../support/translations.js'
 import Icons from '../../support/Icons.js'
 import {StripeProvider, Elements} from 'react-stripe-elements';
@@ -32,7 +32,7 @@ class PaymentForm extends Component {
 		if (this.props.order.countUnits() > 0) {
 			this.props.setCurrentForm(FulfilmentForm);
 		} else {
-			ui.displayMessage(
+			beachHut.ui.displayMessage(
 				$T(78), /* Order Empty */
 				$T(77) /* Add item to order to proceed. */
 			);
@@ -71,6 +71,7 @@ class PaymentForm extends Component {
 				<div className={ formStyles["header"] }>{ $T(32) /* Payment*/ }</div>
 				<TotalDetails
 					addition={ this.props.order.compileAddition() }
+					isShippedInterational={ this.props.order.isShippedInterational() }
 				/>
 				<div className={ styles["thank-you"] }>
 					<div className={ styles["made-in-canada-icon"] } >

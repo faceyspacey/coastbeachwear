@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import styles from './Footer.css'
 import Icons from '../../support/Icons.js'
-import { ui } from '../../main/BeachHut.js'
+import beachHut from '../../main/BeachHut.js'
 import $T from '../../support/translations.js'
 import FooterMenus from '../FooterMenus/FooterMenus.js'
 
 class Footer extends Component {
 	aboutClick() {
-		ui.displayAboutOverlay();
+		beachHut.ui.displayAboutOverlay();
 	}
 
 	policyClick() {
-		ui.displayPolicyOverlay();
+		beachHut.ui.displayPolicyOverlay();
 	}
 
 	render() {

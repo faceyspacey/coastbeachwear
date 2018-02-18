@@ -49,3 +49,10 @@
 .total .caption {
 	padding-left: 20px;
 }
+
+.international-notice {
+	font-size: 10px;
+    font-family: sans-serif;
+    color: rgb(118, 118, 118);
+    padding: 2px 20px 12px 20px;
+}

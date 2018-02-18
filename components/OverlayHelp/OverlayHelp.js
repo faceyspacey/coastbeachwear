@@ -4,7 +4,7 @@ import Icons from '../../support/Icons.js'
 import { $T, $TInject } from '../../support/translations.js'
 import Overlay from '../Overlay/Overlay.js'
 import { supportEmail } from '../../support/settings.js'
-import { ui } from '../../main/BeachHut.js'
+import beachHut from '../../main/BeachHut.js'
 import Input from '../Inputs/Input.js'
 import TextArea from '../Inputs/TextArea/TextArea.js'
 import MockInput from '../MockInput/MockInput.js'
@@ -37,11 +37,11 @@ class OverlayHelp extends Overlay {
 
 		emailjs.init("user_USAtZzUGAE7R9LfQjWO6w");
 		emailjs.send("default_service","help_request", emailParams).then((function() {
-			ui.displayMessage($T(85), $T(83));
+			beachHut.ui.displayMessage($T(85), $T(83));
 			this.props.closeOverlay();
 		}).bind(this)).catch((function(error) {
 			this.setState({ isSending: false });
-			ui.displayMessage($T(84), $TInject(82, [error.text]), 12000);
+			beachHut.ui.displayMessage($T(84), $TInject(82, [error.text]), 12000);
 		}).bind(this));
 	}
 

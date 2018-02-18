@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './HelpButton.css'
 import Icons from '../../support/Icons.js'
-import { ui } from '../../main/BeachHut.js'
+import beachHut from '../../main/BeachHut.js'
 
 class helpButton extends Component {
 	
@@ -20,9 +20,9 @@ class helpButton extends Component {
 
 	onclick() {
 		if (!this.state.active) {
-			ui.displayHelpOverlay(this.closeCallBack.bind(this))
+			beachHut.ui.displayHelpOverlay(this.closeCallBack.bind(this))
 		} else {
-			ui.closeOverlay();
+			beachHut.ui.closeOverlay();
 			this.closeCallBack();
 		}
 

@@ -107,6 +107,8 @@ const TRANSLATIONTABEL = {
 		89: "Address Error",
 		90: "Could not resolve address\nPlease report to:\nhelp@coastbeachwear.com",
 		91: "Address not found.",
+		92: "$0, $1, $2, $3", // Address 1 = Street, 2 = City, 3 = Province, 4 = Country
+		93: "* International orders may be subject to brokerage fees, taxes, and import duties.",
 
 		6005: "Blue",
 		9240: "Black",
@@ -207,6 +209,7 @@ const TRANSLATIONTABEL = {
 		77: "Add item to order to proceed...",
 		78: "Shipping Unavailable",
 		79: "Shipping not available for the entered shipping address. An email has been send to help@coastbeachwear.com notifying us of this.",
+		92: "$0, $1, $2, $3", // Address 1 = Street, 2 = City, 3 = Province, 4 = Country
 
 		6005: "Bleu (6005)",
 		9240: "Noir (9240)",

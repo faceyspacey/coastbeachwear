@@ -48,6 +48,13 @@ class TotalDetails extends Component {
 						{ $TInject(27 ,[this.props.addition.total.toFixed(2).toString()]) }
 					</div>
 				</div>
+				{
+					this.props.isShippedInterational && 
+					<div className={ styles['international-notice'] }>
+						{ $T(93) /* * International orders may be subject to brokerage fees, taxes, and import duties.*/}
+					</div>
+				}
+				
 			</div>
 		)
 	}

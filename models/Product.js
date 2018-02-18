@@ -1,5 +1,5 @@
 import Model from './Model'
-import { ui } from '../main/BeachHut.js'
+import beachHut from '../main/BeachHut.js'
 import Variant from './Variant'
 
 class Product extends Model {

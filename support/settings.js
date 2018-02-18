@@ -1,4 +1,5 @@
 let googleAPIkey = "AIzaSyDcwWg8y8deUHBf00-Fvh9e7rSRAqaXkeA"
+let originCountryCode = "ca"; 
 let supportEmail = "help@coastbeachwear.com";
 let taxRates = {
 	ca: {
@@ -18,4 +19,4 @@ let taxRates = {
 	}
 }
 
-export { supportEmail, taxRates }
+export { supportEmail, taxRates, originCountryCode}

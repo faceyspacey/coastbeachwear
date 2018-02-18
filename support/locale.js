@@ -1,4 +1,4 @@
-import { ui } from '../main/BeachHut.js'
+import beachHut from '../main/BeachHut.js'
 import TRANSLATIONTABEL from '../support/translation_table.js'
 
 let locale = {};
@@ -25,7 +25,12 @@ locale.setLanguage = function(language) {
 
 	this.language = language;
 
-	ui.setState({local: this});
+	function APILoadSuccess() {
+		beachHut.ui.setState({local: this});
+	}
+	APILoadSuccess = APILoadSuccess.bind(this);
+
+	beachHut.loadGoogleAPI(APILoadSuccess, APILoadSuccess);
 };
 locale.setLanguage = locale.setLanguage.bind(locale);
 

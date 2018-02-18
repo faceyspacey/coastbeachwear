@@ -1,8 +1,9 @@
 import Model from './Model.js'
-import { ui } from '../main/BeachHut.js'
+import beachHut from '../main/BeachHut.js'
 import { taxRates } from '../support/settings.js'
 import $T from '../support/translations.js'
 import Fulfilment from './Fulfilment.js'
+import { originCountryCode } from '../support/settings.js'
 
 
 class Order extends Model {
@@ -152,7 +153,7 @@ class Order extends Model {
 	}
 
 	updateUIState() {
-		ui.setState({order: this})
+		beachHut.ui.setState({ order: this })
 	}
 
 	calcSubtotal() {
@@ -250,6 +251,11 @@ class Order extends Model {
 		})
 
 		return count;
+	}
+
+	isShippedInterational() {
+		if (this.shippingAddr.country === undefined) return undefined;
+		else return this.shippingAddr.country.toLowerCase() !== originCountryCode;
 	}
 }
 
