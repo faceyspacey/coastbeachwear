@@ -1,6 +1,6 @@
 import Model from './Model'
 import locale from '../support/locale.js'
-import $T from '../support/translations.js'
+import { $T, $TInject } from '../support/translations.js'
 
 class Fulfilment extends Model {
 
@@ -29,6 +29,7 @@ class Fulfilment extends Model {
 			},
 			address_to: {
 				"name": this.order.shippingAddr.first_name + " " + this.order.shippingAddr.last_name,
+				"company": this.order.shippingAddr.company,
 				"street1": this.order.shippingAddr.address,
 				"street2": this.order.shippingAddr.apt? "Unit " + this.order.shippingAddr.apt: "",
 				"city": this.order.shippingAddr.city,
@@ -128,8 +129,6 @@ class Fulfilment extends Model {
 			weight: (200 * purchaseCount).toString(),
 			mass_unit: "g"
 		};
-
-
 	}
 
 	updateSelectedRate() {
@@ -187,6 +186,27 @@ class Fulfilment extends Model {
 
 		index = fastestRatesAmounts.indexOf(fastestRatesAmounts.max());
 		return fastestRates[index]
+	}
+
+	generateTermCaption(rate) {
+		rate = rate || this.selectedRate; 
+
+		if (!rate.estimated_days) return $T(65);
+		if (rate.estimated_days > 1) return $TInject(63, [rate.estimated_days.toString()]);
+		
+		return $TInject(64, [rate.estimated_days.toString()]);
+	}
+
+	generateProviderCaption(rate) {
+		var providerCaption = "";
+		
+		rate = rate || this.selectedRate; 
+		
+		providerCaption = rate.provider;
+
+		if (rate.servicelevel && rate.servicelevel.name) providerCaption += ` ${rate.servicelevel.name}`;
+
+		return providerCaption;
 	}
 }
 

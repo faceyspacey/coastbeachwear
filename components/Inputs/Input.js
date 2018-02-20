@@ -14,16 +14,24 @@ class Input extends Component {
 		}
 	}
 
+	formatText(value) {
+		var formatedValue = value;
+
+		if (this.props.upperCase === true) formatedValue = value.toUpperCase();
+
+		return formatedValue
+	}
+
 	onchange(event) {
+		var value = event.target.value;
 		var newData = {}
 
-		newData[this.props.dataKey] = event.target.value
-
+		newData[this.props.dataKey] = this.formatText(value)
 		this.props.onchange(newData);
 	}
 
 	formatedValue() {
-		return this.props.data[this.state.dataKey];
+		return this.formatText(this.props.data[this.state.dataKey]);
 	}
 
 	hasContent() {

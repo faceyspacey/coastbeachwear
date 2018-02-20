@@ -9,6 +9,11 @@
 	cursor: pointer;
 }
 
+.main-read-only {
+	composes: main;
+	cursor: auto;
+}
+
 .thumbnail {
 	height: 72px;
 	width: 72px;

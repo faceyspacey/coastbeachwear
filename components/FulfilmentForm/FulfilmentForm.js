@@ -109,7 +109,7 @@ class FulfilmentForm extends Component {
 				{ !this.hasRates(this.props.order.fulfilment.rates) && this.displayError() }
 				<ShippingProviderSelector 
 					selectedKey={ this.state.selectedRateKey }
-					rates={ this.props.order.fulfilment.rates }
+					fulfilment={ this.props.order.fulfilment }
 					onselect={ this.onrateselect.bind(this) }
 				/>
 				<FormNavigation 

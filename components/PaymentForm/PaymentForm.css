@@ -24,6 +24,11 @@
     letter-spacing: 1.7px;
 }
 
+.total-details-container {
+	width: 500px;
+	padding-left: 10px;
+}
+
 .thank-you {
 	position: relative;
 	height: 72px;

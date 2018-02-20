@@ -1,20 +1,23 @@
-import React, { Component } from 'react'
-import styles from './UI.css'
-import Showcase from '../Showcase/Showcase.js'
-import Checkout from '../Checkout/Checkout.js'
-import Footer from '../Footer/Footer.js'
-import OverlayPurchase from '../OverlayPurchase/OverlayPurchase.js'
-import OverlayHelp from '../OverlayHelp/OverlayHelp.js'
-import OverlayAbout from '../OverlayAbout/OverlayAbout.js'
-import OverlayPolicies from '../OverlayPolicies/OverlayPolicies.js'
-import HelpButton from '../HelpButton/HelpButton.js'
-import MessageBox from '../MessageBox/MessageBox.js'
+import React, { Component } from 'react';
+import styles from './UI.css';
+
+import Showcase from '../Showcase/Showcase.js';
+import Checkout from '../Checkout/Checkout.js';
+import CompleteSummary from '../CompleteSummary/CompleteSummary.js';
+import Footer from '../Footer/Footer.js';
+import OverlayPurchase from '../OverlayPurchase/OverlayPurchase.js';
+import OverlayHelp from '../OverlayHelp/OverlayHelp.js';
+import OverlayAbout from '../OverlayAbout/OverlayAbout.js';
+import OverlayPolicies from '../OverlayPolicies/OverlayPolicies.js';
+import HelpButton from '../HelpButton/HelpButton.js';
+import MessageBox from '../MessageBox/MessageBox.js';
 
 class UI extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
 			order: props.order,
+			isOrderComplete: false,
 			currentOverlay: undefined,
 			message: ""
 		};
@@ -91,14 +94,17 @@ class UI extends Component {
 		return (
 			<div>
 				<Showcase product={ this.props.products[0] }/>
-				<Checkout order= { this.state.order }/>
+				{ this.state.isOrderComplete? <CompleteSummary order= { this.state.order }/> : <Checkout order= { this.state.order }/> }
 				<Footer />
 				{ this.state.currentOverlay }
 				<HelpButton />
-				{ this.state.message && <MessageBox
-					title={ this.state.message.title }
-					message={ this.state.message.message }
-				/> }
+				{ 
+					this.state.message && 
+					<MessageBox
+						title={ this.state.message.title }
+						message={ this.state.message.message }
+					/> 
+				}
 			</div>
 		)
 	}

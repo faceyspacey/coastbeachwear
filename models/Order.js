@@ -24,6 +24,7 @@ class Order extends Model {
 		this.fulfilment = new Fulfilment(this);
 	}
 
+	// Method also used as updates.
 	setBillingAddr(obj) {
 		var fields = this.constructor.billingAddrFields;
 
@@ -34,6 +35,7 @@ class Order extends Model {
 		this.updateUIState();
 	}
 
+	// Method also used as updates.
 	setShippingAddr(obj) {
 		var fields = this.constructor.shippingAddrFields;
 		var validation = false;
@@ -55,11 +57,23 @@ class Order extends Model {
 	}
 
 	getBillingAddr() {
-		return JSON.parse(JSON.stringify(this.billingAddr));
+		var data = {};
+
+		this.constructor.billingAddrFields.forEach((function(field) {
+			data[field] = this.billingAddr[field] || "";
+		}).bind(this));
+
+		return JSON.parse(JSON.stringify(data));
 	}
 
 	getShippingAddr() {
-		return JSON.parse(JSON.stringify(this.shippingAddr));
+		var data = {};
+
+		this.constructor.shippingAddrFields.forEach((function(field) {
+			data[field] = this.shippingAddr[field] || "";
+		}).bind(this));
+
+		return JSON.parse(JSON.stringify(data));
 	}
 
 	validateShippingAddress(obj) {
@@ -256,6 +270,37 @@ class Order extends Model {
 	isShippedInterational() {
 		if (this.shippingAddr.country === undefined) return undefined;
 		else return this.shippingAddr.country.toLowerCase() !== originCountryCode;
+	}
+
+	placeId2AddrObj(placeId, isLongName) {
+		var rawData = {};
+		var data = {};
+		var nameType = isLongName? "long_name" : "short_name";
+		
+		obj.address_components.forEach(function(component) {
+			var types = component.types;
+
+			types.forEach(function(type) {
+				// Force long name
+				if (["route"].includes(type)) rawData[type] = component["long_name"];
+				if (["street_number", "locality", "administrative_area_level_1", "country"].includes(type)) rawData[type] = component[nameType];
+			});
+		});
+
+		data = {
+			address: `${rawData.street_number} ${rawData.route}`,
+			city: rawData.locality,
+			country: rawData.country,
+			territory: rawData.administrative_area_level_1
+		};
+
+		//Validation
+		if (Object.values(data).includes(undefined)) return false;
+		else return data;
+	}
+
+	complete(token) {
+		beachHut.ui.setState({ isOrderComplete: true });
 	}
 }
 

@@ -109,6 +109,12 @@ const TRANSLATIONTABEL = {
 		91: "Address not found.",
 		92: "$0, $1, $2, $3", // Address 1 = Street, 2 = City, 3 = Province, 4 = Country
 		93: "* International orders may be subject to brokerage fees, taxes, and import duties.",
+		94: "Order Complete!",
+		95: "Bill to:",
+		96: "Ship to:",
+		97: "Shipped with:",
+		98: "Thank You!",
+		99: "New Order",
 
 		6005: "Blue",
 		9240: "Black",

@@ -14,38 +14,42 @@ class TotalDetails extends Component {
 	render() {
 		return (
 			<div className={ styles['main'] }>
-				<div className={ styles['addition'] }>
-					<div className={ styles['line'] }>
-						<div className={ styles['caption'] }>
-							{ $T(28) /* Subtotal: */ } 
+				<div className={ styles['addition-container'] } >
+					<div className={ styles['addition'] }>
+						<div className={ styles['line'] }>
+							<div className={ styles['caption'] }>
+								{ $T(28) /* Subtotal: */ } 
+							</div>
+							<div className={ styles['amount'] }>
+								{ $TInject(27, [this.props.addition.subtotal.toFixed(2).toString()]) }
+							</div>
 						</div>
-						<div className={ styles['amount'] }>
-							{ $TInject(27, [this.props.addition.subtotal.toFixed(2).toString()]) }
+						<div className={ styles['line'] }>
+							<div className={ styles['caption'] }>
+								{ $T(71 /* Shipping */) }
+							</div>
+							<div className={ styles['amount'] }>
+								{ $TInject(27, [this.props.addition.shipping.toFixed(2).toString()]) }
+							</div>
 						</div>
-					</div>
-					<div className={ styles['line'] }>
-						<div className={ styles['caption'] }>
-							{ $T(71 /* Shipping */) }
-						</div>
-						<div className={ styles['amount'] }>
-							{ $TInject(27, [this.props.addition.shipping.toFixed(2).toString()]) }
-						</div>
-					</div>
-					<div className={ styles['line'] }>
-						<div className={ styles['caption'] }>
-							{ $T(70) /* Taxes */ }
-						</div>
-						<div className={ styles['amount'] }>
-							{ $TInject(27, [this.props.addition.taxes.toFixed(2).toString()]) }
+						<div className={ styles['line'] }>
+							<div className={ styles['caption'] }>
+								{ $T(70) /* Taxes */ }
+							</div>
+							<div className={ styles['amount'] }>
+								{ $TInject(27, [this.props.addition.taxes.toFixed(2).toString()]) }
+							</div>
 						</div>
 					</div>
 				</div>
-				<div className={ styles['total'] }>
-					<div className={ styles['caption'] }>
-						{ $T(72) /* Total */ }
-					</div>
-					<div className={ styles['amount'] }>
-						{ $TInject(27 ,[this.props.addition.total.toFixed(2).toString()]) }
+				<div className={ styles['total-container'] }>
+					<div className={ styles['total'] }>
+						<div className={ styles['caption'] }>
+							{ $T(72) /* Total */ }
+						</div>
+						<div className={ styles['amount'] }>
+							{ $TInject(27 ,[this.props.addition.total.toFixed(2).toString()]) }
+						</div>
 					</div>
 				</div>
 				{

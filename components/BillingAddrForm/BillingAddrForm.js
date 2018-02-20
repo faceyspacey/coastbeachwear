@@ -99,6 +99,7 @@ class BillingAddrForm extends Component {
 					onchange={ this.onchange.bind(this) }
 					inputWidth="180px"
 					placeholder={$T("8") /* Postal Code */} 
+					upperCase={ true }
 				/>
 				<InputUnderline 
 					dataKey={"email"} 

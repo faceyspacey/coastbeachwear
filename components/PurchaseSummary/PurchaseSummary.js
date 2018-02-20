@@ -14,6 +14,8 @@ class PurchaseSummary extends Component {
 	}
 
 	onclick() {
+		if (this.props.readOnly) return;
+
 		this.props.purchase.displayInOverlay();
 	}
 
@@ -23,7 +25,7 @@ class PurchaseSummary extends Component {
 		var product = variant.product;
 
 		return (
-			<div className={ styles["main"] } onClick={ this.onclick.bind(this) }>
+			<div className={ this.props.readOnly? styles["main-read-only"]: styles["main"]  } onClick={ this.onclick.bind(this) }>
 				<img className={ styles["thumbnail"] } src={ variant.images[0] }/>
 				<div className={ styles["title"] }>
 					<div  className={ styles["name"] }>
@@ -41,9 +43,13 @@ class PurchaseSummary extends Component {
 						{ $TInject(27, [purchase.calcPrice().toFixed(2)]) }
 					</div>
 				</div>
-				<div className={ styles["remove"] } onClick={ this.onremoveclick.bind(this) }>
-					{ Icons.insert("clear") }
-				</div>
+				{
+					this.props.readOnly !== true  &&
+					<div className={ styles["remove"] } onClick={ this.onremoveclick.bind(this) }>
+						{ Icons.insert("clear") }
+					</div>
+				}
+
 			</div>
 		)
 	}

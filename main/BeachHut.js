@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import locale from '../support/locale.js'
+import locationServices from '../support/LocationServices.js'
 import UI from '../components/UI/UI.js'
 import Order from '../models/Order.js'
 import Product from '../models/Product.js'
@@ -16,6 +17,7 @@ class Beachhut {
 
 		function externalAPIsLoaded() {
 			this.loadProducts();
+			locationServices.loadLocationServices();
 			this.loadUI();
 		};
 		externalAPIsLoaded = externalAPIsLoaded.bind(this);
@@ -72,6 +74,15 @@ class Beachhut {
 		var url = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB7CvnyMLujWk65zH5ya3PNLFznqrA-xIU&libraries=places&language=${language}`;
 
 		this.loadScript(url, "googleMapsAPI", success, fail);
+	}
+
+	resetOrder() {
+		this.order = new Order;
+		
+		this.ui.setState({
+			order: this.order,
+			isOrderComplete: false
+		});
 	}
 }
 

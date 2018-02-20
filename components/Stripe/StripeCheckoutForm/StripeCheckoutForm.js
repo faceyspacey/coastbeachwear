@@ -21,10 +21,12 @@ class StripeCheckoutForm extends Component {
 			);
 			return;
 		}
+
+		this.props.navigateForward();
 		
-		this.props.stripe.createToken({ name: this.props.card_holder }).then(({ token }) => {
-			console.log('Received Stripe token:', token);
-		});
+		// this.props.stripe.createToken({ name: this.props.card_holder }).then(({ token }) => {
+		// 	console.log('Received Stripe token:', token);
+		// });
 	}
 
 	render() {

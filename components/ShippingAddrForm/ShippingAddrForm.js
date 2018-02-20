@@ -4,6 +4,7 @@ import styles from './ShippingAddrForm.css';
 
 import beachHut from '../../main/BeachHut.js';
 import locale from '../../support/locale.js';
+import locationServices from '../../support/LocationServices.js';
 import { $T, $TInject } from '../../support/translations.js';
 
 import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js';
@@ -17,8 +18,6 @@ import Checkbox from '../Checkbox/Checkbox.js';
 class ShippingAddrForm extends Component {
 	constructor(props, context) {
 		super(props, context)
-
-		this.loadLocationServices()
 		
 		this.state = props.order.getShippingAddr();
 		this.state.sameAsBilling = !this.props.order.isShippingAddrEmpty() && this.props.order.isSameAddress();
@@ -31,13 +30,6 @@ class ShippingAddrForm extends Component {
 
 	static getTitle() {
 		return $T(10) // Shipping Details
-	}
-
-	loadLocationServices() {
-		this.autoCompleteService = new google.maps.places.AutocompleteService();
-		this.geoCodeService = new google.maps.Geocoder();
-
-		this.mapLanguage = locale.language;
 	}
 
 	navigateForward() {
@@ -54,7 +46,8 @@ class ShippingAddrForm extends Component {
 		function createShipmentSuccess() {
 			if (this.state.sameAsBilling) {
 				nextForm = FulfilmentForm;
-				this.props.order.setBillingAddr(this.props.order.shippingAddr);
+
+				this.props.order.setBillingAddr(this.props.order.getShippingAddr());
 			} else {
 				nextForm = BillingAddrForm;
 			}
@@ -82,7 +75,7 @@ class ShippingAddrForm extends Component {
 		success = success || function() {};
 		fail = fail || function() {};
 
-		function geoCodeFail() {
+		function retrieveFail() {
 			beachHut.ui.displayMessage(
 				$T(89), /* Address Error */
 				$T(90)
@@ -90,13 +83,8 @@ class ShippingAddrForm extends Component {
 			return fail();
 		};
 
-		function geoCodeSuccess(results, status) {
-			var valueFromState = ["last_name", "company", "apt", "postal_code", "email", "phone", "placeId"];
-			var data = {};
-
-			if (!results || status !== "OK") return geoCodeFail();
-
-			data = this.parseAddressComponents(results.first());
+		function retrieveSuccess(data) {
+			var valueFromState = ["first_name", "last_name", "company", "apt", "postal_code", "email", "phone", "placeId"];
 
 			if (data === false) return geoCodeFail();
 
@@ -106,9 +94,9 @@ class ShippingAddrForm extends Component {
 			
 			success(data);
 		};
-		geoCodeSuccess = geoCodeSuccess.bind(this);
+		retrieveSuccess = retrieveSuccess.bind(this);
 
-		this.geoCodeService.geocode({ 'placeId': this.state.placeId }, geoCodeSuccess);
+		locationServices.retrieveAddrObjForPlaceId(this.state.placeId, false, retrieveSuccess, retrieveFail);
 	}
 
 	parseAddressComponents(obj, isLongName) {
@@ -139,14 +127,12 @@ class ShippingAddrForm extends Component {
 	}
 
 	geoCodePostalCode(postalCode) {
-		function geoCodeSuccess(results, status) {
-			if (!results || status !== "OK") return;
-			
-			this.postalCodeLocation = results[0].geometry.location;
-		};
-		geoCodeSuccess = geoCodeSuccess.bind(this);
+		function success(latLng) {
+			this.postalCodeLocation = latLng;
+		}
+		success = success.bind(this);
 
-		this.geoCodeService.geocode({ 'address': postalCode}, geoCodeSuccess.bind(this));
+		locationServices.postalCode2LatLng(postalCode, success);	
 	}
 
 	refreshAddrPredictions(search, success) {
@@ -179,38 +165,38 @@ class ShippingAddrForm extends Component {
     	};
     	predictionGetSuccess = predictionGetSuccess.bind(this);
 
-		this.autoCompleteService.getPlacePredictions(request, predictionGetSuccess);
+		locationServices.getPlacePredictions(request, predictionGetSuccess);
 	}
 
 	changeLanguage() {
-		this.loadLocationServices();
+		locationServices.loadLocationServices();
 		this.initiateAddrPredictions();
 	}
 
 	initiateAddrPredictions() {
 		if (!this.state.placeId) return [];
 
-		function geoCodeSuccess(results, status) {
-			var formattedAddress = "";
-			var addressData = {};
-
-			if (status !== "OK" || !results || results.length < 1) formattedAddress = $T(91) // Address not found.
-			
-			addressData = this.parseAddressComponents(results.first());
-
-			if (addressData === false) formattedAddress = $T(91); // Address not found.
-			else formattedAddress = $TInject(92, [addressData.address, addressData.city, addressData.territory, addressData.country]);	
-
+		function retrieveSuccess(data) {
 			this.setState({
 				addrPredictions: [{
 					id: this.state.placeId,
-					caption: formattedAddress
+					caption: $TInject(92, [data.address, data.city, data.territory, data.country])	
 				}]
 			});
 		};
-		geoCodeSuccess = geoCodeSuccess.bind(this);
+		retrieveSuccess = retrieveSuccess.bind(this);
 
-		this.geoCodeService.geocode({ 'placeId': this.state.placeId }, geoCodeSuccess);
+		function retrieveFail() {
+			this.setState({
+				addrPredictions: [{
+					id: this.state.placeId,
+					caption: $T(91) // Address not found.
+				}]
+			});
+		};
+		retrieveFail = retrieveFail.bind(this);
+
+		locationServices.retrieveAddrObjForPlaceId(this.state.placeId, false, retrieveSuccess, retrieveFail);
 
 		return [{
 			id: this.state.placeId,
@@ -219,14 +205,15 @@ class ShippingAddrForm extends Component {
 	};
 
 	onchange(obj) {
-		if (obj.postal_code && obj.postal_code.length > 3) {
+		if (obj.postal_code || obj.postal_code == "") {
 			this.postalCodeLocation = undefined;
-			
 			clearTimeout(this.geoCodeRequest);
-			
-			this.geoCodeRequest = setTimeout((function() {
-				this.geoCodePostalCode(obj.postal_code);
-			}).bind(this), 700);
+
+			if(obj.postal_code.length > 3) {
+				this.geoCodeRequest = setTimeout((function() {
+					this.geoCodePostalCode(obj.postal_code);
+				}).bind(this), 700);
+			}
 		}
 
 		this.setState(obj);
@@ -239,7 +226,7 @@ class ShippingAddrForm extends Component {
 	}
 
 	render() {
-		if (this.mapLanguage !== locale.language) this.changeLanguage();
+		if (locationServices.language !== locale.language) this.changeLanguage();
 		
 		return (
 			<div className={styles["main"]}>
@@ -277,7 +264,8 @@ class ShippingAddrForm extends Component {
 					data={ this.state }
 					onchange={ this.onchange.bind(this) }
 					inputWidth="220px"
-					placeholder={$T("8") /* Postal Code */} 
+					placeholder={$T("8") /* Postal Code */}
+					upperCase={ true }
 				/>
 				<InputTypeAhead 
 					dataKey={"placeId"}

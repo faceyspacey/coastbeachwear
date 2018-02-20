@@ -69,10 +69,12 @@ class PaymentForm extends Component {
 		return (
 			<div className={ styles["main"] }>
 				<div className={ formStyles["header"] }>{ $T(32) /* Payment*/ }</div>
-				<TotalDetails
-					addition={ this.props.order.compileAddition() }
-					isShippedInterational={ this.props.order.isShippedInterational() }
-				/>
+				<div className={ styles["total-details-container"] }>
+					<TotalDetails
+						addition={ this.props.order.compileAddition() }
+						isShippedInterational={ this.props.order.isShippedInterational() }
+					/>
+				</div>
 				<div className={ styles["thank-you"] }>
 					<div className={ styles["made-in-canada-icon"] } >
 						{ Icons.insert('made_in_canada') }
@@ -115,6 +117,7 @@ class PaymentForm extends Component {
 							order={ this.props.order }
 							card_holder={ this.state.cardHolder }
 							navigateBackward={ this.navigateBackward.bind(this) }
+							navigateForward={ this.props.order.complete }
 						/>
 					</Elements>
 				</StripeProvider>

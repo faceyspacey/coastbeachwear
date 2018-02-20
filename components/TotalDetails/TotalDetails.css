@@ -2,18 +2,19 @@
 @value primary, secondary, tertiary, quaternary, quinary from colors;
 
 .main {
-	width: 500px;
-	margin-left: 10px;
 	margin-bottom: 16px;
 	background-color: quaternary;
 }
 
-.addition {
-	display: table;
+.addition-container {
 	padding-top: 12px;
 	margin-left: 10px;
 	margin-right: 10px;
-	width: 480px;
+}
+.addition {
+	display: table;
+	border-spacing: 0 0px;
+	width: 100%;
 	border-bottom: 2px solid primary;
 }
 
@@ -33,22 +34,24 @@
 .caption {
 	composes: cell;
 	padding-left: 10px;
-	width: 312px;
 }
 
 .amount {
 	composes: cell;
+	text-align: right;
+}
+
+.total-container {
+	padding-top: 2px;
+	margin: 0px 10px;
 }
 
 .total {
 	display: table;
-	padding-top: 2px;
-	width: 500px;
+	border-spacing: 0 0px;
+	width: 100%;
 }
 
-.total .caption {
-	padding-left: 20px;
-}
 
 .international-notice {
 	font-size: 10px;
