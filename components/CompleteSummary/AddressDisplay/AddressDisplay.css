@@ -1,0 +1,24 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	background-color: quaternary;
+	width: 440px;
+	padding: 20px 0;
+}
+
+.title {
+	font-size: 17px;
+	padding: 10px 32px;
+	color: #757575;
+	font-family: quantumrounded, sans-serif;
+	letter-spacing: 2px;
+	text-decoration: underline;
+}
+
+.address-line {
+	font-size: 13px;
+	padding: 5px 24px;
+	color: #757575;
+	font-family: quantumrounded, sans-serif;
+}

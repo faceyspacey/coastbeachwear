@@ -1,0 +1,55 @@
+@value colors: "../../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+.main {
+	background-color: quaternary;
+	width: 440px;
+	padding: 20px 0;
+}
+
+.title {
+	font-size: 17px;
+	padding: 10px 32px;
+	color: #757575;
+	font-family: quantumrounded, sans-serif;
+	letter-spacing: 2px;
+	text-decoration: underline;
+}
+
+.shipped-by {
+}
+
+.shipping-details {
+	padding: 2px 24px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.shipping-provider {
+	font-family: quantumrounded, sans-serif;
+	font-size: 14px;
+	color: rgb(118, 118, 118);
+	letter-spacing: 0.8px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.shipping-eta {
+	font-family: quantumrounded, sans-serif;
+	padding-top: 6px;
+	font-size: 10px;
+	color: rgb(118, 118, 118);
+	letter-spacing: 1px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.map {
+	height: 200px;
+}
+
+.map-container {
+	padding-top: 24px;
+}

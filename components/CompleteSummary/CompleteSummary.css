@@ -1,0 +1,106 @@
+@value colors: "../../main/colors.css";
+@value primary, secondary, tertiary, quaternary, quinary from colors;
+
+
+.header {
+	height: 137px;
+	background-color: primary;
+	position: relative;
+}
+
+.content {
+	background-color: tertiary;
+    padding-top: 120px;
+}
+
+.inner-content {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header-title {
+    position: absolute;
+    font-weight: 200;
+    top: 21.8px;
+    left: 68.5px;
+    font-family: quantumrounded, sans-serif;
+    font-size: 40px;
+    color: quaternary;
+    letter-spacing: 4.5px;
+    margin: 0px;
+}
+
+.header-sub-title {
+    position: absolute;
+    font-weight: 200;
+	bottom: 27.5px;
+    left: 106px;
+    font-family: inkburrow, sans-serif;
+    font-size: 25px;
+    color: quaternary;
+    letter-spacing: 2.7px;
+    margin: 0px;
+}
+
+.title {
+    position: absolute;
+    top: -64px;
+    left: -160px;
+    transform: rotate(353deg);
+    font-family: inkburrow, sans-serif;
+    color: rgb(118, 118, 118);
+    font-size: 75px;
+    letter-spacing: 2.1px;
+}
+
+.purchases {
+    background-color: quaternary;
+}
+
+.widgets-container {
+    width: 100%;
+    display: table;
+}
+
+.widget-conatiner {
+    width: 440px;
+    display: table-row;
+}
+
+.colomn {
+    display: table-cell;
+    width: 50%;
+}
+
+.colomn-table {
+    display: table;
+    border-spacing: 0 40px;
+}
+
+.receipt {
+    composes: widget-conatiner;
+}
+
+.new-button-section {
+    text-align: right;
+    padding: 8px 20px 44px 20px;
+
+}
+
+.new-button {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 15.5px 24px 0 24px;
+    height: 48px;
+    background-color: primary;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.new-button-caption {
+    font-family: quantumrounded, sans-serif;
+    font-size: 15px;
+    color: quaternary;
+    letter-spacing: 1.7px;
+}
