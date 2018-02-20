@@ -104,3 +104,11 @@
     color: quaternary;
     letter-spacing: 1.7px;
 }
+
+.new-button:active {
+    background-color: quaternary;
+}
+
+.new-button:active .new-button-caption {
+    color: primary;
+}

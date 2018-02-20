@@ -40,7 +40,7 @@ locale.detectCurrency = function() {
 
 locale.detectLanguage = function() {
 	var storedLanguage = localStorage.getItem("language");
-	var browserLanguages = navigator.languages
+	var browserLanguages = navigator.languages || [navigator.language];
 
 	// Remove country code from language.
 	browserLanguages = browserLanguages.map(function(lang) {
