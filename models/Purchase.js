@@ -45,7 +45,7 @@ class Purchase extends Model {
 		};
 		createShipmentFail = createShipmentFail.bind(this);
 
-		if (this.quantity !== wasData.quantity && Object.keys(order.shippingAddr).length > 0) {
+		if (this.quantity !== wasData.quantity && Object.keys(this.order.shippingAddr).length > 0) {
 			this.order.fulfilment.createShipment(success, createShipmentFail);
 		} else {
 			success();

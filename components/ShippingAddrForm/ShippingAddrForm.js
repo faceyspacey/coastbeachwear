@@ -20,7 +20,7 @@ class ShippingAddrForm extends Component {
 		super(props, context)
 		
 		this.state = props.order.getShippingAddr();
-		this.state.sameAsBilling = !this.props.order.isShippingAddrEmpty() && this.props.order.isSameAddress();
+		this.state.sameAsBilling = this.props.order.isSameAddress();
 		this.state.addrPredictions = this.initiateAddrPredictions();
 		this.state.isProcessing = false;
 

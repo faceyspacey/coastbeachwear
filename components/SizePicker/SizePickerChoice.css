@@ -4,9 +4,9 @@
 .main {
 	display: inline-block;
 	box-sizing: border-box;
-	width: 38px;
+	width: 47px;
 	height: 38px;
-	line-height: 38px;
+	line-height: 42px;
 	text-align: center;
 	font-size: 16px;
 	margin-right: 22px;
@@ -20,6 +20,7 @@
 
 .main-unselected {
 	composes: main;
+	line-height: 38px;
 	border: 2px solid quinary;
 }
 

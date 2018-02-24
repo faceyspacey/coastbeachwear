@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './OverlayAbout.css'
 import Icons from '../../support/Icons.js'
-import { supportEmail } from '../../support/settings.js'
 import { $T, $TInject } from '../../support/translations.js'
 import Overlay from '../Overlay/Overlay.js'
 
@@ -27,7 +26,7 @@ class OverlayAbout extends Overlay {
 					</div>
 				</div>
 				<div className={ styles["contact"] }>
-					<div className={ styles["support-email"] }>{ supportEmail } </div>
+					<div className={ styles["support-email"] }>{ $T(100) /* help@coastbeachwear.com */ } </div>
 					<div>{ $T(46) }</div>
 					<div>{ $T(42) }</div>
 					<div>{ $T(43) }</div>

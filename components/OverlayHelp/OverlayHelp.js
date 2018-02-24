@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './OverlayHelp.css'
+import locale from '../../support/locale.js'
 import Icons from '../../support/Icons.js'
 import { $T, $TInject } from '../../support/translations.js'
 import Overlay from '../Overlay/Overlay.js'
-import { supportEmail } from '../../support/settings.js'
 import beachHut from '../../main/BeachHut.js'
 import Input from '../Inputs/Input.js'
 import TextArea from '../Inputs/TextArea/TextArea.js'
@@ -12,6 +12,11 @@ import MockInput from '../MockInput/MockInput.js'
 class OverlayHelp extends Overlay {
 	
 	static backgroundColor = "primary";
+
+	language2Template = {
+		en: "help_request",
+		fr: "demande_aide"
+	}
 
 	constructor(props, context) {
 		super(props, context);
@@ -26,6 +31,7 @@ class OverlayHelp extends Overlay {
 	}
 
 	sendMessage() {
+		var template =  this.language2Template[locale.language];
 		var emailParams = {
 			reply_to: this.state.email,
 			message: this.state.message
@@ -36,7 +42,7 @@ class OverlayHelp extends Overlay {
 		this.setState({ isSending: true });
 
 		emailjs.init("user_USAtZzUGAE7R9LfQjWO6w");
-		emailjs.send("default_service","help_request", emailParams).then((function() {
+		emailjs.send("default_service", template, emailParams).then((function() {
 			beachHut.ui.displayMessage($T(85), $T(83));
 			this.props.closeOverlay();
 		}).bind(this)).catch((function(error) {
@@ -59,7 +65,7 @@ class OverlayHelp extends Overlay {
 					<MockInput
 						inputWidth="440px"
 						placeholder={ $T("52") /* To: */ } 
-						value={ supportEmail }
+						value={ $T(100) /* help@coastbeachwear.com */ }
 					/>
 					<Input 
 						dataKey={"email"}
