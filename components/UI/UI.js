@@ -26,16 +26,30 @@ class UI extends Component {
 	displayMessage(title, message, time) {
 		time = time || 3200;
 
+		if (this.state.message) return;
+
 		this.setState({
 			message: {
 				title: title,
-				message: message	
+				message: message,
 			}
 		});
 
 		setTimeout((function() {
 			this.setState({ message: undefined });
 		}).bind(this), time);
+	}
+
+	displayPrompt(title, message, buttons) {
+		if (this.state.message) return;
+
+		this.setState({
+			message: {
+				title: title,
+				message: message,
+				buttons: buttons
+			}
+		});
 	}
 
 	closeOverlay() {
@@ -103,6 +117,7 @@ class UI extends Component {
 					<MessageBox
 						title={ this.state.message.title }
 						message={ this.state.message.message }
+						buttons={ this.state.message.buttons }
 					/> 
 				}
 			</div>

@@ -12,15 +12,15 @@ class Order extends Model {
 	static shippingAddrFields = ["first_name", "last_name", "company", "address", "city", "country", "apt", "territory", "postal_code", "email", "phone", "placeId"];
 	static paymentInfoFields = ["card_number", "card_holder", "card_type", "expiry", "cvv"];
 
-	billingAddr = {};
-	shippingAddr = {};
-	paymentInfo = {}
-	purchases = [];
-
-	fulfilment = {};
-
 	constructor() {
 		super();
+
+		this.billingAddr = {};
+		this.shippingAddr = {};
+		this.paymentInfo = {}
+		this.purchases = [];
+		
+		this.isComplete = false;
 		this.fulfilment = new Fulfilment(this);
 	}
 
@@ -132,7 +132,7 @@ class Order extends Model {
 		}
 
 		this.purchases.push(purchase);
-
+		
 		if (Object.keys(this.shippingAddr).length === 0) createShipmentSuccess();
 		else this.fulfilment.createShipment(createShipmentSuccess, createShipmentFail);
 	}
@@ -301,6 +301,13 @@ class Order extends Model {
 
 	complete(token) {
 		beachHut.ui.setState({ isOrderComplete: true });
+		
+		this.isComplete = true;
+
+		gtag('event', 'purchase', { 
+			transaction_id: "",
+			items: this.purchases.map(function(purchase) { return { id: purchase.variant.id, quantity: purchase.quantity } })
+		});
 	}
 }
 

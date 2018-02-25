@@ -12,8 +12,12 @@ class Purchase extends Model {
 		this.setData(data);
 	}
 
-	displayInOverlay() {
+	displayInOverlay = () => {
 		beachHut.ui.displayPurchaseOverlay(this);
+
+		gtag('event', 'view_item', { 
+			items: [{ id: this.variant.id, quantity: this.quantity }]
+		});
 	}
 
 	calcPrice() {
@@ -21,6 +25,7 @@ class Purchase extends Model {
 	}
 
 	add(success, fail) {
+		if (this.order.isComplete) return fail();
 		this.order.addPurchase(this, success, fail);
 	}
 

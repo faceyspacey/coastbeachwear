@@ -117,7 +117,7 @@ class PaymentForm extends Component {
 							order={ this.props.order }
 							card_holder={ this.state.cardHolder }
 							navigateBackward={ this.navigateBackward.bind(this) }
-							navigateForward={ this.props.order.complete }
+							navigateForward={ this.props.order.complete.bind(this.props.order) }
 						/>
 					</Elements>
 				</StripeProvider>

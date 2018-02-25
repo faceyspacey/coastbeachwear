@@ -29,6 +29,14 @@ class FulfilmentForm extends Component {
 	}
 
 	navigateForward() {
+		if (!this.state.selectedRateKey) {
+			beachHut.ui.displayMessage(
+				$T(101), /* Seletect Option */
+				$T(102) /* Select shipping option to proceed. */
+			);
+			return;
+		}
+
 		if (this.props.order.countUnits() < 1) {
 			beachHut.ui.displayMessage(
 				$T(78), /* Order Empty */

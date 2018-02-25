@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './OverlayPurchase.css'
+import beachHut from '../../main/BeachHut.js'
 import Icons from '../../support/Icons.js'
 import {$T, $TInject} from '../../support/translations.js'
 import Overlay from '../Overlay/Overlay.js'
@@ -47,10 +48,31 @@ class OverlayPurchase extends Overlay {
 
 	}
 
+	displayCompletePrompt() {
+		var promptButtons = [
+			{
+				caption: $T(103), /* Cancel*/
+			},
+			{
+				caption: $T(99), /* New Order */
+				onclick: (function() {
+					beachHut.resetOrder();
+					
+					this.props.purchase.order = beachHut.order;
+					this.addPurchase();
+				}).bind(this)
+			}
+		]
+
+		beachHut.ui.displayPrompt(
+			$T(99), /* New Order */
+			$T(104) /* Would you like to create a new order with this product in it? */,
+			promptButtons
+		);
+	}
+
 	addPurchase() {
 		var data = {};
-
-		this.setState({ isProcessing: true });
 
 		function onaddsuccess() {
 			this.props.closeOverlay();
@@ -61,6 +83,12 @@ class OverlayPurchase extends Overlay {
 			this.setState({ isProcessing: false });
 		};
 		onaddfail = onaddfail.bind(this);
+		
+		if (this.props.purchase.order.isComplete) {
+			return this.displayCompletePrompt();
+		}
+
+		this.setState({ isProcessing: true });
 
 		data.quantity = this.state.quantity;
 		data.variant = this.state.currentVariant;
@@ -75,6 +103,13 @@ class OverlayPurchase extends Overlay {
 		return product.variants.filter(function(variant) {
 			return variant.color == currentVariant.color;
 		})
+	}
+
+	addButtonCaption() {
+		if (this.props.purchase.order.isComplete === true) return  $T(99); /* New Order */
+		if (this.props.purchase.quantity > 0) return $T(30); /* Update Order */
+
+		return $T(24); /* Add To Order */ 
 	}
 
 	content() {
@@ -120,7 +155,7 @@ class OverlayPurchase extends Overlay {
 				{
 					!this.state.isProcessing && <div className={ styles["add-button"] } onClick={ this.addPurchase.bind(this) } >
 						<div className={ styles["add-button-caption"] }>
-							{ this.props.purchase.quantity ? $T(30) /* Update Order */ :$T(24) /* Add To Order */ }
+							{ this.addButtonCaption() }
 						</div>
 					</div>
 				}

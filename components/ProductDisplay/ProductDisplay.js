@@ -13,9 +13,7 @@ class ProductDisplay extends Component {
 		}
 	}
 
-	onViewClick() {
-		var data = {};
-		var purchase;
+	matchPurchase() {
 		var matchedPurchase;
 
 		beachHut.order.purchases.forEach((function(purchase) {
@@ -24,8 +22,15 @@ class ProductDisplay extends Component {
 			}
 		}).bind(this))
 
+		return matchedPurchase;
+	}
+
+	onViewClick() {
+		var data = {};
+		var purchase;
+
 		data.variant = this.props.variant;
-		purchase = matchedPurchase || new Purchase(data);
+		purchase = (!beachHut.order.isComplete && this.matchPurchase()) || new Purchase(data);
 
 		purchase.displayInOverlay();
 	}
