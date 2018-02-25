@@ -36,6 +36,9 @@ class FooterMenu extends Component {
 				{
 					this.props.isOpen &&
 					<div className={ styles["pop-up"] }>
+						<div  className={ styles["pop-up-title"] }>
+							{ this.props.title }
+						</div>
 						{
 							this.props.options.map((function(option) {
 								return <FooterMenuItem

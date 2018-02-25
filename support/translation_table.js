@@ -120,6 +120,8 @@ const TRANSLATIONTABEL = {
 		102: "Select shipping option to proceed.",
 		103: "Cancel",
 		104: "Would you like to create a new order with this product in it?",
+		105: "Language",
+		106: "Currency",
 
 		6005: "Blue",
 		9240: "Black",

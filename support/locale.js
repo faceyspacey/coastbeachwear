@@ -5,9 +5,9 @@ let locale = {};
 
 locale.init = function() {
 	this.availableLanguages = Object.keys(TRANSLATIONTABEL);
-	this.availableCurrencies = ['usd', 'cad'];
-	this.language = this.detectLanguage() || "en";
-	this.currency = this.detectCurrency() || "usd";
+	this.availableCurrencies = ['cad'];
+	this.language = this.detectLanguage() || this.availableLanguages.first();
+	this.currency = this.detectCurrency() || this.availableCurrencies.first();
 };
 locale.init = locale.init.bind(locale);
 

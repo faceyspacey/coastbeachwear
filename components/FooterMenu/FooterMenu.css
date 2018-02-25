@@ -56,9 +56,16 @@
 	left: 50%;
     transform: translate(-50%, 0);
 	bottom: 69px;
-	padding: 8px 0;
 	background-color: primary;
 	border-radius: 2px;
+}
+
+.pop-up-title {
+	padding: 6px 10px;
+	font-family: quantumrounded, sans-serif;
+	color: quaternary;
+	letter-spacing: 0.8px;
+	font-size: 11px;
 }
 
 .pop-up-triangle-container {

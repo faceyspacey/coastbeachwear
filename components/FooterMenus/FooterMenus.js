@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './FooterMenus.css'
 import locale from '../../support/locale.js'
+import {$T } from '../../support/translations.js'
 import FooterMenu from '../FooterMenu/FooterMenu.js'
 
 class FooterMenus extends Component {
@@ -36,6 +37,7 @@ class FooterMenus extends Component {
 				<div className={ styles['menu-container'] }>
 					<FooterMenu
 						dataKey={"language"}
+						title={ $T(105) /* Language */}
 						caption={ locale.language.toUpperCase() }
 						options={ locale.availableLanguages }
 						selected={ locale.language }
@@ -47,6 +49,7 @@ class FooterMenus extends Component {
 				<div className={ styles['menu-container'] }>
 					<FooterMenu
 						dataKey={"currency"}
+						title={ $T(106) /* Currency */}
 						caption={ locale.currency.toUpperCase() }
 						options={ locale.availableCurrencies }
 						selected={ locale.currency }
