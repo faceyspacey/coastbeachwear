@@ -26,6 +26,8 @@ class Input extends Component {
 		var value = event.target.value;
 		var newData = {}
 
+		event.preventDefault();
+
 		newData[this.props.dataKey] = this.formatText(value)
 		this.props.onchange(newData);
 	}

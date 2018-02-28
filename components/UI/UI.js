@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './UI.css';
+import beachHut from '../../main/BeachHut.js';
 
 import Showcase from '../Showcase/Showcase.js';
 import Checkout from '../Checkout/Checkout.js';
@@ -70,7 +71,9 @@ class UI extends Component {
 		onclose = onclose.bind(this);
 
 		 overlay = (
-			<OverlayHelp closeOverlay={ onclose } />
+			<OverlayHelp 
+				closeOverlay={ onclose }
+			/>
 		)
 
 		this.setState({

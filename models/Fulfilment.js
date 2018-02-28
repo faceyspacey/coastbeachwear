@@ -111,6 +111,12 @@ class Fulfilment extends Model {
 			    } else {
 			    	xhrFail($T(76)); // Shipping rate search returned an error.
 			    }
+			    // Sends bug report if no rates returned.
+			    if (!this.rates || Object.values(this.rates).filter(function(rate) { return !!rate }).length === 0) {
+			    	emailjs.send("default_service", "bug_report", { 
+			    		message: `Could not get rates for shipping address: \n${Object.values( this.order.getShippingAddr()).join("\n")}`
+			    	});
+			    }
 		    }
 		}).bind(this);
 

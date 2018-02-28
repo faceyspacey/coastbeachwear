@@ -5,3 +5,8 @@
 	composes: input from "../Input.css";
 	resize: none;
 }
+
+.input-filled {
+	composes: input-filled from "../Input.css";
+	resize: none;
+}

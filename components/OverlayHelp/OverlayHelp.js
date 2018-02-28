@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from './OverlayHelp.css'
+import beachHut from '../../main/BeachHut.js'
 import locale from '../../support/locale.js'
 import Icons from '../../support/Icons.js'
 import { $T, $TInject } from '../../support/translations.js'
 import Overlay from '../Overlay/Overlay.js'
-import beachHut from '../../main/BeachHut.js'
+
+import HelpRequest from '../../models/HelpRequest.js'
+
 import Input from '../Inputs/Input.js'
 import TextArea from '../Inputs/TextArea/TextArea.js'
 import MockInput from '../MockInput/MockInput.js'
@@ -13,42 +16,43 @@ class OverlayHelp extends Overlay {
 	
 	static backgroundColor = "primary";
 
-	language2Template = {
-		en: "help_request",
-		fr: "demande_aide"
-	}
-
 	constructor(props, context) {
 		super(props, context);
 
+		beachHut.helpRequest = beachHut.helpRequest || new HelpRequest;
+
 		this.state = {
-			email: "",
-			message: "",
+			reply_to: beachHut.helpRequest.reply_to || "",
+			message: beachHut.helpRequest.message || "",
 			isSending: false
 		}
 
 		gtag('config', ENV.gaid, {'page_path': '/help'});
 	}
 
-	sendMessage() {
-		var template =  this.language2Template[locale.language];
-		var emailParams = {
-			reply_to: this.state.email,
-			message: this.state.message
-		}
+	onchange(obj) {
+		this.setState(obj);
+		beachHut.helpRequest.setData(obj);
+	}
 
+	sendMessage() {
 		if (this.state.isSending === true ) return;
 
 		this.setState({ isSending: true });
 
-		emailjs.init("user_USAtZzUGAE7R9LfQjWO6w");
-		emailjs.send("default_service", template, emailParams).then((function() {
+		function sendSuccess() {
 			beachHut.ui.displayMessage($T(85), $T(83));
 			this.props.closeOverlay();
-		}).bind(this)).catch((function(error) {
+		};
+		sendSuccess = sendSuccess.bind(this);
+
+		function sendFail(error) {
 			this.setState({ isSending: false });
 			beachHut.ui.displayMessage($T(84), $TInject(82, [error.text]), 12000);
-		}).bind(this));
+		};
+		sendFail = sendFail.bind(this);
+
+		beachHut.helpRequest.send(sendSuccess, sendFail);
 	}
 
 	titleBarContent() {
@@ -68,16 +72,16 @@ class OverlayHelp extends Overlay {
 						value={ $T(100) /* help@coastbeachwear.com */ }
 					/>
 					<Input 
-						dataKey={"email"}
+						dataKey={"reply_to"}
 						data={ this.state }
-						onchange={ this.setState.bind(this) }
+						onchange={ this.onchange.bind(this) }
 						inputWidth="440px"
 						placeholder={$T("51") /* Your Email */} 
 					/>
 					<TextArea
 						dataKey={"message"}
 						data={ this.state }
-						onchange={ this.setState.bind(this) }
+						onchange={ this.onchange.bind(this) }
 						inputWidth="440px"
 						placeholder={$T("53") /* Message */}
 						inputHeight="300"

@@ -224,7 +224,7 @@ const TRANSLATIONTABEL = {
 		77: "Ajouter un item pour continuer...",
 		78: "Commande incomplète",
 		79: "Ajouter un item à la commande pour voir les options de livraison",
-		80: "Livraison invalide",
+		80: "Livraison non disponible",
 		81: "Aucune livraison possible pour l'adresse saisie.\n\nUn courriel a été envoyé à aide@coastbeachwear.com afin de nous aviser de la situation.",
 		82: "Erreur d'envoie :( SVP vérifier votre connection internet. Si le problème persiste, nous apprécions que vous communiquez avec nous via une autre plateforme pour nous aviser de cette panne.\n\nErreur:$0",
 		83: "Message envoyé à aide@coastbeachwear.com.",

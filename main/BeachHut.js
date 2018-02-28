@@ -5,6 +5,7 @@ import locationServices from '../support/LocationServices.js'
 import UI from '../components/UI/UI.js'
 import Order from '../models/Order.js'
 import Product from '../models/Product.js'
+import HelpRequest from '../models/HelpRequest.js'
 import 'normalize.css';
 
 class Beachhut {
@@ -23,6 +24,8 @@ class Beachhut {
 		externalAPIsLoaded = externalAPIsLoaded.bind(this);
 
 		this.loadExternalAPIs(externalAPIsLoaded, externalAPIsLoaded);
+
+		emailjs.init("user_USAtZzUGAE7R9LfQjWO6w");
 	}
 
 	loadProducts() {

@@ -57,6 +57,10 @@ class ShippingAddrForm extends Component {
 		createShipmentSuccess = createShipmentSuccess.bind(this);
 
 		function createShipmentFail() {
+			beachHut.ui.displayMessage(
+				$T(89), /* Address Error */
+				$T(90)
+			);
 			this.setState({ isProcessing: false });
 		};
 		createShipmentFail = createShipmentFail.bind(this);
@@ -80,8 +84,14 @@ class ShippingAddrForm extends Component {
 				$T(89), /* Address Error */
 				$T(90)
 			);
-			return fail();
+
+			fail();
+			
+			emailjs.send("default_service", "bug_report", { message: `Could not parse address for place ID ${this.state.placeId}.`});
+			
+			return;
 		};
+		retrieveFail = retrieveFail.bind(this);
 
 		function retrieveSuccess(data) {
 			var valueFromState = ["first_name", "last_name", "company", "apt", "postal_code", "email", "phone", "placeId"];
@@ -193,6 +203,8 @@ class ShippingAddrForm extends Component {
 					caption: $T(91) // Address not found.
 				}]
 			});
+
+			emailjs.send("default_service", "bug_report", { message: `Could not parse address for place ID ${this.state.placeId}.`});
 		};
 		retrieveFail = retrieveFail.bind(this);
 
