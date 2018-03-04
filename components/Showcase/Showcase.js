@@ -15,7 +15,7 @@ class Showcase extends Component {
 				<ParallaxImage />
 				{ Icons.insert('logo', styles.logo) }
 				<div className={ styles["product-showcase"] }>
-					<img src={ IMGS.torso } className={ styles["torso"] } />
+					<img src={ "/media/product/torso.png" } className={ styles["torso"] } />
 					{
 						this.props.product.getVariantsBySize("m").map(function(variant, index) {
 							return <ProductDisplay index={index} key={ variant.id } variant={ variant } />

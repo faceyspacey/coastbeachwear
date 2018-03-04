@@ -1,16 +1,17 @@
-import React from 'react'
-import styles from './OverlayHelp.css'
-import beachHut from '../../main/BeachHut.js'
-import locale from '../../support/locale.js'
-import Icons from '../../support/Icons.js'
-import { $T, $TInject } from '../../support/translations.js'
-import Overlay from '../Overlay/Overlay.js'
+import React from 'react';
+import styles from './OverlayHelp.css';
+import beachHut from '../../main/BeachHut.js';
+import locale from '../../support/locale.js';
+import settings from '../../settings/settings.json';
+import Icons from '../../support/Icons.js';
+import { $T, $TInject } from '../../support/translations.js';
+import Overlay from '../Overlay/Overlay.js';
 
-import HelpRequest from '../../models/HelpRequest.js'
+import HelpRequest from '../../models/HelpRequest.js';
 
-import Input from '../Inputs/Input.js'
-import TextArea from '../Inputs/TextArea/TextArea.js'
-import MockInput from '../MockInput/MockInput.js'
+import Input from '../Inputs/Input.js';
+import TextArea from '../Inputs/TextArea/TextArea.js';
+import MockInput from '../MockInput/MockInput.js';
 
 class OverlayHelp extends Overlay {
 	
@@ -27,7 +28,7 @@ class OverlayHelp extends Overlay {
 			isSending: false
 		}
 
-		gtag('config', ENV.gaid, {'page_path': '/help'});
+		gtag('config', settings.gaid, {'page_path': '/help'});
 	}
 
 	onchange(obj) {

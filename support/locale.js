@@ -1,5 +1,5 @@
-import beachHut from '../main/BeachHut.js'
-import TRANSLATIONTABEL from '../support/translation_table.js'
+import beachHut from '../main/BeachHut.js';
+import TRANSLATIONTABEL from '../settings/translation_table.json';
 
 let locale = {};
 

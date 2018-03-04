@@ -1,11 +1,12 @@
-import React from 'react'
-import { render } from 'react-dom'
-import locale from '../support/locale.js'
-import locationServices from '../support/LocationServices.js'
-import UI from '../components/UI/UI.js'
-import Order from '../models/Order.js'
-import Product from '../models/Product.js'
-import HelpRequest from '../models/HelpRequest.js'
+import React from 'react';
+import { render } from 'react-dom';
+import locale from '../support/locale.js';
+import locationServices from '../support/LocationServices.js';
+import UI from '../components/UI/UI.js';
+import Order from '../models/Order.js';
+import Product from '../models/Product.js';
+import HelpRequest from '../models/HelpRequest.js';
+import products from '../settings/products.json';
 import 'normalize.css';
 
 class Beachhut {
@@ -29,7 +30,7 @@ class Beachhut {
 	}
 
 	loadProducts() {
-		this.products = initialData.products.map(function(data) {
+		this.products = products.map(function(data) {
 			return new Product(data);
 		})
 	}

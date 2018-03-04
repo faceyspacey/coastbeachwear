@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
-import formStyles from '../CheckoutForm/CheckoutForm.css'
-import styles from './PaymentForm.css'
-import beachHut from '../../main/BeachHut.js'
-import $T from '../../support/translations.js'
-import Icons from '../../support/Icons.js'
-import {StripeProvider, Elements} from 'react-stripe-elements';
-import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js'
-import TotalDetails from '../TotalDetails/TotalDetails.js'
-import StripeCheckoutForm from '../Stripe/StripeCheckoutForm/StripeCheckoutForm.js'
-import FormNavigation from '../FormNavigation/FormNavigation.js'
-import CardTypeSelector from '../CardTypeSelector/CardTypeSelector.js'
-import FulfilmentForm from '../FulfilmentForm/FulfilmentForm.js'
+import React, { Component } from 'react';
+import formStyles from '../CheckoutForm/CheckoutForm.css';
+import styles from './PaymentForm.css';
+import beachHut from '../../main/BeachHut.js';
+import $T from '../../support/translations.js';
+import Icons from '../../support/Icons.js';
+import settings from '../../settings/settings.json';
+import {StripeProvider, Elements} from 'react-stripe-elements';;
+import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js';
+import TotalDetails from '../TotalDetails/TotalDetails.js';
+import StripeCheckoutForm from '../Stripe/StripeCheckoutForm/StripeCheckoutForm.js';
+import FormNavigation from '../FormNavigation/FormNavigation.js';
+import FulfilmentForm from '../FulfilmentForm/FulfilmentForm.js';
+
 
 class PaymentForm extends Component {
 	constructor(props, context) {
@@ -21,7 +22,7 @@ class PaymentForm extends Component {
 			cardHolder: ""
 		}
 
-		gtag('config', ENV.gaid, {'page_path': '/paymentform'});
+		gtag('config', settings.gaid, {'page_path': '/paymentform'});
 	}
 
 	static getTitle() {

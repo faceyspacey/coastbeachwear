@@ -1,6 +1,7 @@
-import Model from './Model'
-import locale from '../support/locale.js'
-import { $T, $TInject } from '../support/translations.js'
+import Model from './Model';
+import locale from '../support/locale.js';
+import settings from '../settings/settings.json';
+import { $T, $TInject } from '../support/translations.js';
 
 class Fulfilment extends Model {
 
@@ -86,7 +87,7 @@ class Fulfilment extends Model {
 		
 		this.rateXHR = new XMLHttpRequest();
 		this.rateXHR.open("POST", this.shippoAPIURL + "shipments");
-		this.rateXHR.setRequestHeader( "Authorization", `ShippoToken ${ENV.shippoAPIKey}` );
+		this.rateXHR.setRequestHeader( "Authorization", `ShippoToken ${settings.shippoAPIKey}` );
 		this.rateXHR.setRequestHeader( "Content-Type", "application/json;" );
 		this.rateXHR.timeout = 15000;
 		this.rateXHR.ontimeout = function() { xhrFail($T(74)) }; // Process did not finish with a reasonable delay.

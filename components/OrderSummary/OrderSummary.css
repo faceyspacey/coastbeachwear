@@ -3,18 +3,14 @@
 
 .main {
 	position: absolute;
-	width: 400px;
-	min-height: 300px;
 	top: 50%;
 	left: 50%;
-	margin: -156px 0 0 -200px;
-	background-color: quaternary;
+	margin: -210px 0 0 -200px;
 }
 
 .title {
-	position: absolute;
 	width: 100%;
-    top: -46px;
+    margin-bottom: 24px;
     left: 0;
 	font-weight: 200;
 	font-family: quantumrounded, sans-serif;
@@ -22,6 +18,13 @@
     color: quaternary;
     letter-spacing: 2.1px;
     text-align: center;
+}
+
+.order-list {
+	position: relative;
+	background-color: quaternary;
+	width: 400px;
+	min-height: 300px;
 }
 
 .empty {

@@ -4,6 +4,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var postcssModulesValues = require('postcss-modules-values');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var VirtualModulePlugin = require('virtual-module-webpack-plugin');
+
+const settingsJSON = Object.assign(
+	require('./settings/general_settings.json'),
+	require('./settings/development_settings.json')
+)
+
+console.log(settingsJSON);
 
 module.exports = {
 	devtool: 'eval-source-map',
@@ -18,7 +26,11 @@ module.exports = {
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
-		new HtmlWebpackPlugin({ template: 'main/index.ejs'})
+		new HtmlWebpackPlugin(Object.assign({ template: 'main/index.ejs'}, settingsJSON)),
+		new VirtualModulePlugin({
+      		moduleName: 'settings/settings.json',
+      		contents: JSON.stringify(settingsJSON)
+    	})
 	],
 	module: {
 		rules: [
@@ -53,21 +65,6 @@ module.exports = {
 					}
 				]
 			}
-			// {
-			// 	test: /\.css$/,
-			// 	use: ExtractTextPlugin.extract(['css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'])
-			// }
 		]
-
-
-
-			// {
-			// 	test: /\.css$/,
-			// 	use: ExtractTextPlugin.extract({
-			// 		fallback: "style-loader",
-			// 		use: 'css-loader'
-			// 	})
-			// }
-
 	},
 }

@@ -1,4 +1,4 @@
-import TRANSLATIONTABEL from './translation_table.js'
+import TRANSLATIONTABEL from '../settings/translation_table.json'
 import locale from './locale.js'
 
 

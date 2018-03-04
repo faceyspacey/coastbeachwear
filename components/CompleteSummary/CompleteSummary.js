@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './CompleteSummary.css';
 import beachHut from '../../main/BeachHut.js';
+import settings from '../../settings/settings.json'
 import locale from '../../support/locale.js';
 import Icons from '../../support/Icons.js';
 import locationServices from '../../support/LocationServices.js';
@@ -24,7 +25,7 @@ class CompleteSummary extends Component {
 			billingAddrObj: props.order.getBillingAddr()
 		};
 
-		gtag('config', ENV.gaid, {'page_path': '/ordercompletedisplay'});
+		gtag('config', settings.gaid, {'page_path': '/ordercompletedisplay'});
 	}
 
 	generateShippingCaptions() {

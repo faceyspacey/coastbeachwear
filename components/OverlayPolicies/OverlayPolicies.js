@@ -1,14 +1,15 @@
-import React from 'react'
-import styles from './OverlayPolicies.css'
-import Icons from '../../support/Icons.js'
-import { $T, $TInject } from '../../support/translations.js'
-import Overlay from '../Overlay/Overlay.js'
+import React from 'react';
+import styles from './OverlayPolicies.css';
+import settings from '../../settings/settings.json';
+import Icons from '../../support/Icons.js';
+import { $T, $TInject } from '../../support/translations.js';
+import Overlay from '../Overlay/Overlay.js';
 
 class OverlayPolicies extends Overlay {
 	constructor(props, context) {
 		super(props, context);
 
-		gtag('config', ENV.gaid, {'page_path': '/policies'});
+		gtag('config', settings.gaid, {'page_path': '/policies'});
 	}
 
 	content() {

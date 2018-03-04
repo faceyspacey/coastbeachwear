@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
-import styles from './FulfilmentForm.css'
-import formStyles from '../CheckoutForm/CheckoutForm.css'
-import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js'
-import $T from '../../support/translations.js'
-import beachHut from '../../main/BeachHut.js'
-import FormNavigation from '../FormNavigation/FormNavigation.js'
-import ShippingProviderSelector from '../ShippingProviderSelector/ShippingProviderSelector.js'
-import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js'
-import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js'
-import PaymentForm from '../PaymentForm/PaymentForm.js'
+import React, { Component } from 'react';
+import styles from './FulfilmentForm.css';
+import formStyles from '../CheckoutForm/CheckoutForm.css';
+import beachHut from '../../main/BeachHut.js';
+import settings from '../../settings/settings.json';
+import $T from '../../support/translations.js';
+
+import InputUnderline from '../Inputs/InputUnderline/InputUnderline.js';
+import FormNavigation from '../FormNavigation/FormNavigation.js';
+import ShippingProviderSelector from '../ShippingProviderSelector/ShippingProviderSelector.js';
+import BillingAddrForm from '../BillingAddrForm/BillingAddrForm.js';
+import ShippingAddrForm from '../ShippingAddrForm/ShippingAddrForm.js';
+import PaymentForm from '../PaymentForm/PaymentForm.js';
 
 class FulfilmentForm extends Component {
 
@@ -17,7 +19,7 @@ class FulfilmentForm extends Component {
 
 		super(props, context)
 
-		gtag('config', ENV.gaid, {'page_path': '/fulfilmentform'});
+		gtag('config', settings.gaid, {'page_path': '/fulfilmentform'});
 
 		this.state = {
 			selectedRateKey: this.props.order.fulfilment.selectedRateKey

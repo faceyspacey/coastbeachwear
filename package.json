@@ -1,15 +1,11 @@
 {
-  "name": "react-todo-list",
+  "name": "coast-beachhut",
   "version": "1.0.0",
-  "description": "A simple todo list app built with React, Redux and Webpack",
+  "description": "Coast Beachwear Inc.'s web store.",
   "scripts": {
     "build-production": "webpack --config=webpack.prod.js -p",
     "deploy-staging": "aws s3 sync --acl public-read --sse --delete dist/ s3://staging.coastbeachwear.com",
     "serve": "nodemon server/server.js --ignore components"
-  },
-  "repository": {
-    "type": "",
-    "url": ""
   },
   "author": "Coast Beachwear Inc.",
   "dependencies": {
@@ -22,7 +18,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.4",
-    "express": "^4.13.4",
+    "express": "^4.16.2",
     "extract-text-webpack-plugin": "^2.1.2",
     "html-webpack-plugin": "^2.30.1",
     "normalize.css": "^7.0.0",
@@ -32,6 +28,7 @@
     "react-dom": "^0.14.7",
     "react-stripe-elements": "^1.2.1",
     "style-loader": "^0.18.2",
+    "virtual-module-webpack-plugin": "^0.3.0",
     "webpack": "^2.0.0",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-hot-middleware": "^2.18.0"

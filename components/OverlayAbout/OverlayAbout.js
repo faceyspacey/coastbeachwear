@@ -1,14 +1,15 @@
-import React from 'react'
-import styles from './OverlayAbout.css'
-import Icons from '../../support/Icons.js'
-import { $T, $TInject } from '../../support/translations.js'
-import Overlay from '../Overlay/Overlay.js'
+import React from 'react';
+import styles from './OverlayAbout.css';
+import settings from '../../settings/settings.json';
+import Icons from '../../support/Icons.js';
+import { $T, $TInject } from '../../support/translations.js';
+import Overlay from '../Overlay/Overlay.js';
 
 class OverlayAbout extends Overlay {
 	constructor(props, context) {
 		super(props, context);
 
-		gtag('config', ENV.gaid, {'page_path': '/about'});
+		gtag('config', settings.gaid, {'page_path': '/about'});
 	}
 
 	content() {

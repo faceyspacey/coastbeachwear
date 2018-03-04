@@ -56,7 +56,7 @@ class ProductDisplay extends Component {
 				</div>
 				<div className={ styles["film"] }>
 					<img 
-						src={ IMGS.swimsuit }
+						src={ "/media/product/swimsuit.png" }
 						className={ styles["image"] }
 					/>
 					<div className={ styles["button-view"] } onClick={ this.onViewClick.bind(this) }>{ $T(13) /* View */}

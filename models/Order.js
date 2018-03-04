@@ -1,9 +1,9 @@
-import Model from './Model.js'
-import beachHut from '../main/BeachHut.js'
-import { taxRates } from '../support/settings.js'
-import $T from '../support/translations.js'
-import Fulfilment from './Fulfilment.js'
-import { originCountryCode } from '../support/settings.js'
+import Model from './Model.js';
+import beachHut from '../main/BeachHut.js';
+import { originCountryCode } from '../settings/settings.json';
+import taxRates from '../settings/tax_rates.json';
+import $T from '../support/translations.js';
+import Fulfilment from './Fulfilment.js';
 
 
 class Order extends Model {

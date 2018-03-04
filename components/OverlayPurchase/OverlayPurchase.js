@@ -1,12 +1,13 @@
-import React from 'react'
-import styles from './OverlayPurchase.css'
-import beachHut from '../../main/BeachHut.js'
-import Icons from '../../support/Icons.js'
-import {$T, $TInject} from '../../support/translations.js'
-import Overlay from '../Overlay/Overlay.js'
-import ImageCarousel from '../ImageCarousel/ImageCarousel.js'
-import SizePicker from '../SizePicker/SizePicker.js'
-import QuantityPicker from '../QuantityPicker/QuantityPicker.js'
+import React from 'react';
+import styles from './OverlayPurchase.css';
+import beachHut from '../../main/BeachHut.js';
+import settings from '../../settings/settings.json';
+import Icons from '../../support/Icons.js';
+import {$T, $TInject} from '../../support/translations.js';
+import Overlay from '../Overlay/Overlay.js';
+import ImageCarousel from '../ImageCarousel/ImageCarousel.js';
+import SizePicker from '../SizePicker/SizePicker.js';
+import QuantityPicker from '../QuantityPicker/QuantityPicker.js';
 
 
 class OverlayPurchase extends Overlay {
@@ -19,7 +20,7 @@ class OverlayPurchase extends Overlay {
 			isProcessing: false
 		};
 
-		gtag('config', ENV.gaid, {'page_path': '/purchase'});
+		gtag('config', settings.gaid, {'page_path': '/purchase'});
 	}
 
 	onOverlayClick(event) {
@@ -30,7 +31,7 @@ class OverlayPurchase extends Overlay {
 	onCloseClick(event) {
 		if (this.state.isProcessing) return;
 		super.onCloseClick();
-		gtag('config', ENV.gaid, {'page_path': '/'});
+		gtag('config', settings.gaid, {'page_path': '/'});
 	}
 
 	setCurrentVariant(variant) {
