@@ -8,6 +8,8 @@ import locationServices from '../../../support/LocationServices.js'
 class ShippingSummary extends Component {
 	styles = Object.assign({}, this.styles, styles);
 
+	isMapInited = false;
+
 	constructor(props, context) {
 		super(props, context);
 	}
@@ -18,11 +20,15 @@ class ShippingSummary extends Component {
 			disableDefaultUI: true
 		};
 
+		if (this.isMapInited === true) return;
+
 		function retriveSuccess(latLng) {
 			options.center = latLng;
 
 			locationServices.initMap(element, [latLng], options);
+			this.isMapInited = true
 		};
+		retriveSuccess = retriveSuccess.bind(this);
 
 		locationServices.placeId2LatLng(this.props.placeId, retriveSuccess)
 	}
