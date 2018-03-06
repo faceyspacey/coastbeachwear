@@ -1,0 +1,59 @@
+[
+	{
+		"id": "p1",
+		"name": "Genesis",
+		"version": "1.0.0",
+		"price": 73.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"variants": [
+			{
+				"id": "NS",
+				"color": "9240",
+				"size": "s",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			},
+			{
+				"id": "NM",
+				"color": "9240",
+				"size": "m",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			},
+			{
+				"id": "NL",
+				"color": "9240",
+				"size": "l",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			},
+			{
+				"id": "NXL",
+				"color": "9240",
+				"size": "xl",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			},
+			{
+				"id": "TS",
+				"color": "6005",
+				"size": "s",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			},
+			{
+				"id": "TM",
+				"color": "6005",
+				"size": "m",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			},
+			{
+				"id": "TL",
+				"color": "6005",
+				"size": "l",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			},
+			{
+				"id": "TXL",
+				"color": "6005",
+				"size": "xl",
+				"images": ["/media/product/1.jpg", "/media/product/2.jpg", "/media/product/3.jpg", "/media/product/4.jpg", "/media/product/5.jpg"]
+			}
+		]
+	}
+]
