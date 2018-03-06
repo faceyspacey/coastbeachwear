@@ -96,20 +96,13 @@ class PaymentForm extends Component {
 						{ $T("69") /* Apply */ }
 					</div>
 				</div>
-				<InputUnderline 
-					dataKey={ "cardHolder" } 
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="500px" 
-					placeholder={$T("34") /* Name On Card */}
-				/>
-				<StripeProvider apiKey="pk_test_RqVvmoPTp9c6r8OZlt1KOGUQ">
+				<StripeProvider apiKey={ settings.stripeAPIKey }>
 					<Elements
 						fonts={ 
 							[
 							    {
 									family: 'quantumrounded',
-									src: 'url("https://cdn.shopify.com/s/files/1/1777/1415/t/1/assets/quantumrounded.otf?6009573855513922617")',
+									src: 'url("https://d1isjxk230oqka.cloudfront.net/fonts/quantumrounded.otf")',
 							    }
 						  	] 
 						}
@@ -119,6 +112,8 @@ class PaymentForm extends Component {
 							card_holder={ this.state.cardHolder }
 							navigateBackward={ this.navigateBackward.bind(this) }
 							navigateForward={ this.props.order.complete.bind(this.props.order) }
+							data={ this.state }
+							onchange={ this.onchange.bind(this) }
 						/>
 					</Elements>
 				</StripeProvider>

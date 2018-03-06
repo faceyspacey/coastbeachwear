@@ -77,7 +77,8 @@ class OverlayHelp extends Overlay {
 						data={ this.state }
 						onchange={ this.onchange.bind(this) }
 						inputWidth="440px"
-						placeholder={$T("51") /* Your Email */} 
+						placeholder={$T("51") /* Your Email */}
+						autocomplete={ "email" }
 					/>
 					<TextArea
 						dataKey={"message"}

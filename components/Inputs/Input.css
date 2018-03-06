@@ -56,6 +56,17 @@
     overflow: hidden;
 }
 
+input.input:-webkit-autofill {
+	background-color: quaternary;
+	-webkit-box-shadow: 0 0 0px 1000px quaternary inset;
+}
+
+input.input-filled:-webkit-autofill {
+	background-color: quaternary;
+	-webkit-box-shadow: 0 0 0px 1000px quaternary inset;
+}
+
+
 .input-filled {
 	composes: input;
 	padding: 13px 35px 5px 13px;

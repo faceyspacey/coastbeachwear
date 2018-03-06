@@ -218,6 +218,7 @@ class InputTypeAhead extends InputUnderline {
 						style={{ width: this.props.inputWidth }}
 						type={ this.constructor.type }
 						value={ this.state.searchText }
+						autoComplete={ this.props.autocomplete? "on" : "new-password" }
 					/>
 					<div className={ this.styles["search-icon-container"] }>
 						<div className={ this.styles["search-icon"] }>

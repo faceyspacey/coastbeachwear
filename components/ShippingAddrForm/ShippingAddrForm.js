@@ -243,68 +243,77 @@ class ShippingAddrForm extends Component {
 		return (
 			<div className={styles["main"]}>
 				<div className={formStyles["header"]}>{ $T(10) /* Shipping Address*/ }</div>
-				<InputUnderline 
-					dataKey={"first_name"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="260px" 
-					placeholder={$T("1") /* First Name */ } 
-				/> 
-				<InputUnderline 
-					dataKey={"last_name"} 
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="340px"
-					placeholder={$T("2") /* Last Name */}
-				/>
-				<InputUnderline 
-					dataKey={"email"} 
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="610px"
-					placeholder={$T(18) /* Email */} 
-				/>
-				<InputUnderline 
-					dataKey={"phone"} 
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="380px"
-					placeholder={$T(17) /* Phone (optional) */} 
-				/>
-				<InputUnderline 
-					dataKey={"postal_code"} 
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="220px"
-					placeholder={$T("8") /* Postal Code */}
-					upperCase={ true }
-				/>
-				<InputTypeAhead 
-					dataKey={"placeId"}
-					data={ this.state }
-					selectedID={ this.state.placeId || "" }
-					onchange={ this.onchange.bind(this) }
-					items={ this.state.addrPredictions }
-					refreshItems={ this.refreshAddrPredictions.bind(this) }
-					inputWidth="610px"
-					placeholder={ $T("4") /* Address */ } 
-					notice={ $T("86") /* Enter postal/zip code to narrow results. */ }
-					emptyMessage={ $T("88") }
-				/>
-				<InputUnderline
-					dataKey={"apt"} 
-					data={ this.state } 
-					onchange={ this.onchange.bind(this) }
-					inputWidth="150px"
-					placeholder={$T("5") /* Apt, Suite (opt) */} 
-				/>
-				<InputUnderline
-					dataKey={"company"}
-					data={ this.state }
-					onchange={ this.onchange.bind(this) }
-					inputWidth="450px"
-					placeholder={$T("9") /* Company */} 
-				/> 
+				<form autoComplete={"on"}>
+					<InputUnderline 
+						dataKey={"first_name"}
+						data={ this.state }
+						onchange={ this.onchange.bind(this) }
+						inputWidth="260px" 
+						placeholder={$T("1") /* First Name */ }
+						autocomplete={"fname"}
+					/> 
+					<InputUnderline 
+						dataKey={"last_name"} 
+						data={ this.state }
+						onchange={ this.onchange.bind(this) }
+						inputWidth="340px"
+						placeholder={$T("2") /* Last Name */}
+						autocomplete={"lname"}
+					/>
+					<InputUnderline 
+						dataKey={"email"} 
+						data={ this.state }
+						onchange={ this.onchange.bind(this) }
+						inputWidth="610px"
+						placeholder={$T(18) /* Email */} 
+						autocomplete={"email"}
+					/>
+					<InputUnderline 
+						dataKey={"phone"} 
+						data={ this.state }
+						onchange={ this.onchange.bind(this) }
+						inputWidth="380px"
+						placeholder={$T(17) /* Phone (optional) */}
+						autocomplete={"dayphone"}
+					/>
+					<InputUnderline 
+						dataKey={"postal_code"} 
+						data={ this.state }
+						onchange={ this.onchange.bind(this) }
+						inputWidth="220px"
+						placeholder={$T("8") /* Postal Code */}
+						upperCase={ true }
+						autocomplete={"zip"}
+					/>
+					<InputTypeAhead 
+						dataKey={"placeId"}
+						data={ this.state }
+						selectedID={ this.state.placeId || "" }
+						onchange={ this.onchange.bind(this) }
+						items={ this.state.addrPredictions }
+						refreshItems={ this.refreshAddrPredictions.bind(this) }
+						inputWidth="610px"
+						placeholder={ $T("4") /* Address */ } 
+						notice={ $T("86") /* Enter postal/zip code to narrow results. */ }
+						emptyMessage={ $T("88") }
+					/>
+					<InputUnderline
+						dataKey={"apt"} 
+						data={ this.state } 
+						onchange={ this.onchange.bind(this) }
+						inputWidth="150px"
+						placeholder={$T("5") /* Apt, Suite (opt) */}
+						autocomplete={"addresss2"} 
+					/>
+					<InputUnderline
+						dataKey={"company"}
+						data={ this.state }
+						onchange={ this.onchange.bind(this) }
+						inputWidth="450px"
+						placeholder={$T("9") /* Company */}
+						autocomplete={"company"} 
+					/>
+				</form>
 				<Checkbox 
 					caption={ $T(37) /* Billing address same as shipping address? */ }
 					checked={ this.state.sameAsBilling }

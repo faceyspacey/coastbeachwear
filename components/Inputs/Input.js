@@ -49,6 +49,8 @@ class Input extends Component {
 				style={{ width: this.props.inputWidth }}
 				type= { this.constructor.type }
 				value= { this.formatedValue() }
+				name={ this.props.autocomplete }
+				autoComplete={ this.props.autocomplete? "on" : "new-password" }
 			/>
 		)
 	}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {injectStripe} from 'react-stripe-elements';
 import beachHut from '../../../main/BeachHut.js'
+import InputUnderline from '../../Inputs/InputUnderline/InputUnderline.js';
 import CardSection from '../StripeCardSection/StripeCardSection.js';
 import InputStripeCardNumber from "../InputStripeCardNumber/InputStripeCardNumber.js"
 import InputStripeExpiry from "../InputStripeExpiry/InputStripeExpiry.js"
@@ -32,6 +33,14 @@ class StripeCheckoutForm extends Component {
 	render() {
 		return (
 			<form onSubmit={ this.handleSubmit }>
+				<InputUnderline 
+					dataKey={ "cardHolder" } 
+					data={ this.props.data }
+					onchange={ this.props.onchange }
+					inputWidth="500px" 
+					placeholder={$T("34") /* Name On Card */}
+					autocomplete={"cc-name"}
+				/>
 				<InputStripeCardNumber 
 					inputWidth="360px" 
 					placeholder={$T("33") /* Card Number */ } 
