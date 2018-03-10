@@ -15,7 +15,7 @@ const SettingsJSON = Object.assign(
 
 module.exports = {
 	context: resolve(__dirname),
-	entry: ['./support/polyfill.js', './support/settings.js', './main/BeachHut.js'],
+	entry: ['./support/polyfill.js', './main/BeachHut.js'],
 	output: {
 		path: require("path").resolve("./dist"),
 		filename: '[name].[chunkhash:6].js',
