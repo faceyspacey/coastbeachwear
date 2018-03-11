@@ -293,7 +293,7 @@ class ShippingAddrForm extends Component {
 						items={ this.state.addrPredictions }
 						refreshItems={ this.refreshAddrPredictions.bind(this) }
 						inputWidth="610px"
-						placeholder={ $T("4") /* Address */ } 
+						placeholder={ $T("107") /* Select Address */ } 
 						notice={ $T("86") /* Enter postal/zip code to narrow results. */ }
 						emptyMessage={ $T("88") }
 					/>

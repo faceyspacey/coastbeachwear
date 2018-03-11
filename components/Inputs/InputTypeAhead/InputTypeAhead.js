@@ -11,11 +11,12 @@ class InputTypeAhead extends InputUnderline {
 	autoCompletionRequest = undefined;
 	controlsListener = undefined;
 	selectBlock = false;
+	enteredText = "";
+	searchText = "";
 
 	constructor(props, context) {
 		super(props, context);
 		this.state.preSelectedID = "";
-		this.state.searchText = "";
 		this.state.isOpen = false;
 	}
 
@@ -47,9 +48,107 @@ class InputTypeAhead extends InputUnderline {
 	}
 
 	hasContent() {
-		return !!this.state.searchText || !!this.props.selectedID;
+		return !!this.searchText || !!this.props.selectedID;
 	}
+
+	findMatch(enteredText) {
+		if (!enteredText) return "";
+
+		function matchTest(item) {
+			return item.caption.substr(0, enteredText.length).toLowerCase() === enteredText.toLowerCase();
+		};
+		matchTest = matchTest.bind(this);
+
+		return this.props.items.filter(matchTest)[0];
+	};
 	 
+	getPreSelectedIndex() {
+		return this.props.items.findIndex((function(item) {
+			return item.id == this.state.preSelectedID;
+		}).bind(this))
+	}
+
+	onchange(event) {
+		var enteredText = event.target.value;
+		var isDelete = enteredText.length === this.searchText.length - 1 || enteredText.length <= this.enteredText.length;
+
+		if (isDelete) enteredText = enteredText.slice(0, -1);
+		
+		this.enteredText = enteredText;
+		this.inputDOM = event.target;
+
+    	event.preventDefault();
+
+    	function refreshItemsSuccess(items, status) {
+    		if (enteredText.length >= 3) {
+    			this.setState({ 
+    				preSelectedID: this.props.items.first() && this.props.items.first().id,
+    			});
+
+    			this.autocomplete(enteredText);
+    			
+    			this.openDropDown();
+    		}
+    	};
+    	refreshItemsSuccess = refreshItemsSuccess.bind(this);
+
+    	clearTimeout(this.autoCompletionRequest);
+
+    	if (event.target.value.length < 3 ) {
+    		this.searchText = event.target.value;
+    		
+    		this.closeDropDown();
+    		
+    		return;
+    	}
+
+    	this.autocomplete(enteredText);
+
+    	this.autoCompletionRequest = setTimeout((function() {
+    		if (enteredText.length < 3) return;
+    		
+    		this.props.refreshItems(enteredText, refreshItemsSuccess);
+    	}).bind(this), 700);
+	}
+
+	autocomplete(enteredText) {
+		var match = this.findMatch(enteredText) || {};
+
+
+    	if (match.caption) {
+    		this.searchText = match.caption;
+    		this.inputDOM.value = this.searchText;
+			this.inputDOM.setSelectionRange(enteredText.length, match.caption.length);
+		}   				
+	}
+
+	clearSelected () {
+		this.searchText = "";
+		this.props.onchange({ [this.props.dataKey]: "" });
+	}
+
+	onsearchblur() {
+		var match = this.props.items.filter((function(item) {
+			return item.caption === this.searchText;
+		}).bind(this))[0];
+
+		if (match) this.props.onchange({ [this.props.dataKey]: match.id });
+	}
+
+	openDropDown() {
+		document.addEventListener('keydown', this.dropdownControls);
+		window.addEventListener('click', this.closeDropDown);
+
+		this.setState({ isOpen: true });
+	}
+
+	closeDropDown = () => {
+		document.removeEventListener('keydown', this.dropdownControls);
+		window.removeEventListener('click', this.closeDropDown);
+		
+		this.setState({ isOpen: false });
+	}
+
 	dropdownControls = (event) => {
 		var wasIndex = this.getPreSelectedIndex();
 		
@@ -88,59 +187,6 @@ class InputTypeAhead extends InputUnderline {
 		}
 	}
 
-	getPreSelectedIndex() {
-		return this.props.items.findIndex((function(item) {
-			return item.id == this.state.preSelectedID;
-		}).bind(this))
-	}
-
-	onchange(event) {
-		var searchText = event.target.value;
-    	
-    	event.preventDefault();
-
-    	this.setState({ searchText: searchText || "" })
-
-
-    	function refreshItemsSuccess(items, status) {    		
-    		if (searchText.length >= 3) {
-    			this.setState({ preSelectedID: this.props.items.first() && this.props.items.first().id });
-    			this.openDropDown();
-    		}
-    	};
-    	refreshItemsSuccess = refreshItemsSuccess.bind(this);
-
-    	clearTimeout(this.autoCompletionRequest);
-
-    	if (searchText.length < 3) {
-    		this.closeDropDown();
-    		return;
-    	}
-
-    	this.autoCompletionRequest = setTimeout((function() {
-    		if (searchText.length < 3) return;
-    		
-    		this.props.refreshItems(searchText, refreshItemsSuccess);
-    	}).bind(this), 700);
-	}
-
-	clearSelected () {
-		this.props.onchange({ [this.props.dataKey]: "" });
-	}
-
-	openDropDown() {
-		document.addEventListener('keydown', this.dropdownControls);
-		window.addEventListener('click', this.closeDropDown);
-
-		this.setState({ isOpen: true });
-	}
-
-	closeDropDown = () => {
-		document.removeEventListener('keydown', this.dropdownControls);
-		window.removeEventListener('click', this.closeDropDown);
-		
-		this.setState({ isOpen: false });
-	}
 
 	dropdownElement() {
 		return (
@@ -215,9 +261,9 @@ class InputTypeAhead extends InputUnderline {
 						className={ this.hasContent()? this.styles["input-filled"] : this.styles["input"] } 
 						placeholder={ this.props.placeholder }
 						onChange={ this.onchange.bind(this) }
+						onBlur={ this.onsearchblur.bind(this) }
 						style={{ width: this.props.inputWidth }}
 						type={ this.constructor.type }
-						value={ this.state.searchText }
 						autoComplete={ this.props.autocomplete? "on" : "new-password" }
 					/>
 					<div className={ this.styles["search-icon-container"] }>

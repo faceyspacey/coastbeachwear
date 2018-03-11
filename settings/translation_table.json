@@ -122,6 +122,7 @@
 		"104": "Would you like to create a new order with this product in it?",
 		"105": "Language",
 		"106": "Currency",
+		"107": "Select Address",
 
 		"6005": "Blue",
 		"9240": "Black"
@@ -248,6 +249,9 @@
 		"101": "Sélectionner l'option", 
 		"102": "Sélectionner l'option de livraison pour continuer.",
 		"103": "Annuler",
+
+
+		"107": "Sélectionnez une adresse",
 
 		"6005": "Bleu",
 		"9240": "Noir"
