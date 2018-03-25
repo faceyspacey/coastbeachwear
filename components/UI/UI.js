@@ -125,7 +125,7 @@ class UI extends Component {
 				}
 			</div>
 		)
-	}
+	};
 } 
 
-export default UI
+export default UI;

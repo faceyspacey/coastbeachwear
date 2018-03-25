@@ -17,7 +17,7 @@ const Icons = {
 		</svg> 
 	)},
 	logo: function() { return (
-		<svg id="Layer_1" dataName="Layer 1" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 395.33 165.67" style={{"paddingBottom": "41.9%"}}>
+		<svg id="Layer_1" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 395.33 165.67" style={{"paddingBottom": "41.9%"}}>
 			<defs/>
 			<path className="cls-1" d="M174.87,233.88c0-12.54,12.09-17.65,31.91-17.65s31.91,5.11,31.91,17.65-12.15,17.55-31.91,17.55S174.87,246.42,174.87,233.88Zm56.09,0c0-9-9-12.64-24.18-12.64s-24.24,3.66-24.24,12.64,9,12.59,24.24,12.59S231,242.91,231,233.88Z" transform="translate(-50 -167.16)"/>
 			<path className="cls-1" d="M304.11,248.54l-4.49-5.06H261l-4.43,5c-1.38,1.55-2.75,2.27-4.67,2-2.63-.36-3.41-2.58-1.62-4.59l22.63-25.49a9.07,9.07,0,0,1,7.42-3.41,8.84,8.84,0,0,1,7.42,3.41L310.52,246c1.8,2,1,4.23-1.56,4.54A5.21,5.21,0,0,1,304.11,248.54ZM265,238.94h30.53L280.23,221.8Z" transform="translate(-50 -167.16)"/>

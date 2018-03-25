@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var postcssModulesValues = require('postcss-modules-values');
@@ -14,6 +14,7 @@ const SettingsJSON = Object.assign(
 )
 
 module.exports = {
+	mode: 'production',
 	context: resolve(__dirname),
 	entry: ['./support/polyfill.js', './main/BeachHut.js'],
 	output: {
@@ -22,7 +23,7 @@ module.exports = {
 		publicPath: '/'
 	},
 	plugins: [
-		new ExtractTextPlugin('style.css'),
+		new MiniCSSExtractPlugin({ filename: 'style.css', chunkFilename: "[id].css" }),
 		new CleanWebpackPlugin(['dist'], { exclude:  ['fonts', 'media'] }),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
@@ -47,9 +48,17 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ExtractTextPlugin.extract(['css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'])
+				use: [
+					MiniCSSExtractPlugin.loader,
+					{
+						loader: "css-loader",
+						options: {
+							modules: true,
+							localIdentName: "[name]-[local]-[hash:base64:6]"
+						}
+					}
+				]
 			}
-
 		]
 	},
 }

@@ -1,5 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
+import HotRender from './HotRender.js'
+
+import idb from 'idb';
 import locale from '../support/locale.js';
 import locationServices from '../support/LocationServices.js';
 import UI from '../components/UI/UI.js';
@@ -35,13 +38,23 @@ class Beachhut {
 		})
 	}
 
+	loadDB() {
+		if (!('indexedDB' in window)) {
+			console.log('This browser doesn\'t support IndexedDB');
+			return;
+		}
+
+		this.db = idb.open('beach_hut_db', 1, function(upgradeDb) {
+			if (!upgradeDb.objectStoreNames.contains('purchases')) {
+				purchases = upgradeDb.createObjectStore('purchases', { autoIncrement:true });
+				purchases.createIndex('variantID', 'variantID', { unique: false });
+			}
+		});
+	}
+
 	loadUI() {
-		this.ui = render(		
-			<UI 
-				locale={ this.locale }
-				order={ this.order }
-				products={ this.products }
-			/>,
+		this.ui = render(
+			<HotRender />,
 			document.getElementById('beachhut')
 		)
 	}
@@ -92,6 +105,6 @@ class Beachhut {
 
 window.Require = __webpack_require__;
 
-var beachHut = new Beachhut;
+const beachHut = new Beachhut;
 
-export default beachHut
+export default beachHut;
