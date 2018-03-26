@@ -22,14 +22,16 @@ module.exports = {
 		'./main/BeachHut.js'
 	],
 	devServer: {
-	  contentBase:  "./dist",
-	  hot: true,
+	  contentBase: path.resolve(__dirname, 'dist'),
 	  compress: true,
+	  inline: true, 
+	  hot: true,
 	  port: 3000
 	},
 	output: {
 		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve(__dirname, '/'),
+		publicPath: path.resolve(__dirname, '/')
 	},
 	plugins: [
 		new CleanWebpackPlugin(['dist'], { exclude:  ['fonts', 'media'] }),
@@ -53,7 +55,7 @@ module.exports = {
 					{
 						loader: 'babel-loader',
 						query: {
-							presets: ['react', 'es2015'],
+							presets: ["env", "react"],
 							plugins: ["react-hot-loader/babel", 'transform-class-properties']
 						}
 					}
