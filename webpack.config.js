@@ -54,9 +54,10 @@ module.exports = {
 				use: [
 					{
 						loader: 'babel-loader',
-						query: {
-							presets: ["env", "react"],
-							plugins: ["react-hot-loader/babel", 'transform-class-properties']
+						options: {
+							cacheDirectory: true,
+							presets: ['env', 'react'],
+							plugins: ['react-hot-loader/babel', 'transform-class-properties'],
 						}
 					}
 				]

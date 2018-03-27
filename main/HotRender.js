@@ -13,4 +13,4 @@ const HotRender = () => (
   </div>
 )
 
-export default hot(module)(HotRender)
+export default HotRender
