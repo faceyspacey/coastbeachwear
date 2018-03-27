@@ -5,7 +5,7 @@ import HotRender from './HotRender.js'
 import idb from 'idb';
 import locale from '../support/locale.js';
 import locationServices from '../support/LocationServices.js';
-import UI from '../components/UI/UI.js';
+// import UI from '../components/UI/UI.js';
 import Order from '../models/Order.js';
 import Product from '../models/Product.js';
 import HelpRequest from '../models/HelpRequest.js';
@@ -54,7 +54,11 @@ class Beachhut {
 
 	loadUI() {
 		this.ui = render(
-			<HotRender />,
+			<HotRender
+				locale={this.locale}
+				products={this.products}
+				order={this.order}
+			/>,
 			document.getElementById('beachhut')
 		)
 	}

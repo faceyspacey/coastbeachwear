@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader'
 
 import styles from './UI.css';
-import beachHut from '../../main/BeachHut.js';
+// import beachHut from '../../main/BeachHut.js';
 
 import Showcase from '../Showcase/Showcase.js';
 import Checkout from '../Checkout/Checkout.js';
@@ -130,4 +130,4 @@ class UI extends Component {
 	};
 } 
 
-export default hot(module)(UI);
+export default UI;

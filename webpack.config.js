@@ -54,8 +54,8 @@ module.exports = {
 				use: [
 					{
 						loader: 'babel-loader',
-						options: {
-							cacheDirectory: true,
+						options: { // you didn't need to do it this way (it worked your old way)
+							cacheDirectory: true, // but figured I'd give you this performance boost and make this all consistent
 							presets: ['env', 'react'],
 							plugins: ['react-hot-loader/babel', 'transform-class-properties'],
 						}
@@ -64,7 +64,8 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [{
+				use: [
+					{
 						loader: 'style-loader',
 						options: {
 							hmr: true
