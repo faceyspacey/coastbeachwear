@@ -3,6 +3,8 @@
 
 ## Update 3/27/2018
 
+> TLDR; child components can't also import a non-HMRed grandparent, specifically `BeachHut.js`
+
 
 ## Part 1
 
@@ -44,3 +46,8 @@
 
 - apparently the latest `hot` HOC doesn't hot module replace non-react components
 - so if you want things like utility functions to replace, you may wanna try the old `<AppContainer>` + `module.hot.accept` technique.
+
+
+# PS
+
+*my venmo and paypal is james@faceyspacey.com :)*
